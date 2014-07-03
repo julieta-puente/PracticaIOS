@@ -20,7 +20,7 @@
 -(id) init{
     if([super init]){
         
-        self.value = nil;
+        self.value = [NSNumber numberWithFloat:0.0];
     }
     return self;
 }
@@ -55,7 +55,8 @@
         [multiplesArray addObject:[[NSNumber alloc]initWithInt:(i*2) ]];
     }
     
-    [self.delegate onMultipleOfTwoOperationFinished:multiplesArray];
+    NSArray * arr= [NSArray arrayWithArray:multiplesArray];
+    [self.delegate onMultipleOfTwoOperationFinished:arr];
 
 }
 
