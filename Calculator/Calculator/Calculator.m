@@ -8,7 +8,6 @@
 
 #import "Calculator.h"
 
-
 @interface Calculator(){
     id<MultiplesOfTwo> _delegate;
 }
@@ -16,38 +15,37 @@
 
 @implementation Calculator
 
+@synthesize delegate=_delegate;
+
 -(id) init{
     if([super init]){
         
-        _value = 0;
+        self.value = nil;
     }
     return self;
 }
 
 -(void) add: (float) n {
-    _value=[[NSNumber alloc] initWithFloat: ([_value floatValue] + n)];
-    NSLog(@"%f",[_value floatValue]);
+    self.value=[[[NSNumber alloc] initWithFloat: ([self.value floatValue] + n)]autorelease];
 }
 
 -(void) substract: (float) n {
-    _value=[[NSNumber alloc] initWithFloat: ([_value floatValue] - n)];
-    NSLog(@"%f",[_value floatValue]);
+    self.value=[[[NSNumber alloc] initWithFloat: ([self.value floatValue] - n)]autorelease];
+
 }
 
 -(void) multiply: (float) n {
-    _value=[[NSNumber alloc] initWithFloat: ([_value floatValue] * n)];
-    NSLog(@"%f",[_value floatValue]);
+    self.value=[[[NSNumber alloc] initWithFloat: ([self.value floatValue] * n)]autorelease];
 }
 
 -(void) divide: (float) n {
     
 
-    _value=[[NSNumber alloc] initWithFloat: ([_value floatValue] / n)];
-    NSLog(@"%f",[_value floatValue]);
+    self.value=[[[NSNumber alloc] initWithFloat: ([self.value floatValue] / n)]autorelease];
 }
 
 -(void) reset{
-    _value = 0;
+    self.value = [[[NSNumber alloc]initWithFloat:0]autorelease];
 }
 
 -(void) startCalcultingMultiple2{
@@ -62,7 +60,10 @@
 }
 
 
-
+-(void) dealloc{
+    [super dealloc];
+    [_value release];
+}
 
 
 @end
