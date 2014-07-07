@@ -8,11 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "MultiplesOfTwo.h"
+#import "FinishOperation.h"
 
 @interface Calculator : NSObject
 
 @property (nonatomic,retain) NSNumber * value;
 @property (nonatomic,assign) id<MultiplesOfTwo> delegate;
+@property (nonatomic,assign) id<FinishOperation> operationDelegate;
 
 -(void) add: (float) n;
 -(void) substract: (float) n;

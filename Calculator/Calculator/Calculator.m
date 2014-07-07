@@ -10,43 +10,49 @@
 
 @interface Calculator(){
     id<MultiplesOfTwo> _delegate;
+    id<FinishOperation> _operationDelegate;
 }
 @end
 
 @implementation Calculator
 
 @synthesize delegate=_delegate;
+@synthesize operationDelegate=_operationDelegate;
 
 -(id) init{
     if([super init]){
         
         self.value = [NSNumber numberWithFloat:0.0];
+        
     }
     return self;
 }
 
 -(void) add: (float) n {
     self.value=[[[NSNumber alloc] initWithFloat: ([self.value floatValue] + n)]autorelease];
+    [self.operationDelegate updateLabelWithString:[NSString stringWithFormat:@"%@",self.value]];
 }
 
 -(void) substract: (float) n {
     self.value=[[[NSNumber alloc] initWithFloat: ([self.value floatValue] - n)]autorelease];
-
+    [self.operationDelegate updateLabelWithString:[NSString stringWithFormat:@"%@",self.value]];
 }
 
 -(void) multiply: (float) n {
     self.value=[[[NSNumber alloc] initWithFloat: ([self.value floatValue] * n)]autorelease];
+   [self.operationDelegate updateLabelWithString:[NSString stringWithFormat:@"%@",self.value]];
 }
 
 -(void) divide: (float) n {
-    
-
     self.value=[[[NSNumber alloc] initWithFloat: ([self.value floatValue] / n)]autorelease];
+    [self.operationDelegate updateLabelWithString:[NSString stringWithFormat:@"%@",self.value]];
 }
 
 -(void) reset{
     self.value = [[[NSNumber alloc]initWithFloat:0]autorelease];
+   [self.operationDelegate updateLabelWithString:[NSString stringWithFormat:@"%@",self.value]];
 }
+
 
 -(void) startCalcultingMultiple2{
     
@@ -55,8 +61,11 @@
         [multiplesArray addObject:[[NSNumber alloc]initWithInt:(i*2) ]];
     }
     
+
     NSArray * arr= [NSArray arrayWithArray:multiplesArray];
     [self.delegate onMultipleOfTwoOperationFinished:arr];
+    
+
 
 }
 
@@ -64,6 +73,8 @@
 -(void) dealloc{
     [super dealloc];
     [_value release];
+    [_delegate release];
+    [_operationDelegate release];
 }
 
 

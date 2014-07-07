@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "Calculator.h"
 #import "MultiplesOfTwo.h"
+#import "MainViewControlerViewController.h"
 
 @implementation AppDelegate
 
@@ -28,6 +29,9 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    MainViewControlerViewController * mv = [[[MainViewControlerViewController alloc]init]autorelease];
+    [self.window setRootViewController:mv];
     return YES;
 }
 
@@ -62,7 +66,7 @@
 
 -(void) onMultipleOfTwoOperationFinished:(NSArray *)numbers{
     
-    NSLog(@"Finished with numbers %@",numbers);
+  //  NSLog(@"Finished with numbers %@",numbers);
     
 }
 

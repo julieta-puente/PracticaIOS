@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D3343901965ABDB00C955BF /* MainViewControlerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D33438E1965ABDB00C955BF /* MainViewControlerViewController.m */; };
+		4D3343911965ABDB00C955BF /* MainViewControlerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D33438F1965ABDB00C955BF /* MainViewControlerViewController.xib */; };
 		4DF1F076196457D900304E2A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF1F075196457D900304E2A /* Foundation.framework */; };
 		4DF1F078196457D900304E2A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF1F077196457D900304E2A /* CoreGraphics.framework */; };
 		4DF1F07A196457D900304E2A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DF1F079196457D900304E2A /* UIKit.framework */; };
@@ -33,6 +35,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4D33438D1965ABDB00C955BF /* MainViewControlerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewControlerViewController.h; sourceTree = "<group>"; };
+		4D33438E1965ABDB00C955BF /* MainViewControlerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewControlerViewController.m; sourceTree = "<group>"; };
+		4D33438F1965ABDB00C955BF /* MainViewControlerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewControlerViewController.xib; sourceTree = "<group>"; };
+		4DB24BE7196ADDF10054B46E /* FinishOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinishOperation.h; sourceTree = "<group>"; };
 		4DF1F072196457D900304E2A /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DF1F075196457D900304E2A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4DF1F077196457D900304E2A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -118,6 +124,10 @@
 				4DF1F0A419645A0200304E2A /* Calculator.h */,
 				4DF1F0A519645A0200304E2A /* Calculator.m */,
 				4DF1F0A719646D4200304E2A /* MultiplesOfTwo.h */,
+				4D33438D1965ABDB00C955BF /* MainViewControlerViewController.h */,
+				4D33438E1965ABDB00C955BF /* MainViewControlerViewController.m */,
+				4D33438F1965ABDB00C955BF /* MainViewControlerViewController.xib */,
+				4DB24BE7196ADDF10054B46E /* FinishOperation.h */,
 			);
 			path = Calculator;
 			sourceTree = "<group>";
@@ -227,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DF1F080196457D900304E2A /* InfoPlist.strings in Resources */,
+				4D3343911965ABDB00C955BF /* MainViewControlerViewController.xib in Resources */,
 				4DF1F088196457D900304E2A /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DF1F0A619645A0200304E2A /* Calculator.m in Sources */,
+				4D3343901965ABDB00C955BF /* MainViewControlerViewController.m in Sources */,
 				4DF1F086196457D900304E2A /* AppDelegate.m in Sources */,
 				4DF1F082196457D900304E2A /* main.m in Sources */,
 			);
