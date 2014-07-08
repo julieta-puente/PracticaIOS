@@ -38,7 +38,7 @@
 		4D33438D1965ABDB00C955BF /* MainViewControlerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewControlerViewController.h; sourceTree = "<group>"; };
 		4D33438E1965ABDB00C955BF /* MainViewControlerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewControlerViewController.m; sourceTree = "<group>"; };
 		4D33438F1965ABDB00C955BF /* MainViewControlerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewControlerViewController.xib; sourceTree = "<group>"; };
-		4DB24BE7196ADDF10054B46E /* FinishOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinishOperation.h; sourceTree = "<group>"; };
+		4DB24BE7196ADDF10054B46E /* CalculatorFinishOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalculatorFinishOperation.h; sourceTree = "<group>"; };
 		4DF1F072196457D900304E2A /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DF1F075196457D900304E2A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4DF1F077196457D900304E2A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -127,7 +127,7 @@
 				4D33438D1965ABDB00C955BF /* MainViewControlerViewController.h */,
 				4D33438E1965ABDB00C955BF /* MainViewControlerViewController.m */,
 				4D33438F1965ABDB00C955BF /* MainViewControlerViewController.xib */,
-				4DB24BE7196ADDF10054B46E /* FinishOperation.h */,
+				4DB24BE7196ADDF10054B46E /* CalculatorFinishOperation.h */,
 			);
 			path = Calculator;
 			sourceTree = "<group>";

@@ -9,14 +9,12 @@
 #import "Calculator.h"
 
 @interface Calculator(){
-    id<MultiplesOfTwo> _delegate;
-    id<FinishOperation> _operationDelegate;
+    id<CalculatorFinishOperation> _operationDelegate;
 }
 @end
 
 @implementation Calculator
 
-@synthesize delegate=_delegate;
 @synthesize operationDelegate=_operationDelegate;
 
 -(id) init{
@@ -50,6 +48,8 @@
 
 -(void) reset{
     self.value = [[[NSNumber alloc]initWithFloat:0]autorelease];
+    
+    
    [self.operationDelegate updateLabelWithString:[NSString stringWithFormat:@"%@",self.value]];
 }
 
@@ -60,12 +60,6 @@
     for(int i=0; i<1000; i++){
         [multiplesArray addObject:[[NSNumber alloc]initWithInt:(i*2) ]];
     }
-    
-
-    NSArray * arr= [NSArray arrayWithArray:multiplesArray];
-    [self.delegate onMultipleOfTwoOperationFinished:arr];
-    
-
 
 }
 
@@ -73,7 +67,6 @@
 -(void) dealloc{
     [super dealloc];
     [_value release];
-    [_delegate release];
     [_operationDelegate release];
 }
 

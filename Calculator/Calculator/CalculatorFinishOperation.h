@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol FinishOperation <NSObject>
+@protocol CalculatorFinishOperation <NSObject>
 
 -(void) updateLabelWithString: (NSString *) s;
 

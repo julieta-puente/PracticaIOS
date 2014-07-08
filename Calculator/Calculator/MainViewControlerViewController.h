@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FinishOperation.h"
+#import "CalculatorFinishOperation.h"
 
-@interface MainViewControlerViewController : UIViewController <FinishOperation>
+@interface MainViewControlerViewController : UIViewController <CalculatorFinishOperation>
 
 
 - (IBAction)onNumberPressed:(UIButton *)sender;
