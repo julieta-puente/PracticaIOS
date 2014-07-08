@@ -26,7 +26,7 @@
 }
 
 -(void) doCalculation:(float)f{
-    [self.calc add:f];
+    [self.calc substract:f];
     
 }
 
