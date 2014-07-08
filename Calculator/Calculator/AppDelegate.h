@@ -10,7 +10,7 @@
 
 #import "MultiplesOfTwo.h"
 
-@interface AppDelegate : UIResponder <MultiplesOfTwo>
+@interface AppDelegate : UIResponder 
 
 @property (strong, nonatomic) UIWindow *window;
 

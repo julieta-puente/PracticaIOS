@@ -8,24 +8,29 @@
 
 #import "MainViewControlerViewController.h"
 #import "Calculator.h"
+#import "Calculation.h"
+#import "DivisionCalculation.h"
+#import "MultiplicationCalculation.h"
+#import "SubstractionCalculation.h"
+#import "AdditionCalculation.h"
 
 @interface MainViewControlerViewController (){
     NSString * _stringnumber;
-    NSString * _operation;
     Calculator * _calc;
     BOOL _decimalPressed;
+    id <Calculation>  _c;
 }
 @property (nonatomic,copy) NSString * stringnumber;
-@property (nonatomic,copy) NSString * operation;
 @property (nonatomic,retain) Calculator * calc;
 @property (nonatomic,assign) BOOL decimalPressed;
+@property (nonatomic,strong) id<Calculation> c;
 @end
 
 @implementation MainViewControlerViewController
 @synthesize stringnumber = _stringnumber;
-@synthesize operation = _operation;
 @synthesize calc=_calc;
 @synthesize decimalPressed=_decimalPressed;
+@synthesize c=_c;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,7 +40,6 @@
         
         
         self.stringnumber = @"";
-        self.operation = @"";
         self.calc = [[[Calculator alloc] init] autorelease];
         self.calc.operationDelegate = self;
 
@@ -72,54 +76,42 @@
 
 - (IBAction)onDivisionPressed:(UIButton *)sender {
     self.calc.value= [NSNumber numberWithFloat:[self.stringnumber floatValue]];
+    self.c= [[[DivisionCalculation alloc]initWithCalc: self.calc]autorelease];
     self.stringnumber=@"";
-    self.operation=@"division";
     self.decimalPressed=NO;
     
 }
 
 - (IBAction)onMultiplicationPressed:(UIButton *)sender {
     self.calc.value= [NSNumber numberWithFloat:[self.stringnumber floatValue]];
+    self.c= [[[MultiplicationCalculation alloc]initWithCalc: self.calc]autorelease];
     self.stringnumber=@"";
-    self.operation=@"multiplication";
     self.decimalPressed=NO;
 }
 
 - (IBAction)onAddPressed:(UIButton *)sender {
     self.calc.value= [NSNumber numberWithFloat:[self.stringnumber floatValue]];
+    self.c= [[[AdditionCalculation alloc]initWithCalc: self.calc]autorelease];
     self.stringnumber=@"";
-    self.operation=@"addition";
     self.decimalPressed=NO;
 }
 
 - (IBAction)onSubstractPressed:(UIButton *)sender {
     self.calc.value= [NSNumber numberWithFloat:[self.stringnumber floatValue]];
+    self.c= [[[SubstractionCalculation alloc]initWithCalc: self.calc]autorelease];
     self.stringnumber=@"";
-    self.operation=@"substraction";
     self.decimalPressed=NO;
 }
 
 - (IBAction)onResetPressed:(UIButton *)sender {
     [self.calc reset];
+    self.stringnumber=@"";
 }
 
 - (IBAction)onAnsPressed:(UIButton *)sender {
-    if ([self.operation  isEqual: @"division"]){
-        [self.calc divide:[self.stringnumber floatValue]];
-        self.stringnumber=@"";
-    }
-    if ([self.operation  isEqual: @"multiplication"]){
-        [self.calc multiply:[self.stringnumber floatValue]];
-        self.stringnumber=@"";
-    }
-    if ([self.operation  isEqual: @"addition"]){
-        [self.calc add:[self.stringnumber floatValue]];
-        self.stringnumber=@"";
-    }
-    if ([self.operation  isEqual: @"substraction"]){
-        [self.calc substract:[self.stringnumber floatValue]];
-        self.stringnumber=@"";
-    }
+
+    [self.c doCalculation:[self.stringnumber floatValue]];
+    
 }
 
 -(void) updateLabelWithString:(NSString *) s{
