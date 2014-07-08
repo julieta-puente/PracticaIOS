@@ -20,6 +20,8 @@
 - (IBAction)onSubstractPressed:(UIButton *)sender;
 - (IBAction)onResetPressed:(UIButton *)sender;
 - (IBAction)onAnsPressed:(UIButton *)sender;
+- (IBAction)onPercentagePressed:(UIButton *)sender;
+- (IBAction)onChangeSignPressed:(UIButton *)sender;
 @property (retain, nonatomic) IBOutlet UILabel * result;
 
 

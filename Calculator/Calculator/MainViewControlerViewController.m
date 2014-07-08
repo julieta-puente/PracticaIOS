@@ -20,12 +20,14 @@
     BOOL _decimalPressed;
     BOOL _numberPressed;
     id <Calculation>  _c;
+    UIButton * _lastButtonPressed;
 }
 @property (nonatomic,copy) NSString * stringnumber;
 @property (nonatomic,retain) Calculator * calc;
 @property (nonatomic,assign) BOOL decimalPressed;
 @property (nonatomic,assign) BOOL numberPressed;
-@property (nonatomic,strong) id<Calculation> c;
+@property (nonatomic,retain) id<Calculation> c;
+@property (nonatomic,retain) UIButton * lastButtonPressed;
 @end
 
 @implementation MainViewControlerViewController
@@ -34,7 +36,7 @@
 @synthesize decimalPressed=_decimalPressed;
 @synthesize numberPressed=_numberPressed;
 @synthesize c=_c;
-
+@synthesize lastButtonPressed=_lastButtonPressed;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -65,6 +67,7 @@
 }
 
 - (IBAction)onNumberPressed:(UIButton *)sender {
+    [self removeButtonBorder];
     self.stringnumber=[self.stringnumber stringByAppendingString:[NSString stringWithFormat:@"%ld",(long)sender.tag]];
     [self updateLabelWithString:self.stringnumber];
     self.numberPressed=YES;
@@ -76,9 +79,11 @@
         [self updateLabelWithString:self.stringnumber];
         self.decimalPressed=YES;
     }
+    [self removeButtonBorder];
 }
 
 - (IBAction)onDivisionPressed:(UIButton *)sender {
+    [self setButtonBorder:(UIButton *)sender ];
     if(self.numberPressed){
         self.calc.value= [NSNumber numberWithFloat:[self.stringnumber floatValue]];
     }
@@ -90,6 +95,7 @@
 }
 
 - (IBAction)onMultiplicationPressed:(UIButton *)sender {
+    [self setButtonBorder:(UIButton *)sender ];
     if(self.numberPressed){
         self.calc.value= [NSNumber numberWithFloat:[self.stringnumber floatValue]];
     }
@@ -100,6 +106,7 @@
 }
 
 - (IBAction)onAddPressed:(UIButton *)sender {
+    [self setButtonBorder:(UIButton *)sender ];
     if(self.numberPressed){
         self.calc.value= [NSNumber numberWithFloat:[self.stringnumber floatValue]];
     }
@@ -110,6 +117,7 @@
 }
 
 - (IBAction)onSubstractPressed:(UIButton *)sender {
+    [self setButtonBorder:(UIButton *)sender ];
     if(self.numberPressed){
         self.calc.value= [NSNumber numberWithFloat:[self.stringnumber floatValue]];
     }
@@ -121,18 +129,57 @@
 
 - (IBAction)onResetPressed:(UIButton *)sender {
     [self.calc reset];
+    [self removeButtonBorder];
     self.stringnumber=@"";
 }
 
 - (IBAction)onAnsPressed:(UIButton *)sender {
-
+    [self removeButtonBorder];
     [self.c doCalculation:[self.stringnumber floatValue]];
     self.numberPressed=NO;
     
 }
 
+- (IBAction)onPercentagePressed:(UIButton *)sender {
+    if(self.numberPressed){
+        self.stringnumber=[NSString stringWithString:[[NSNumber numberWithFloat:[self.stringnumber floatValue] / (100)]stringValue]];
+        [self updateLabelWithString:self.stringnumber];
+    }else{
+        self.calc.value= [NSNumber numberWithFloat:[self.calc.value floatValue] / (100)];
+        self.stringnumber= [NSString stringWithString:[self.calc.value stringValue]];
+        [self updateLabelWithString:self.stringnumber];
+        
+    }
+}
+
+- (IBAction)onChangeSignPressed:(UIButton *)sender {
+    if(self.numberPressed){
+        self.stringnumber=[NSString stringWithString:[[NSNumber numberWithFloat:[self.stringnumber floatValue] * (-1)]stringValue]];
+        [self updateLabelWithString:self.stringnumber];
+    }else{
+        self.calc.value= [NSNumber numberWithFloat:[self.calc.value floatValue] * (-1)];
+        self.stringnumber= [NSString stringWithString:[self.calc.value stringValue]];
+        [self updateLabelWithString:self.stringnumber];
+        
+    }
+    
+    
+}
+
 -(void) updateLabelWithString:(NSString *) s{
     [self.result setText:s];
+}
+
+-(void) setButtonBorder:(UIButton *)sender {
+    [self removeButtonBorder];
+    [[sender layer] setBorderWidth:2.0f];
+    [[sender layer] setBorderColor:[UIColor blackColor].CGColor];
+    self.lastButtonPressed= sender;
+}
+
+-(void) removeButtonBorder{
+    [[self.lastButtonPressed layer]setBorderWidth:0.0f];
+   // [[self.lastButtonPressed layer] setBorderColor:[UIColor whiteColor].CGColor];
 }
 - (void)dealloc {
     [_calc release];
