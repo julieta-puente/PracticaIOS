@@ -43,7 +43,6 @@
     if (self) {
         // Custom initialization
         
-        
         self.stringnumber = @"";
         self.calc = [[[Calculator alloc] init] autorelease];
         self.calc.operationDelegate = self;
@@ -137,6 +136,7 @@
     [self removeButtonBorder];
     [self.c doCalculation:[self.stringnumber floatValue]];
     self.numberPressed=NO;
+    self.stringnumber=@"";
     
 }
 
@@ -179,7 +179,6 @@
 
 -(void) removeButtonBorder{
     [[self.lastButtonPressed layer]setBorderWidth:0.0f];
-   // [[self.lastButtonPressed layer] setBorderColor:[UIColor whiteColor].CGColor];
 }
 - (void)dealloc {
     [_calc release];
