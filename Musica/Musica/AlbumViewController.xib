@@ -6,6 +6,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlbumViewController">
             <connections>
+                <outlet property="GroupPickerView" destination="kU7-fv-WJ1" id="BmN-IX-oe8"/>
+                <outlet property="NameTextField" destination="OIE-IB-PyG" id="Hdq-Xv-YUJ"/>
+                <outlet property="YearTextField" destination="e1B-ZY-bqy" id="aYB-IK-Xjc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

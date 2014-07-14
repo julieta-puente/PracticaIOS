@@ -8,7 +8,9 @@
 
 #import "AlbumViewController.h"
 
-@interface AlbumViewController ()
+@interface AlbumViewController (){
+    NSArray * dataArray;
+}
 
 @end
 
@@ -26,7 +28,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    self.NameTextField.delegate=self;
+    self.YearTextField.delegate=self;
+    self.GroupPickerView.delegate=self;
+    dataArray = @[@"hola",@"pepe",@"juan",@"sarasa"];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,4 +49,27 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
 }
+
+// returns the number of 'columns' to display.
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    return 1;
+    
+}
+
+// returns the # of rows in each component..
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    return [dataArray count];
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return [dataArray objectAtIndex:row];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    NSLog(@"%@", [dataArray objectAtIndex:row]);
+}
+
+
 @end

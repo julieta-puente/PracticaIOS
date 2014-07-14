@@ -6,6 +6,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SongViewController">
             <connections>
+                <outlet property="AlbumPickerView" destination="Kis-Hz-JrO" id="gBW-nK-WlJ"/>
+                <outlet property="DurationTextField" destination="iV3-uJ-tUL" id="sMe-AE-8mB"/>
+                <outlet property="NameTextField" destination="57X-eu-uGK" id="JWe-s2-DZe"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SongViewController : UIViewController
+@interface SongViewController : UIViewController <UIPickerViewDelegate,UIPickerViewDataSource,UITextViewDelegate,UITextFieldDelegate>
+@property (strong, nonatomic) IBOutlet UITextField *NameTextField;
+@property (strong, nonatomic) IBOutlet UITextField *DurationTextField;
+@property (strong, nonatomic) IBOutlet UIPickerView *AlbumPickerView;
 
 @end

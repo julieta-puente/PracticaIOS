@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AlbumViewController : UIViewController
+@interface AlbumViewController : UIViewController <UIPickerViewDelegate,UITextViewDelegate,UIPickerViewDataSource,UITextFieldDelegate>
+@property (strong, nonatomic) IBOutlet UITextField *NameTextField;
+@property (strong, nonatomic) IBOutlet UITextField *YearTextField;
+@property (strong, nonatomic) IBOutlet UIPickerView *GroupPickerView;
 
 @end
