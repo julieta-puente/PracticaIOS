@@ -14,13 +14,18 @@
 
 @implementation GroupViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withLibrary: (MusicLibrary*) music
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
+        self.music= music;
     }
     return self;
+}
+
+- (IBAction)save:(UIButton *)sender {
+    [self.music addGroup:self.NameTextField.text withStyle: self.StyleTextField.text withDesc:self.DescriptionTextView.text];
+    NSLog(@"%d", [[self.music getGroups]count]);
 }
 
 - (void)viewDidLoad
@@ -30,7 +35,7 @@
     self.NameTextField.delegate=self;
     self.StyleTextField.delegate=self;
     self.DescriptionTextView.delegate=self;
-    // Do any additional setup after loading the view from its nib.
+   
 }
 
 - (void)didReceiveMemoryWarning
@@ -41,7 +46,7 @@
 
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField;  {
-     [textField resignFirstResponder];
+    [textField resignFirstResponder];
     return YES;
 }
 

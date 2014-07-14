@@ -11,6 +11,7 @@
 #import "AlbumViewController.h"
 #import "SongViewController.h"
 
+
 @interface MainViewController ()
 
 @end
@@ -21,7 +22,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        self.music= [[MusicLibrary alloc]init];
     }
     return self;
 }
@@ -39,17 +40,18 @@
 }
 
 - (IBAction)pushAlbumViewController:(UIButton *)sender {
-    AlbumViewController * albumVC= [[AlbumViewController alloc]initWithNibName:nil bundle:nil];
+    AlbumViewController * albumVC= [[AlbumViewController alloc]initWithNibName:nil bundle:nil withLibrary: self.music];
+    NSLog (@"%d",[[self.music getGroups]count]);
     [self.navigationController pushViewController:albumVC animated:YES];
 }
 
 - (IBAction)pushGroupViewController:(UIButton *)sender {
-    GroupViewController * groupVC= [[GroupViewController alloc]initWithNibName:nil bundle:nil];
+    GroupViewController * groupVC= [[GroupViewController alloc]initWithNibName:nil bundle:nil withLibrary:self.music];
     [self.navigationController pushViewController:groupVC animated:YES];
 }
 
 - (IBAction)pushSongViewController:(UIButton *)sender {
-    SongViewController * songVC= [[SongViewController alloc]initWithNibName:nil bundle:nil];
+    SongViewController * songVC= [[SongViewController alloc]initWithNibName:nil bundle:nil withLibrary: self.music];
     [self.navigationController pushViewController:songVC animated:YES];
 }
 @end

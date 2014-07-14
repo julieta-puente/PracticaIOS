@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MusicLibrary.h"
 
 @interface AlbumViewController : UIViewController <UIPickerViewDelegate,UITextViewDelegate,UIPickerViewDataSource,UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *NameTextField;
 @property (strong, nonatomic) IBOutlet UITextField *YearTextField;
 @property (strong, nonatomic) IBOutlet UIPickerView *GroupPickerView;
+@property (strong,nonatomic) MusicLibrary * music;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withLibrary: (MusicLibrary*) music;
 
 @end
