@@ -13,8 +13,10 @@
 @property (strong, nonatomic) IBOutlet UITextField *NameTextField;
 @property (strong, nonatomic) IBOutlet UITextField *YearTextField;
 @property (strong, nonatomic) IBOutlet UIPickerView *GroupPickerView;
+@property (nonatomic, copy) NSString * pickerSelection;
 @property (strong,nonatomic) MusicLibrary * music;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withLibrary: (MusicLibrary*) music;
+- (IBAction)save:(UIButton *)sender;
 
 @end

@@ -18,4 +18,6 @@
 -(NSArray *) getGroups;
 -(void) addAlbum:(NSString *) album withYear: (NSString *) year withGroup: (NSString*) group;
 -(NSArray *) getAlbums;
+-(void) addSong: (NSString *) song withDur: (NSString *) dur withAlbum: (NSString *) album;
+
 @end

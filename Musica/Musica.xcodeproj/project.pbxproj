@@ -18,6 +18,7 @@
 		4D4C9F0E19744376004541F8 /* MusicLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4C9F0D19744376004541F8 /* MusicLibrary.m */; };
 		4D4C9F11197452E3004541F8 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4C9F10197452E3004541F8 /* Group.m */; };
 		4D4C9F1419745E88004541F8 /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4C9F1319745E88004541F8 /* Album.m */; };
+		4D588955197561C00042A3E9 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D588954197561C00042A3E9 /* Song.m */; };
 		4DFEC9E119741BF7009B6499 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DFEC9E019741BF7009B6499 /* Foundation.framework */; };
 		4DFEC9E319741BF7009B6499 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DFEC9E219741BF7009B6499 /* CoreGraphics.framework */; };
 		4DFEC9E519741BF7009B6499 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DFEC9E419741BF7009B6499 /* UIKit.framework */; };
@@ -61,6 +62,8 @@
 		4D4C9F10197452E3004541F8 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
 		4D4C9F1219745E88004541F8 /* Album.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Album.h; sourceTree = "<group>"; };
 		4D4C9F1319745E88004541F8 /* Album.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Album.m; sourceTree = "<group>"; };
+		4D588953197561C00042A3E9 /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
+		4D588954197561C00042A3E9 /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
 		4DFEC9DD19741BF7009B6499 /* Musica.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Musica.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DFEC9E019741BF7009B6499 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4DFEC9E219741BF7009B6499 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -156,6 +159,8 @@
 				4D4C9F10197452E3004541F8 /* Group.m */,
 				4D4C9F1219745E88004541F8 /* Album.h */,
 				4D4C9F1319745E88004541F8 /* Album.m */,
+				4D588953197561C00042A3E9 /* Song.h */,
+				4D588954197561C00042A3E9 /* Song.m */,
 				4DFEC9F219741BF7009B6499 /* Images.xcassets */,
 				4DFEC9E719741BF7009B6499 /* Supporting Files */,
 			);
@@ -290,6 +295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D588955197561C00042A3E9 /* Song.m in Sources */,
 				4D4C9F0019741F9A004541F8 /* GroupViewController.m in Sources */,
 				4D4C9F0519742146004541F8 /* AlbumViewController.m in Sources */,
 				4DFEC9F119741BF7009B6499 /* AppDelegate.m in Sources */,

@@ -8,9 +8,7 @@
 
 #import "AlbumViewController.h"
 
-@interface AlbumViewController (){
-    NSArray * dataArray;
-}
+@interface AlbumViewController ()
 
 @end
 
@@ -25,6 +23,10 @@
     return self;
 }
 
+- (IBAction)save:(UIButton *)sender {
+    [self.music addAlbum:self.NameTextField.text withYear:self.YearTextField.text withGroup:self.pickerSelection];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -32,7 +34,6 @@
     self.NameTextField.delegate=self;
     self.YearTextField.delegate=self;
     self.GroupPickerView.delegate=self;
-    dataArray = @[@"hola",@"pepe",@"juan",@"sarasa"];
 
 }
 
@@ -69,7 +70,7 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    NSLog(@"%@", [[self.music getGroups] objectAtIndex:row]);
+   self.pickerSelection = [[self.music getGroups] objectAtIndex:row];
 }
 
 

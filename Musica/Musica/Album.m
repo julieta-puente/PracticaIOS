@@ -13,7 +13,7 @@
 -(id) initWithYear:(NSString *) year withGroup: (NSString*) group{
     if([super init]){
         self.year = [year copy];
-        self.group=[group copy];
+        self.group = [group copy];
     }
     return self;
 }

@@ -41,7 +41,6 @@
 
 - (IBAction)pushAlbumViewController:(UIButton *)sender {
     AlbumViewController * albumVC= [[AlbumViewController alloc]initWithNibName:nil bundle:nil withLibrary: self.music];
-    NSLog (@"%d",[[self.music getGroups]count]);
     [self.navigationController pushViewController:albumVC animated:YES];
 }
 

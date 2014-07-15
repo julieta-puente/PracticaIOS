@@ -9,6 +9,7 @@
 #import "MusicLibrary.h"
 #import "Group.h"
 #import "Album.h"
+#import "Song.h"
 
 @implementation MusicLibrary
 
@@ -33,11 +34,15 @@
 
 -(void) addAlbum:(NSString *)album withYear:(NSString *)year withGroup:(NSString *)group{
     Album * a= [[Album alloc]initWithYear:year withGroup:group];
-    [self.songs setObject:a forKey:album];
+    [self.albums setObject:a forKey:album];
 }
 
 -(NSArray *) getAlbums{
     return [self.albums allKeys];
 }
 
+-(void) addSong:(NSString *)song withDur:(NSString *)dur withAlbum:(NSString *)album{
+    Song * s= [[Song alloc]initWithDur:dur withAlbum:album];
+    [self.songs setObject: s forKey:song];
+}
 @end

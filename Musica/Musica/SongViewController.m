@@ -8,9 +8,7 @@
 
 #import "SongViewController.h"
 
-@interface SongViewController (){
-    NSArray * dataArray;
-}
+@interface SongViewController ()
 
 @end
 
@@ -25,13 +23,16 @@
     return self;
 }
 
+- (IBAction)save:(UIButton *)sender {
+    [self.music addSong:self.NameTextField.text withDur:self.DurationTextField.text withAlbum:self.pickerSelection];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.NameTextField.delegate=self;
     self.AlbumPickerView.delegate=self;
     self.DurationTextField.delegate=self;
-    dataArray = @[@"hola",@"pepe",@"juan",@"sarasa"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,16 +59,16 @@
 
 // returns the # of rows in each component..
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-    return [dataArray count];
+    return [[self.music getAlbums] count];
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return [dataArray objectAtIndex:row];
+    return [[self.music getAlbums] objectAtIndex:row];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    NSLog(@"%@", [dataArray objectAtIndex:row]);
+    self.pickerSelection = [[self.music getAlbums] objectAtIndex:row];
 }
 @end
