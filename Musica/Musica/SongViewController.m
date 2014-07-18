@@ -16,11 +16,20 @@
     MusicLibrary * _music;
     UIScrollView * _songScrollView;
     UIView * _insideView;
+    UIView * _fResponder;
 }
 
 @end
 
 @implementation SongViewController
+
+@synthesize nameTextField=_nameTextField;
+@synthesize durationTextField=_durationTextField;
+@synthesize albumPickerView=_albumPickerView;
+@synthesize music=_music;
+@synthesize songScrollView=_songScrollView;
+@synthesize insideView=_insideView;
+@synthesize fResponder=_fResponder;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withLibrary: (MusicLibrary*) music
 {
@@ -56,12 +65,24 @@
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
+    UITapGestureRecognizer * tapGesture = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapPressed:)]autorelease];
+    [self.view addGestureRecognizer:tapGesture];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - First Responder
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    self.fResponder= textField;
+}
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
+    self.fResponder=textView;
+    return YES;
 }
 
 #pragma mark - Keyboard
@@ -116,6 +137,13 @@
     self.pickerSelection = [[[self.music getAlbums] objectAtIndex:row] copy];
 }
 
+#pragma mark - gesture
+-(void) onTapPressed:(id) sender{
+    
+    [self.fResponder resignFirstResponder];
+}
+
+#pragma mark -dealloc
 -(void) dealloc{
     [_nameTextField release];
     [_durationTextField release];
@@ -124,6 +152,7 @@
     [_music release];
     [_songScrollView release];
     [_insideView release];
+    [_fResponder release];
     [super dealloc];
 }
 @end

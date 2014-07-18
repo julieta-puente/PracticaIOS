@@ -15,7 +15,7 @@
     MusicLibrary * _music;
     UIScrollView * _groupScrollView;
     UIView * _insideView;
-    UIView * _firstResponder;
+    UIView * _fResponder;
 }
 
 @end
@@ -28,7 +28,7 @@
 @synthesize music=_music;
 @synthesize groupScrollView=_groupScrollView;
 @synthesize insideView=_insideView;
-@synthesize firstResponder=_firstResponder;
+@synthesize fResponder=_fResponder;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withLibrary: (MusicLibrary*) music
 {
@@ -80,11 +80,11 @@
 
 #pragma mark - First Responder
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
-    self.firstResponder= textField;
+    self.fResponder= textField;
 }
 
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
-    self.firstResponder=textView;
+    self.fResponder=textView;
     return YES;
 }
 
@@ -104,8 +104,8 @@
     
     CGRect aRect = self.insideView.frame;
     aRect.size.height -= kbSize.height;
-    if (!CGRectContainsPoint(aRect, self.firstResponder.frame.origin) ) {
-        CGPoint scrollPoint = CGPointMake(0.0, self.firstResponder.frame.origin.y-kbSize.height);
+    if (!CGRectContainsPoint(aRect, self.fResponder.frame.origin) ) {
+        CGPoint scrollPoint = CGPointMake(0.0, self.fResponder.frame.origin.y-kbSize.height);
         [self.groupScrollView setContentOffset:scrollPoint animated:YES];
     }
  
@@ -120,9 +120,11 @@
 #pragma mark - gesture
 -(void) onTapPressed:(id) sender{
     
-    [self.descriptionTextView resignFirstResponder];
+    [self.fResponder resignFirstResponder];
 }
 
+
+#pragma mark -dealloc
 -(void) dealloc {
     [_nameTextField release];
     [_styleTextField release];
@@ -130,6 +132,7 @@
     [_groupScrollView release];
     [_insideView release];
     [_music release];
+    [_fResponder release];
     [super dealloc];
 }
 @end

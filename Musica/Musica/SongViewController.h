@@ -18,6 +18,7 @@
 @property (strong,nonatomic) MusicLibrary * music;
 @property (strong, nonatomic) IBOutlet UIScrollView * songScrollView;
 @property (strong, nonatomic) IBOutlet UIView * insideView;
+@property (strong, nonatomic) UIView * fResponder;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withLibrary: (MusicLibrary*) music;
 - (IBAction)save:(UIButton *)sender;
