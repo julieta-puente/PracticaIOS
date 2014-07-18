@@ -11,8 +11,19 @@
 #import "Album.h"
 #import "Song.h"
 
+@interface MusicLibrary(){
+    NSMutableDictionary * _groups;
+    NSMutableDictionary * _albums;
+    NSMutableDictionary * _songs;
+}
+
+@end
+
 @implementation MusicLibrary
 
+@synthesize groups=_groups;
+@synthesize albums=_albums;
+@synthesize songs=_songs;
 
 -(id)init{
     if([super init]){
@@ -24,7 +35,7 @@
 }
 
 -(void) addGroup:(NSString *)group withStyle:(NSString *)style withDesc:(NSString *)desc{
-    Group * g = [[Group alloc]initWithStyle:style withDesc:desc];
+    Group * g = [[[Group alloc]initWithStyle:style withDesc:desc]autorelease];
     [self.groups setObject:g forKey:group];
 }
 
@@ -33,7 +44,7 @@
 }
 
 -(void) addAlbum:(NSString *)album withYear:(NSString *)year withGroup:(NSString *)group{
-    Album * a= [[Album alloc]initWithYear:year withGroup:group];
+    Album * a= [[[Album alloc]initWithYear:year withGroup:group]autorelease];
     [self.albums setObject:a forKey:album];
 }
 
@@ -42,7 +53,11 @@
 }
 
 -(void) addSong:(NSString *)song withDur:(NSString *)dur withAlbum:(NSString *)album{
-    Song * s= [[Song alloc]initWithDur:dur withAlbum:album];
+    Song * s= [[[Song alloc]initWithDur:dur withAlbum:album]autorelease];
     [self.songs setObject: s forKey:song];
+}
+
+-(void) dealloc{
+    [super dealloc];
 }
 @end

@@ -8,11 +8,28 @@
 
 #import "AlbumViewController.h"
 
-@interface AlbumViewController ()
+@interface AlbumViewController (){
+    UITextField * _nameTextField;
+    UITextField * _yearTextField;
+    UIPickerView * _groupPickerView;
+    NSString * _pickerSelection;
+    MusicLibrary * _music;
+    UIScrollView * _albumScrollView;
+    UIView * _insideView;
+}
 
 @end
 
+
 @implementation AlbumViewController
+
+@synthesize nameTextField=_nameTextField;
+@synthesize yearTextField=_yearTextField;
+@synthesize groupPickerView=_groupPickerView;
+@synthesize pickerSelection=_pickerSelection;
+@synthesize music=_music;
+@synthesize albumScrollView=_albumScrollView;
+@synthesize insideView=_insideView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withLibrary: (MusicLibrary*) music
 {
@@ -24,16 +41,30 @@
 }
 
 - (IBAction)save:(UIButton *)sender {
-    [self.music addAlbum:self.NameTextField.text withYear:self.YearTextField.text withGroup:self.pickerSelection];
+    [self.music addAlbum:self.nameTextField.text withYear:self.yearTextField.text withGroup:self.pickerSelection];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.NameTextField.delegate=self;
-    self.YearTextField.delegate=self;
-    self.GroupPickerView.delegate=self;
+    self.title= @"Album";
+    self.nameTextField.delegate=self;
+    self.yearTextField.delegate=self;
+    self.groupPickerView.delegate=self;
+    self.navigationItem.rightBarButtonItem =[[[UIBarButtonItem alloc]
+                                              initWithTitle:@"OK" style: UIBarButtonItemStyleDone target:self action:@selector(save:)] autorelease];
+    self.albumScrollView.delegate=self;
+    [self.albumScrollView setScrollEnabled:YES];
+    self.albumScrollView.contentSize = CGSizeMake(self.insideView.frame.size.width, self.insideView.frame.size.height);
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
 
 }
 
@@ -43,6 +74,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Keyboard
 - (BOOL)textFieldShouldReturn:(UITextField *)textField;  {
     [textField resignFirstResponder];
     return YES;
@@ -51,6 +83,25 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
 }
+
+
+-(void) keyboardWillShow: (NSNotification *) notification{
+    NSDictionary* info = [notification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(64.0, 0.0, kbSize.height, 0.0);
+    self.albumScrollView.contentInset = contentInsets;
+    self.albumScrollView.scrollIndicatorInsets = contentInsets;
+    
+    
+}
+
+-(void) keyboardWillHide: (NSNotification *) notification{
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(64.0, 0.0, 0.0, 0.0);;
+    self.albumScrollView.contentInset = contentInsets;
+    self.albumScrollView.scrollIndicatorInsets = contentInsets;
+}
+
+#pragma mark - picker
 
 // returns the number of 'columns' to display.
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
@@ -70,8 +121,16 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-   self.pickerSelection = [[self.music getGroups] objectAtIndex:row];
+   self.pickerSelection = [[[self.music getGroups] objectAtIndex:row] copy];
 }
 
-
+-(void) dealloc{
+    [_nameTextField release];
+    [_yearTextField release];
+    [_groupPickerView release];
+    [_music release];
+    [_albumScrollView release];
+    [_insideView release];
+    [super dealloc];
+}
 @end

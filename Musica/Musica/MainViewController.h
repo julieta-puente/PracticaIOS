@@ -10,7 +10,9 @@
 #import "MusicLibrary.h"
 
 @interface MainViewController : UIViewController
-@property (nonatomic,strong) MusicLibrary * music;
+
+@property (nonatomic,retain) MusicLibrary * music;
+
 - (IBAction)pushAlbumViewController:(UIButton *)sender;
 - (IBAction)pushGroupViewController:(UIButton *)sender;
 - (IBAction)pushSongViewController:(UIButton *)sender;

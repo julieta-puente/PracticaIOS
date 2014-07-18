@@ -8,11 +8,27 @@
 
 #import "GroupViewController.h"
 
-@interface GroupViewController ()
+@interface GroupViewController (){
+    UITextField * _nameTextField;
+    UITextField * _styleTextField;
+    UITextView * _descriptionTextView;
+    MusicLibrary * _music;
+    UIScrollView * _groupScrollView;
+    UIView * _insideView;
+    UIView * _firstResponder;
+}
 
 @end
 
 @implementation GroupViewController
+
+@synthesize nameTextField=_nameTextField;
+@synthesize styleTextField=_styleTextField;
+@synthesize descriptionTextView=_descriptionTextView;
+@synthesize music=_music;
+@synthesize groupScrollView=_groupScrollView;
+@synthesize insideView=_insideView;
+@synthesize firstResponder=_firstResponder;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withLibrary: (MusicLibrary*) music
 {
@@ -24,19 +40,23 @@
 }
 
 - (IBAction)save:(UIButton *)sender {
-    [self.music addGroup:self.NameTextField.text withStyle: self.StyleTextField.text withDesc:self.DescriptionTextView.text];
+    [self.music addGroup:self.nameTextField.text withStyle: self.styleTextField.text withDesc:self.descriptionTextView.text];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.NameTextField.delegate=self;
-    self.StyleTextField.delegate=self;
-    self.DescriptionTextView.delegate=self;
-    self.GroupScrollView.delegate=self;
+    self.title= @"Grupo";
+    self.navigationItem.rightBarButtonItem =[[[UIBarButtonItem alloc]
+                                              initWithTitle:@"OK" style: UIBarButtonItemStyleDone target:self action:@selector(save:)] autorelease];
+    self.nameTextField.delegate=self;
+    self.styleTextField.delegate=self;
+    self.descriptionTextView.delegate=self;
+    self.groupScrollView.delegate=self;
 
-    [self.GroupScrollView setScrollEnabled:YES];
-    self.GroupScrollView.contentSize = CGSizeMake(self.InsideView.frame.size.width, self.InsideView.frame.size.height);
+    [self.groupScrollView setScrollEnabled:YES];
+    self.groupScrollView.contentSize = CGSizeMake(self.insideView.frame.size.width, self.insideView.frame.size.height);
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWillShow:)
                                                  name:UIKeyboardWillShowNotification
@@ -46,9 +66,8 @@
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
     
-    UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc] init];
-    [tapGesture setDelegate:self];
-    [self.GroupScrollView addGestureRecognizer:tapGesture];
+    UITapGestureRecognizer * tapGesture = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapPressed:)]autorelease];
+    [self.view addGestureRecognizer:tapGesture];
 
  
 }
@@ -59,41 +78,58 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Keyboard
+#pragma mark - First Responder
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    self.firstResponder= textField;
+}
 
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView{
+    self.firstResponder=textView;
+    return YES;
+}
+
+#pragma mark - Keyboard
 - (BOOL)textFieldShouldReturn:(UITextField *)textField;  {
     [textField resignFirstResponder];
     return YES;
 }
 
-
-//no funciona con el scroll view
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self.view endEditing:YES];
-}
-
 -(void) keyboardWillShow: (NSNotification *) notification{
-    NSDictionary* info = [notification userInfo];
+    NSDictionary * info = [notification userInfo];
     CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(self.InsideView.frame.origin.x, 0.0, kbSize.height, 0.0);
-    self.GroupScrollView.contentInset = contentInsets;
-    self.GroupScrollView.scrollIndicatorInsets = contentInsets;
 
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(64.0, 0.0, kbSize.height, 0.0);
+    self.groupScrollView.contentInset = contentInsets;
+    self.groupScrollView.scrollIndicatorInsets = contentInsets;
+    
+    CGRect aRect = self.insideView.frame;
+    aRect.size.height -= kbSize.height;
+    if (!CGRectContainsPoint(aRect, self.firstResponder.frame.origin) ) {
+        CGPoint scrollPoint = CGPointMake(0.0, self.firstResponder.frame.origin.y-kbSize.height);
+        [self.groupScrollView setContentOffset:scrollPoint animated:YES];
+    }
  
 }
 
 -(void) keyboardWillHide: (NSNotification *) notification{
-    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
-    self.GroupScrollView.contentInset = contentInsets;
-    self.GroupScrollView.scrollIndicatorInsets = contentInsets;
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(64.0, 0.0, 0.0, 0.0);;
+    self.groupScrollView.contentInset = contentInsets;
+    self.groupScrollView.scrollIndicatorInsets = contentInsets;
 }
 
 #pragma mark - gesture
-
-- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer{
+-(void) onTapPressed:(id) sender{
     
-    NSLog(@"Gesture tap %@",gestureRecognizer);
-    return YES;
+    [self.descriptionTextView resignFirstResponder];
+}
+
+-(void) dealloc {
+    [_nameTextField release];
+    [_styleTextField release];
+    [_descriptionTextView release];
+    [_groupScrollView release];
+    [_insideView release];
+    [_music release];
+    [super dealloc];
 }
 @end

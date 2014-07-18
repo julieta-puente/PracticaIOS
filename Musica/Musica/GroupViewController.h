@@ -11,14 +11,14 @@
 
 @interface GroupViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate,UIScrollViewDelegate,UIGestureRecognizerDelegate>
 
-@property (strong, nonatomic) IBOutlet UITextField *NameTextField;
-@property (strong, nonatomic) IBOutlet UITextField *StyleTextField;
-@property (strong, nonatomic) IBOutlet UITextView *DescriptionTextView;
-@property (strong,nonatomic) MusicLibrary * music;
+@property (retain, nonatomic) IBOutlet UITextField *nameTextField;
+@property (retain, nonatomic) IBOutlet UITextField *styleTextField;
+@property (retain, nonatomic) IBOutlet UITextView *descriptionTextView;
+@property (retain,nonatomic) MusicLibrary * music;
+@property (retain, nonatomic) IBOutlet UIScrollView * groupScrollView;
+@property (retain, nonatomic) IBOutlet UIView *insideView;
+@property (retain,nonatomic) UIView * firstResponder;
 
-@property (strong, nonatomic) IBOutlet UIScrollView * GroupScrollView;
-
-@property (strong, nonatomic) IBOutlet UIView *InsideView;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withLibrary: (MusicLibrary*) music;
 - (IBAction)save:(UIButton *)sender;
 @end

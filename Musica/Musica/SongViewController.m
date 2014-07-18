@@ -8,7 +8,15 @@
 
 #import "SongViewController.h"
 
-@interface SongViewController ()
+@interface SongViewController (){
+    UITextField * _nameTextField;
+    UITextField * _durationTextField;
+    UIPickerView * _albumPickerView;
+    NSString * _pickerSelection;
+    MusicLibrary * _music;
+    UIScrollView * _songScrollView;
+    UIView * _insideView;
+}
 
 @end
 
@@ -24,15 +32,30 @@
 }
 
 - (IBAction)save:(UIButton *)sender {
-    [self.music addSong:self.NameTextField.text withDur:self.DurationTextField.text withAlbum:self.pickerSelection];
+    [self.music addSong:self.nameTextField.text withDur:self.durationTextField.text withAlbum:self.pickerSelection];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.NameTextField.delegate=self;
-    self.AlbumPickerView.delegate=self;
-    self.DurationTextField.delegate=self;
+    self.title= @"Canción";
+    self.nameTextField.delegate=self;
+    self.albumPickerView.delegate=self;
+    self.durationTextField.delegate=self;
+    self.navigationItem.rightBarButtonItem =[[[UIBarButtonItem alloc]
+                                              initWithTitle:@"OK" style: UIBarButtonItemStyleDone target:self action:@selector(save:)] autorelease];
+    self.songScrollView.delegate=self;
+    [self.songScrollView setScrollEnabled:YES];
+    self.songScrollView.contentSize = CGSizeMake(self.insideView.frame.size.width, self.insideView.frame.size.height);
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,6 +63,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - Keyboard
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField;  {
     [textField resignFirstResponder];
@@ -51,6 +76,25 @@
     [self.view endEditing:YES];
 }
 
+-(void) keyboardWillShow: (NSNotification *) notification{
+    NSDictionary* info = [notification userInfo];
+    CGSize kbSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(64.0, 0.0, kbSize.height, 0.0);
+    self.songScrollView.contentInset = contentInsets;
+    self.songScrollView.scrollIndicatorInsets = contentInsets;
+    
+    
+}
+
+-(void) keyboardWillHide: (NSNotification *) notification{
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(64.0, 0.0, 0.0, 0.0);;
+    self.songScrollView.contentInset = contentInsets;
+    self.songScrollView.scrollIndicatorInsets = contentInsets;
+}
+
+
+#pragma mark - Picker
 // returns the number of 'columns' to display.
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     return 1;
@@ -69,6 +113,17 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    self.pickerSelection = [[self.music getAlbums] objectAtIndex:row];
+    self.pickerSelection = [[[self.music getAlbums] objectAtIndex:row] copy];
+}
+
+-(void) dealloc{
+    [_nameTextField release];
+    [_durationTextField release];
+    [_albumPickerView release];
+    [_pickerSelection release];
+    [_music release];
+    [_songScrollView release];
+    [_insideView release];
+    [super dealloc];
 }
 @end

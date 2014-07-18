@@ -8,15 +8,22 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
+@interface AppDelegate (){
+    UIWindow * _window;
+}
+
+@end
 
 @implementation AppDelegate
 
+@synthesize window=_window;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]autorelease];
     
-    MainViewController * mainViewController= [[MainViewController alloc]initWithNibName:nil bundle:nil];
-    UINavigationController * navController = [[UINavigationController alloc]initWithRootViewController: mainViewController];
+    MainViewController * mainViewController= [[[MainViewController alloc]initWithNibName:nil bundle:nil]autorelease];
+    UINavigationController * navController = [[[UINavigationController alloc]initWithRootViewController: mainViewController]autorelease];
     self.window.rootViewController= navController;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
@@ -48,6 +55,10 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+-(void) dealloc{
+    [super dealloc];
 }
 
 @end
