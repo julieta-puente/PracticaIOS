@@ -10,8 +10,5 @@
 
 @interface Album : NSObject
 
-@property (nonatomic,copy) NSString * year;
-@property (nonatomic,copy) NSString * group;
-
 -(id) initWithYear:(NSString *) year withGroup: (NSString*) group;
 @end

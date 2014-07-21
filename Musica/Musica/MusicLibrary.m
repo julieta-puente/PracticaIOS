@@ -16,7 +16,9 @@
     NSMutableDictionary * _albums;
     NSMutableDictionary * _songs;
 }
-
+@property (retain, nonatomic) NSMutableDictionary * groups;
+@property (retain, nonatomic) NSMutableDictionary * albums;
+@property (retain, nonatomic) NSMutableDictionary * songs;
 @end
 
 @implementation MusicLibrary
@@ -34,14 +36,15 @@
     return self;
 }
 
--(void) addGroup:(NSString *)group withStyle:(NSString *)style withDesc:(NSString *)desc{
-    Group * g = [[[Group alloc]initWithStyle:style withDesc:desc]autorelease];
+-(void) addGroup:(NSString *)group withStyle:(NSString *)style withDescription:(NSString *)desc{
+    Group * g = [[[Group alloc]initWithStyle:style withDescription:desc]autorelease];
     [self.groups setObject:g forKey:group];
 }
 
 -(NSArray *) getGroups{
     return [self.groups allKeys];
 }
+
 
 -(void) addAlbum:(NSString *)album withYear:(NSString *)year withGroup:(NSString *)group{
     Album * a= [[[Album alloc]initWithYear:year withGroup:group]autorelease];

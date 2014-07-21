@@ -10,8 +10,7 @@
 
 @interface Group : NSObject
 
-@property (nonatomic,copy) NSString * style;
-@property (nonatomic,copy) NSString * description;
 
--(id) initWithStyle:(NSString *) style withDesc: (NSString*) desc;
+
+-(id) initWithStyle:(NSString *) style withDescription: (NSString*) desc;
 @end

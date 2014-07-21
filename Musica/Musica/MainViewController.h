@@ -16,5 +16,6 @@
 - (IBAction)pushAlbumViewController:(UIButton *)sender;
 - (IBAction)pushGroupViewController:(UIButton *)sender;
 - (IBAction)pushSongViewController:(UIButton *)sender;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withLibrary:(MusicLibrary *)music;
 
 @end

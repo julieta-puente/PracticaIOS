@@ -10,8 +10,5 @@
 
 @interface Song : NSObject
 
-@property (nonatomic,copy) NSString * duration;
-@property (nonatomic,copy) NSString * album;
-
 -(id) initWithDur:(NSString *) dur withAlbum: (NSString*) album;
 @end

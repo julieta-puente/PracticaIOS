@@ -19,6 +19,10 @@
 		4D4C9F11197452E3004541F8 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4C9F10197452E3004541F8 /* Group.m */; };
 		4D4C9F1419745E88004541F8 /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4C9F1319745E88004541F8 /* Album.m */; };
 		4D588955197561C00042A3E9 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D588954197561C00042A3E9 /* Song.m */; };
+		4D7BF438197D5D3F00274E66 /* LibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D7BF436197D5D3F00274E66 /* LibraryViewController.m */; };
+		4D7BF439197D5D3F00274E66 /* LibraryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D7BF437197D5D3F00274E66 /* LibraryViewController.xib */; };
+		4D7BF43D197D7B1500274E66 /* AlbumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D7BF43B197D7B1500274E66 /* AlbumTableViewCell.m */; };
+		4D7BF43E197D7B1500274E66 /* AlbumTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D7BF43C197D7B1500274E66 /* AlbumTableViewCell.xib */; };
 		4DFEC9E119741BF7009B6499 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DFEC9E019741BF7009B6499 /* Foundation.framework */; };
 		4DFEC9E319741BF7009B6499 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DFEC9E219741BF7009B6499 /* CoreGraphics.framework */; };
 		4DFEC9E519741BF7009B6499 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DFEC9E419741BF7009B6499 /* UIKit.framework */; };
@@ -64,6 +68,12 @@
 		4D4C9F1319745E88004541F8 /* Album.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Album.m; sourceTree = "<group>"; };
 		4D588953197561C00042A3E9 /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
 		4D588954197561C00042A3E9 /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
+		4D7BF435197D5D3F00274E66 /* LibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryViewController.h; sourceTree = "<group>"; };
+		4D7BF436197D5D3F00274E66 /* LibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryViewController.m; sourceTree = "<group>"; };
+		4D7BF437197D5D3F00274E66 /* LibraryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LibraryViewController.xib; sourceTree = "<group>"; };
+		4D7BF43A197D7B1500274E66 /* AlbumTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumTableViewCell.h; sourceTree = "<group>"; };
+		4D7BF43B197D7B1500274E66 /* AlbumTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumTableViewCell.m; sourceTree = "<group>"; };
+		4D7BF43C197D7B1500274E66 /* AlbumTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumTableViewCell.xib; sourceTree = "<group>"; };
 		4DFEC9DD19741BF7009B6499 /* Musica.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Musica.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DFEC9E019741BF7009B6499 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4DFEC9E219741BF7009B6499 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -153,6 +163,12 @@
 				4D4C9F07197421FB004541F8 /* SongViewController.h */,
 				4D4C9F08197421FB004541F8 /* SongViewController.m */,
 				4D4C9F09197421FB004541F8 /* SongViewController.xib */,
+				4D7BF435197D5D3F00274E66 /* LibraryViewController.h */,
+				4D7BF436197D5D3F00274E66 /* LibraryViewController.m */,
+				4D7BF437197D5D3F00274E66 /* LibraryViewController.xib */,
+				4D7BF43A197D7B1500274E66 /* AlbumTableViewCell.h */,
+				4D7BF43B197D7B1500274E66 /* AlbumTableViewCell.m */,
+				4D7BF43C197D7B1500274E66 /* AlbumTableViewCell.xib */,
 				4D4C9F0C19744376004541F8 /* MusicLibrary.h */,
 				4D4C9F0D19744376004541F8 /* MusicLibrary.m */,
 				4D4C9F0F197452E3004541F8 /* Group.h */,
@@ -274,6 +290,8 @@
 				4D4C9F0119741F9A004541F8 /* GroupViewController.xib in Resources */,
 				4DFEC9EB19741BF7009B6499 /* InfoPlist.strings in Resources */,
 				4D4C9EFC19741CDB004541F8 /* MainViewController.xib in Resources */,
+				4D7BF43E197D7B1500274E66 /* AlbumTableViewCell.xib in Resources */,
+				4D7BF439197D5D3F00274E66 /* LibraryViewController.xib in Resources */,
 				4D4C9F0B197421FB004541F8 /* SongViewController.xib in Resources */,
 				4DFEC9F319741BF7009B6499 /* Images.xcassets in Resources */,
 				4D4C9F0619742146004541F8 /* AlbumViewController.xib in Resources */,
@@ -297,10 +315,12 @@
 			files = (
 				4D588955197561C00042A3E9 /* Song.m in Sources */,
 				4D4C9F0019741F9A004541F8 /* GroupViewController.m in Sources */,
+				4D7BF438197D5D3F00274E66 /* LibraryViewController.m in Sources */,
 				4D4C9F0519742146004541F8 /* AlbumViewController.m in Sources */,
 				4DFEC9F119741BF7009B6499 /* AppDelegate.m in Sources */,
 				4D4C9F0A197421FB004541F8 /* SongViewController.m in Sources */,
 				4D4C9F0E19744376004541F8 /* MusicLibrary.m in Sources */,
+				4D7BF43D197D7B1500274E66 /* AlbumTableViewCell.m in Sources */,
 				4D4C9EFB19741CDB004541F8 /* MainViewController.m in Sources */,
 				4D4C9F1419745E88004541F8 /* Album.m in Sources */,
 				4DFEC9ED19741BF7009B6499 /* main.m in Sources */,

@@ -7,18 +7,30 @@
 //
 
 #import "Album.h"
+@interface Album(){
+    NSString * _year;
+    NSString * _group;
+}
+@property (nonatomic,copy) NSString * year;
+@property (nonatomic,copy) NSString * group;
+@end
 
 @implementation Album
 
+@synthesize year=_year;
+@synthesize group=_group;
+
 -(id) initWithYear:(NSString *) year withGroup: (NSString*) group{
     if([super init]){
-        self.year = [year copy];
-        self.group = [group copy];
+        self.year = year;
+        self.group = group;
     }
     return self;
 }
 
 -(void) dealloc{
+    [_year release];
+    [_group release];
     [super dealloc];
 }
 @end

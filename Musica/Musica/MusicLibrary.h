@@ -10,11 +10,9 @@
 
 @interface MusicLibrary : NSObject
 
-@property (retain, nonatomic) NSMutableDictionary * groups;
-@property (retain, nonatomic) NSMutableDictionary * albums;
-@property (retain, nonatomic) NSMutableDictionary * songs;
 
--(void) addGroup:(NSString *) group withStyle: (NSString *) style withDesc: (NSString*) desc;
+
+-(void) addGroup:(NSString *) group withStyle: (NSString *) style withDescription: (NSString*) desc;
 -(NSArray *) getGroups;
 -(void) addAlbum:(NSString *) album withYear: (NSString *) year withGroup: (NSString*) group;
 -(NSArray *) getAlbums;

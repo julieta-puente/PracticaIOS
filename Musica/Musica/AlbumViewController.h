@@ -9,18 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "MusicLibrary.h"
 
-@interface AlbumViewController : UIViewController <UIPickerViewDelegate,UITextViewDelegate,UIPickerViewDataSource,UITextFieldDelegate,UIScrollViewDelegate>
+@interface AlbumViewController : UIViewController 
 
 @property (retain, nonatomic) IBOutlet UITextField * nameTextField;
 @property (retain, nonatomic) IBOutlet UITextField * yearTextField;
 @property (retain, nonatomic) IBOutlet UIPickerView * groupPickerView;
-@property (copy, nonatomic) NSString * pickerSelection;
-@property (retain,nonatomic) MusicLibrary * music;
 @property (retain, nonatomic) IBOutlet UIScrollView * albumScrollView;
 @property (retain, nonatomic) IBOutlet UIView * insideView;
-@property (retain, nonatomic) UIView * fResponder;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withLibrary: (MusicLibrary*) music;
-- (IBAction)save:(UIButton *)sender;
+- (IBAction)save:(id)sender;
 
 @end

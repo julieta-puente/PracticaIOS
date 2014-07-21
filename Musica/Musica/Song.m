@@ -7,18 +7,32 @@
 //
 
 #import "Song.h"
+@interface Song(){
+    NSString * _duration;
+    NSString * _album;
+}
+
+@property (nonatomic,copy) NSString * duration;
+@property (nonatomic,copy) NSString * album;
+
+@end
 
 @implementation Song
 
+@synthesize duration=_duration;
+@synthesize album=_album;
+
 -(id) initWithDur:(NSString *) dur withAlbum: (NSString*) album{
     if([super init]){
-        self.duration = [dur copy];
-        self.album=[album copy];
+        self.duration = dur;
+        self.album=album;
     }
     return self;
 }
 
 -(void) dealloc{
+    [_album release];
+    [_duration release];
     [super dealloc];
 }
 @end

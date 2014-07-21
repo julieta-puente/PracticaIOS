@@ -8,7 +8,7 @@
 
 #import "AlbumViewController.h"
 
-@interface AlbumViewController (){
+@interface AlbumViewController () <UIPickerViewDelegate,UITextViewDelegate,UIPickerViewDataSource,UITextFieldDelegate,UIScrollViewDelegate>{
     UITextField * _nameTextField;
     UITextField * _yearTextField;
     UIPickerView * _groupPickerView;
@@ -18,7 +18,9 @@
     UIView * _insideView;
     UIView * _fResponder;
 }
-
+@property (copy, nonatomic) NSString * pickerSelection;
+@property (retain,nonatomic) MusicLibrary * music;
+@property (retain, nonatomic) UIView * fResponder;
 @end
 
 
@@ -42,7 +44,7 @@
     return self;
 }
 
-- (IBAction)save:(UIButton *)sender {
+- (IBAction)save:(id)sender {
     [self.music addAlbum:self.nameTextField.text withYear:self.yearTextField.text withGroup:self.pickerSelection];
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -131,12 +133,12 @@
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return [[self.music getGroups] objectAtIndex:row];
+    return [self.music getGroups][row];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-   self.pickerSelection = [[[self.music getGroups] objectAtIndex:row] copy];
+   self.pickerSelection = [self.music getGroups][row];
 }
 
 #pragma mark - gesture
@@ -154,6 +156,7 @@
     [_albumScrollView release];
     [_insideView release];
     [_fResponder release];
+    [_pickerSelection release];
     [super dealloc];
 }
 @end

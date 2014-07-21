@@ -22,11 +22,11 @@
 
 @synthesize music=_music;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withLibrary:(MusicLibrary *)music
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.music= [[[MusicLibrary alloc]init]autorelease];
+        self.music= music;
         
     }
     return self;
@@ -35,14 +35,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.title=@"Menu";
+    self.title=@"Agregar";
     // Do any additional setup after loading the view from its nib.
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)pushAlbumViewController:(UIButton *)sender {
@@ -58,5 +52,10 @@
 - (IBAction)pushSongViewController:(UIButton *)sender {
     SongViewController * songVC= [[[SongViewController alloc]initWithNibName:nil bundle:nil withLibrary: self.music]autorelease];
     [self.navigationController pushViewController:songVC animated:YES];
+}
+
+-(void) dealloc{
+    [_music release];
+    [super dealloc];
 }
 @end

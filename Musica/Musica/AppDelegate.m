@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
+#import "LibraryViewController.h"
 @interface AppDelegate (){
     UIWindow * _window;
 }
@@ -20,11 +21,22 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]]autorelease];
+    UIWindow  * myWindow = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window = myWindow;
+    [myWindow release];
     
-    MainViewController * mainViewController= [[[MainViewController alloc]initWithNibName:nil bundle:nil]autorelease];
+    MusicLibrary * music = [[[MusicLibrary alloc] init]autorelease];
+    
+    //PREGUNTAR autorelease
+    MainViewController * mainViewController= [[[MainViewController alloc]initWithNibName:nil bundle:nil withLibrary:music]autorelease];
+    LibraryViewController * libraryViewController = [[[LibraryViewController alloc]initWithNibName:nil bundle:nil withMusic:music]autorelease];
+    libraryViewController.title= @"Biblioteca";
     UINavigationController * navController = [[[UINavigationController alloc]initWithRootViewController: mainViewController]autorelease];
-    self.window.rootViewController= navController;
+    
+    
+    UITabBarController * tabController = [[UITabBarController alloc] initWithNibName:nil bundle:nil];
+    [tabController setViewControllers:@[navController, libraryViewController]];
+    self.window.rootViewController= tabController;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

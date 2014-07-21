@@ -8,7 +8,8 @@
 
 #import "GroupViewController.h"
 
-@interface GroupViewController (){
+@interface GroupViewController () <UITextFieldDelegate, UITextViewDelegate,UIScrollViewDelegate,UIGestureRecognizerDelegate>
+{
     UITextField * _nameTextField;
     UITextField * _styleTextField;
     UITextView * _descriptionTextView;
@@ -17,7 +18,8 @@
     UIView * _insideView;
     UIView * _fResponder;
 }
-
+@property (retain,nonatomic) MusicLibrary * music;
+@property (retain,nonatomic) UIView * fResponder;
 @end
 
 @implementation GroupViewController
@@ -39,8 +41,8 @@
     return self;
 }
 
-- (IBAction)save:(UIButton *)sender {
-    [self.music addGroup:self.nameTextField.text withStyle: self.styleTextField.text withDesc:self.descriptionTextView.text];
+- (IBAction)save:(id)sender {
+    [self.music addGroup:self.nameTextField.text withStyle: self.styleTextField.text withDescription:self.descriptionTextView.text];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
