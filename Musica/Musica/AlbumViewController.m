@@ -7,8 +7,10 @@
 //
 
 #import "AlbumViewController.h"
+#import "AlbumImageViewPickerDelegate.h"
 
-@interface AlbumViewController () <UIPickerViewDelegate,UITextViewDelegate,UIPickerViewDataSource,UITextFieldDelegate,UIScrollViewDelegate>{
+@interface AlbumViewController () <UIPickerViewDelegate,UITextViewDelegate,UIPickerViewDataSource,UITextFieldDelegate,UIScrollViewDelegate,ImageUpdate>{
+    
     UITextField * _nameTextField;
     UITextField * _yearTextField;
     UIPickerView * _groupPickerView;
@@ -17,10 +19,14 @@
     UIScrollView * _albumScrollView;
     UIView * _insideView;
     UIView * _fResponder;
+    UIPickerView * _albumImagePickerView;
+    UIImageView * _albumImageView;
+    AlbumImageViewPickerDelegate * _imageViewPicker;
 }
 @property (copy, nonatomic) NSString * pickerSelection;
 @property (retain,nonatomic) MusicLibrary * music;
 @property (retain, nonatomic) UIView * fResponder;
+@property (retain, nonatomic) AlbumImageViewPickerDelegate * imageViewPicker;
 @end
 
 
@@ -34,18 +40,26 @@
 @synthesize albumScrollView=_albumScrollView;
 @synthesize insideView=_insideView;
 @synthesize fResponder=_fResponder;
+@synthesize albumImagePickerView = _albumImagePickerView;
+@synthesize albumImageView = _albumImageView;
+@synthesize imageViewPicker=_imageViewPicker;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withLibrary: (MusicLibrary*) music
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.music=music;
+        self.imageViewPicker=[[AlbumImageViewPickerDelegate alloc]init];
+        self.imageViewPicker.delegate=self;
+        
     }
     return self;
 }
 
 - (IBAction)save:(id)sender {
-    [self.music addAlbum:self.nameTextField.text withYear:self.yearTextField.text withGroup:self.pickerSelection];
+    
+    self.pickerSelection = [[self.music getGroups] objectAtIndex:[self.groupPickerView selectedRowInComponent:0]];
+    [self.music addAlbum:self.nameTextField.text withYear:self.yearTextField.text withGroup:self.pickerSelection withImage:self.albumImageView.image];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -56,6 +70,7 @@
     self.nameTextField.delegate=self;
     self.yearTextField.delegate=self;
     self.groupPickerView.delegate=self;
+    self.albumImagePickerView.delegate=self.imageViewPicker;
     self.navigationItem.rightBarButtonItem =[[[UIBarButtonItem alloc]
                                               initWithTitle:@"OK" style: UIBarButtonItemStyleDone target:self action:@selector(save:)] autorelease];
     self.albumScrollView.delegate=self;
@@ -71,6 +86,7 @@
                                                object:nil];
     UITapGestureRecognizer * tapGesture = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapPressed:)]autorelease];
     [self.view addGestureRecognizer:tapGesture];
+    [self pickerSelectionWasMade];
 
 }
 
@@ -118,7 +134,7 @@
     self.albumScrollView.scrollIndicatorInsets = contentInsets;
 }
 
-#pragma mark - picker
+#pragma mark - picker groups
 
 // returns the number of 'columns' to display.
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
@@ -136,15 +152,17 @@
     return [self.music getGroups][row];
 }
 
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-{
-   self.pickerSelection = [self.music getGroups][row];
-}
 
 #pragma mark - gesture
 -(void) onTapPressed:(id) sender{
     
     [self.fResponder resignFirstResponder];
+}
+
+#pragma mark - imageUpdate protocol
+
+-(void) pickerSelectionWasMade{
+    self.albumImageView.image = [UIImage imageNamed: [self.imageViewPicker getSelection]];
 }
 
 #pragma mark -dealloc
@@ -157,6 +175,9 @@
     [_insideView release];
     [_fResponder release];
     [_pickerSelection release];
+    [_albumImagePickerView release];
+    [_albumImageView release];
+    [_imageViewPicker release];
     [super dealloc];
 }
 @end

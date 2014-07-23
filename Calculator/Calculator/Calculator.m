@@ -9,7 +9,7 @@
 #import "Calculator.h"
 
 @interface Calculator(){
-    id<CalculatorFinishOperation> _operationDelegate;
+    id <CalculatorFinishOperation> _operationDelegate;
 }
 @end
 

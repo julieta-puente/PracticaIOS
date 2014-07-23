@@ -17,6 +17,8 @@
 @property (retain, nonatomic) IBOutlet UIScrollView * albumScrollView;
 @property (retain, nonatomic) IBOutlet UIView * insideView;
 
+@property (retain, nonatomic) IBOutlet UIPickerView *albumImagePickerView;
+@property (retain, nonatomic) IBOutlet UIImageView *albumImageView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withLibrary: (MusicLibrary*) music;
 - (IBAction)save:(id)sender;

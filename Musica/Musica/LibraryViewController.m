@@ -60,19 +60,24 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString * tableIdentifier = @"TableCell";
+    static NSString * cellIdentifier = @"CellIdentifier";
     
-    AlbumTableViewCell * cell = (AlbumTableViewCell *)[tableView dequeueReusableCellWithIdentifier:tableIdentifier];
+    AlbumTableViewCell * cell = (AlbumTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
     if (cell == nil) {
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"AlbumTableViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
    }
     cell.labelName.text= [self.music getAlbums][indexPath.row];
-    cell.labelYear.text=@"juan";
-    cell.labelGroup.text=@"pedro";
+    cell.labelYear.text= [self.music yearForAlbum:cell.labelName.text];
+    cell.labelGroup.text=[self.music groupForAlbum:cell.labelName.text];
+    cell.imageViewAlbum.image = [self.music imageForAlbum:cell.labelName.text];
 
     return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    return @"Albumes";
 }
 
 - (void)dealloc {

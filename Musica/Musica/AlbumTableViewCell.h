@@ -16,4 +16,5 @@
 @property (retain, nonatomic) IBOutlet UILabel * labelName;
 @property (retain, nonatomic) IBOutlet UILabel * labelYear;
 @property (retain, nonatomic) IBOutlet UILabel * labelGroup;
+
 @end

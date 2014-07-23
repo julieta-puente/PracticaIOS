@@ -14,8 +14,10 @@
 
 -(void) addGroup:(NSString *) group withStyle: (NSString *) style withDescription: (NSString*) desc;
 -(NSArray *) getGroups;
--(void) addAlbum:(NSString *) album withYear: (NSString *) year withGroup: (NSString*) group;
 -(NSArray *) getAlbums;
 -(void) addSong: (NSString *) song withDur: (NSString *) dur withAlbum: (NSString *) album;
-
+-(NSString *) groupForAlbum: (NSString *) album;
+-(NSString *) yearForAlbum: (NSString *) album;
+-(void) addAlbum:(NSString *)album withYear:(NSString *)year withGroup:(NSString *)group withImage: (UIImage *) image;
+-(UIImage *) imageForAlbum: (NSString *) album;
 @end

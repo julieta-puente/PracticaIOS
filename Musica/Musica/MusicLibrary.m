@@ -32,8 +32,23 @@
         self.groups = [NSMutableDictionary dictionary];
         self.songs = [NSMutableDictionary dictionary];
         self.albums = [NSMutableDictionary dictionary];
+        [self addAlbums];
     }
     return self;
+}
+
+-(void) addAlbums{
+    [self addAlbum: @"Great Hits" withYear: @"1920" withGroup:@"Queen" withImage: [UIImage imageNamed:@"queen.jpg"]];
+    [self addAlbum: @"Twist and Shout" withYear: @"1921" withGroup:@"The Beatles" withImage: [UIImage imageNamed:@"thebeatles.jpg"]];
+    [self addAlbum: @"Definitly Maybe" withYear: @"1922" withGroup:@"Oasis" withImage: [UIImage imageNamed:@"oasis.jpg"]];
+    [self addAlbum: @"The Doors" withYear: @"1923" withGroup:@"The Doors" withImage: [UIImage imageNamed:@"thedoors.jpg"]];
+    [self addAlbum: @"Great Hits 2" withYear: @"1924" withGroup:@"Queen" withImage: [UIImage imageNamed:@"queen.jpg"]];
+    [self addAlbum: @"Yellow Submarine" withYear: @"1925" withGroup:@"The Beatles" withImage: [UIImage imageNamed:@"thebeatles.jpg"]];
+    [self addAlbum: @"Wonderwall" withYear: @"1926" withGroup:@"Oasis" withImage: [UIImage imageNamed:@"oasis.jpg"]];
+    [self addAlbum: @"Clasics" withYear: @"1927" withGroup:@"The Doors" withImage: [UIImage imageNamed:@"thedoors.jpg"]];
+    [self addAlbum: @"Break Free" withYear: @"1928" withGroup:@"Queen" withImage: [UIImage imageNamed:@"queen.jpg"]];
+    [self addAlbum: @"Love me do" withYear: @"1929" withGroup:@"The Beatles" withImage: [UIImage imageNamed:@"thebeatles.jpg"]];
+    [self addAlbum: @"Champagne Supernova" withYear: @"1930" withGroup:@"Oasis" withImage: [UIImage imageNamed:@"oasis.jpg"]];
 }
 
 -(void) addGroup:(NSString *)group withStyle:(NSString *)style withDescription:(NSString *)desc{
@@ -45,9 +60,8 @@
     return [self.groups allKeys];
 }
 
-
--(void) addAlbum:(NSString *)album withYear:(NSString *)year withGroup:(NSString *)group{
-    Album * a= [[[Album alloc]initWithYear:year withGroup:group]autorelease];
+-(void) addAlbum:(NSString *)album withYear:(NSString *)year withGroup:(NSString *)group withImage: (UIImage *) image{
+    Album * a= [[[Album alloc]initWithYear:year withGroup:group withImage:image]autorelease];
     [self.albums setObject:a forKey:album];
 }
 
@@ -60,6 +74,18 @@
     [self.songs setObject: s forKey:song];
 }
 
+
+-(NSString *) groupForAlbum: (NSString *) album{
+    return [[self.albums objectForKey:album] getGroup];
+}
+
+-(NSString *) yearForAlbum: (NSString *) album{
+    return [[self.albums objectForKey:album] getYear];
+}
+
+-(UIImage *) imageForAlbum: (NSString *) album{
+    return [[self.albums objectForKey:album]getImage];
+}
 -(void) dealloc{
     [super dealloc];
 }

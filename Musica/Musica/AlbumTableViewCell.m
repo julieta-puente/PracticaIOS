@@ -15,7 +15,6 @@
     UILabel * _labelGroup;
 }
 
-
 @end
 
 @implementation AlbumTableViewCell
