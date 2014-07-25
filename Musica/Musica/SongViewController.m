@@ -8,30 +8,13 @@
 
 #import "SongViewController.h"
 
-@interface SongViewController () <UIPickerViewDelegate,UIPickerViewDataSource,UITextViewDelegate,UITextFieldDelegate,UIScrollViewDelegate>{
-    UITextField * _nameTextField;
-    UITextField * _durationTextField;
-    UIPickerView * _albumPickerView;
-    NSString * _pickerSelection;
-    MusicLibrary * _music;
-    UIScrollView * _songScrollView;
-    UIView * _insideView;
-    UIView * _fResponder;
-}
+@interface SongViewController () <UIPickerViewDelegate,UIPickerViewDataSource,UITextViewDelegate,UITextFieldDelegate,UIScrollViewDelegate>
 @property (copy, nonatomic) NSString * pickerSelection;
 @property (strong,nonatomic) MusicLibrary * music;
 @property (strong, nonatomic) UIView * fResponder;
 @end
 
 @implementation SongViewController
-
-@synthesize nameTextField=_nameTextField;
-@synthesize durationTextField=_durationTextField;
-@synthesize albumPickerView=_albumPickerView;
-@synthesize music=_music;
-@synthesize songScrollView=_songScrollView;
-@synthesize insideView=_insideView;
-@synthesize fResponder=_fResponder;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withLibrary: (MusicLibrary*) music
 {

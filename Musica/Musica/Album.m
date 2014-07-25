@@ -7,27 +7,19 @@
 //
 
 #import "Album.h"
-@interface Album(){
-    NSString * _year;
-    NSString * _group;
-    UIImage * _image;
-}
+@interface Album()
 @property (nonatomic,copy) NSString * year;
 @property (nonatomic,copy) NSString * group;
-@property (nonatomic, retain) UIImage * image;
+@property (nonatomic, retain) NSString * imageName;
 @end
 
 @implementation Album
 
-@synthesize year=_year;
-@synthesize group=_group;
-@synthesize image=_image;
-
--(id) initWithYear:(NSString *) year withGroup: (NSString*) group withImage: (UIImage *) image{
+-(id) initWithYear:(NSString *) year withGroup: (NSString*) group withImage: (NSString *) imageName{
     if([super init]){
         self.year = year;
         self.group = group;
-        self.image = image;
+        self.imageName = imageName;
     }
     return self;
 }
@@ -40,13 +32,13 @@
     return self.year;
 }
 
--(UIImage *) getImage{
-    return self.image;
+-(NSString *) getImageName{
+    return self.imageName;
 }
 -(void) dealloc{
     [_year release];
     [_group release];
-    [_image release];
+    [_imageName release];
     [super dealloc];
 }
 @end

@@ -11,16 +11,7 @@
 #import "AlbumViewController.h"
 #import "SongViewController.h"
 
-
-@interface MainViewController (){
-    MusicLibrary * _music;
-}
-
-@end
-
 @implementation MainViewController
-
-@synthesize music=_music;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withLibrary:(MusicLibrary *)music
 {

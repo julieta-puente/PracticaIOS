@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+@class AlbumImageViewPickerDelegate;
 
 @protocol ImageUpdate <NSObject>
 
--(void) pickerSelectionWasMade;
+-(void) pickerSelectionWasMade: (AlbumImageViewPickerDelegate *) albumimage;
 
 @end
 

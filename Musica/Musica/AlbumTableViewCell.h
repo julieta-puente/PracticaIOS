@@ -10,8 +10,6 @@
 
 @interface AlbumTableViewCell : UITableViewCell
 
-
-
 @property (retain, nonatomic) IBOutlet UIImageView * imageViewAlbum;
 @property (retain, nonatomic) IBOutlet UILabel * labelName;
 @property (retain, nonatomic) IBOutlet UILabel * labelYear;

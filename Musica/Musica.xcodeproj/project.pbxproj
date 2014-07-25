@@ -20,6 +20,8 @@
 		4D4C9F1419745E88004541F8 /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4C9F1319745E88004541F8 /* Album.m */; };
 		4D588955197561C00042A3E9 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D588954197561C00042A3E9 /* Song.m */; };
 		4D58BCED197FE89600CC31E6 /* queen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D58BCEC197FE89600CC31E6 /* queen.jpg */; };
+		4D58BCF1197FFE2B00CC31E6 /* AlbumDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D58BCEF197FFE2B00CC31E6 /* AlbumDetailViewController.m */; };
+		4D58BCF2197FFE2B00CC31E6 /* AlbumDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D58BCF0197FFE2B00CC31E6 /* AlbumDetailViewController.xib */; };
 		4D7BF438197D5D3F00274E66 /* LibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D7BF436197D5D3F00274E66 /* LibraryViewController.m */; };
 		4D7BF439197D5D3F00274E66 /* LibraryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D7BF437197D5D3F00274E66 /* LibraryViewController.xib */; };
 		4D7BF43D197D7B1500274E66 /* AlbumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D7BF43B197D7B1500274E66 /* AlbumTableViewCell.m */; };
@@ -74,6 +76,9 @@
 		4D588953197561C00042A3E9 /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
 		4D588954197561C00042A3E9 /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
 		4D58BCEC197FE89600CC31E6 /* queen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = queen.jpg; sourceTree = "<group>"; };
+		4D58BCEE197FFE2B00CC31E6 /* AlbumDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumDetailViewController.h; sourceTree = "<group>"; };
+		4D58BCEF197FFE2B00CC31E6 /* AlbumDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumDetailViewController.m; sourceTree = "<group>"; };
+		4D58BCF0197FFE2B00CC31E6 /* AlbumDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumDetailViewController.xib; sourceTree = "<group>"; };
 		4D7BF435197D5D3F00274E66 /* LibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryViewController.h; sourceTree = "<group>"; };
 		4D7BF436197D5D3F00274E66 /* LibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryViewController.m; sourceTree = "<group>"; };
 		4D7BF437197D5D3F00274E66 /* LibraryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LibraryViewController.xib; sourceTree = "<group>"; };
@@ -160,6 +165,9 @@
 		4DFEC9E619741BF7009B6499 /* Musica */ = {
 			isa = PBXGroup;
 			children = (
+				4D58BCEE197FFE2B00CC31E6 /* AlbumDetailViewController.h */,
+				4D58BCEF197FFE2B00CC31E6 /* AlbumDetailViewController.m */,
+				4D58BCF0197FFE2B00CC31E6 /* AlbumDetailViewController.xib */,
 				4D58BCEC197FE89600CC31E6 /* queen.jpg */,
 				4DC06ACC197EADF1007376DD /* AlbumImageViewPickerDelegate.h */,
 				4DC06ACD197EADF1007376DD /* AlbumImageViewPickerDelegate.m */,
@@ -304,6 +312,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D58BCF2197FFE2B00CC31E6 /* AlbumDetailViewController.xib in Resources */,
 				4D4C9F0119741F9A004541F8 /* GroupViewController.xib in Resources */,
 				4DC06AC4197EA787007376DD /* thebeatles.jpg in Resources */,
 				4D58BCED197FE89600CC31E6 /* queen.jpg in Resources */,
@@ -347,6 +356,7 @@
 				4D4C9F1419745E88004541F8 /* Album.m in Sources */,
 				4DFEC9ED19741BF7009B6499 /* main.m in Sources */,
 				4D4C9F11197452E3004541F8 /* Group.m in Sources */,
+				4D58BCF1197FFE2B00CC31E6 /* AlbumDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,28 +9,12 @@
 #import "GroupViewController.h"
 
 @interface GroupViewController () <UITextFieldDelegate, UITextViewDelegate,UIScrollViewDelegate,UIGestureRecognizerDelegate>
-{
-    UITextField * _nameTextField;
-    UITextField * _styleTextField;
-    UITextView * _descriptionTextView;
-    MusicLibrary * _music;
-    UIScrollView * _groupScrollView;
-    UIView * _insideView;
-    UIView * _fResponder;
-}
 @property (retain,nonatomic) MusicLibrary * music;
 @property (retain,nonatomic) UIView * fResponder;
 @end
 
 @implementation GroupViewController
 
-@synthesize nameTextField=_nameTextField;
-@synthesize styleTextField=_styleTextField;
-@synthesize descriptionTextView=_descriptionTextView;
-@synthesize music=_music;
-@synthesize groupScrollView=_groupScrollView;
-@synthesize insideView=_insideView;
-@synthesize fResponder=_fResponder;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withLibrary: (MusicLibrary*) music
 {

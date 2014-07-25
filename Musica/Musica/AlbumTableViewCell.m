@@ -8,23 +8,7 @@
 
 #import "AlbumTableViewCell.h"
 
-@interface AlbumTableViewCell () {
-    UIImageView * _imageViewAlbum;
-    UILabel * _labelName;
-    UILabel * _labelYear;
-    UILabel * _labelGroup;
-}
-
-@end
-
 @implementation AlbumTableViewCell
-
-@synthesize imageViewAlbum=_imageViewAlbum;
-@synthesize labelName=_labelName;
-@synthesize labelYear=_labelYear;
-@synthesize labelGroup=_labelGroup;
-
-
 
 - (void)awakeFromNib
 {

@@ -9,15 +9,7 @@
 #import "AppDelegate.h"
 #import "MainViewController.h"
 #import "LibraryViewController.h"
-@interface AppDelegate (){
-    UIWindow * _window;
-}
-
-@end
-
 @implementation AppDelegate
-
-@synthesize window=_window;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -32,10 +24,10 @@
     LibraryViewController * libraryViewController = [[[LibraryViewController alloc]initWithNibName:nil bundle:nil withMusic:music]autorelease];
     libraryViewController.title= @"Biblioteca";
     UINavigationController * navController = [[[UINavigationController alloc]initWithRootViewController: mainViewController]autorelease];
-    
+    UINavigationController * navControllerLibrary = [[[UINavigationController alloc]initWithRootViewController: libraryViewController]autorelease];
     
     UITabBarController * tabController = [[UITabBarController alloc] initWithNibName:nil bundle:nil];
-    [tabController setViewControllers:@[navController, libraryViewController]];
+    [tabController setViewControllers:@[navController, navControllerLibrary]];
     self.window.rootViewController= tabController;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

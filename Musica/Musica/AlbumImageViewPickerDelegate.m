@@ -46,14 +46,13 @@
     return [self.imagesNames count];
 }
 
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
     return self.imagesNames[row];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     self.selection= self.imagesNames[row];
-    [self.delegate pickerSelectionWasMade];
+    [self.delegate pickerSelectionWasMade: self];
 }
 
 

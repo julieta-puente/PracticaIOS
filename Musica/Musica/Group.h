@@ -13,4 +13,5 @@
 
 
 -(id) initWithStyle:(NSString *) style withDescription: (NSString*) desc;
+-(NSString *) getStyle;
 @end
