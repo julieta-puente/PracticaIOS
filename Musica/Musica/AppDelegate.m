@@ -13,18 +13,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    UIWindow  * myWindow = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window = myWindow;
-    [myWindow release];
-    
-    MusicLibrary * music = [[[MusicLibrary alloc] init]autorelease];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+
+    MusicLibrary * music = [[MusicLibrary alloc] init];
     
     //PREGUNTAR autorelease
-    MainViewController * mainViewController= [[[MainViewController alloc]initWithNibName:nil bundle:nil withLibrary:music]autorelease];
-    LibraryViewController * libraryViewController = [[[LibraryViewController alloc]initWithNibName:nil bundle:nil withMusic:music]autorelease];
+    MainViewController * mainViewController=[[MainViewController alloc]initWithNibName:nil bundle:nil withLibrary:music];
+    LibraryViewController * libraryViewController =[[LibraryViewController alloc]initWithNibName:nil bundle:nil withMusic:music];
     libraryViewController.title= @"Biblioteca";
-    UINavigationController * navController = [[[UINavigationController alloc]initWithRootViewController: mainViewController]autorelease];
-    UINavigationController * navControllerLibrary = [[[UINavigationController alloc]initWithRootViewController: libraryViewController]autorelease];
+    UINavigationController * navController =[[UINavigationController alloc]initWithRootViewController: mainViewController];
+    UINavigationController * navControllerLibrary =[[UINavigationController alloc]initWithRootViewController: libraryViewController];
     
     UITabBarController * tabController = [[UITabBarController alloc] initWithNibName:nil bundle:nil];
     [tabController setViewControllers:@[navController, navControllerLibrary]];
@@ -59,10 +57,6 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
-
--(void) dealloc{
-    [super dealloc];
 }
 
 @end

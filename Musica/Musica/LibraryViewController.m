@@ -11,14 +11,16 @@
 #import "MusicLibrary.h"
 #import "AlbumDetailViewController.h"
 #import "Album.h"
+#import "HeaderView.h"
 
 
 @interface LibraryViewController () <UITableViewDataSource, UITableViewDelegate>
-@property (retain, nonatomic) IBOutlet UITableView *tableViewLibrary;
-@property (retain, nonatomic) NSArray * tableData;
-@property (retain,nonatomic) MusicLibrary * music;
-@property (retain, nonatomic) AlbumTableViewCell * cellPrototype;
-@property (retain, nonatomic) NSDictionary * groupSection;
+@property (strong, nonatomic) IBOutlet UITableView *tableViewLibrary;
+@property (strong, nonatomic) NSArray * tableData;
+@property (strong,nonatomic) MusicLibrary * music;
+@property (strong, nonatomic) AlbumTableViewCell * cellPrototype;
+@property (strong, nonatomic) NSDictionary * groupSection;
+@property (strong, nonatomic) HeaderView * headerView;
 
 @end
 
@@ -37,19 +39,17 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
     self.tableViewLibrary.delegate = self;
     self.tableViewLibrary.dataSource = self;
-    
     NSString * cellIdentifier =@"CellIdentifier";
     [self.tableViewLibrary registerNib:[UINib nibWithNibName:@"AlbumTableViewCell" bundle:nil] forCellReuseIdentifier:cellIdentifier];
     self.cellPrototype = [self.tableViewLibrary dequeueReusableCellWithIdentifier:cellIdentifier];
-    [super viewDidLoad];
-// Do any additional setup after loading the view from its nib.
 }
 
 -(void) viewDidAppear:(BOOL)animated{
-    [self.tableViewLibrary reloadData];
     [super viewDidAppear:animated];
+    [self.tableViewLibrary reloadData];
 }
 
 
@@ -85,26 +85,23 @@
     cell.labelGroup.text=name;
     cell.imageViewAlbum.image = [UIImage imageNamed:[album getImageName]];
 }
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    return @"Albumes";
-}
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    UIView * view = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 300)]autorelease];
-    view.backgroundColor = [UIColor lightGrayColor];
-    UILabel * labelName= [[[UILabel alloc]initWithFrame:CGRectMake(10, 3, 100, 20)]autorelease];
-    labelName.numberOfLines=0;
-    [labelName setText: [self.groupSection allKeys][section]];
-    [view addSubview:labelName];
-    UILabel * labelStyle= [[[UILabel alloc]initWithFrame:CGRectMake(160, 3, 100, 20)]autorelease];
-    labelStyle.numberOfLines=0;
-    [labelStyle setText: [self.music styleForGroup: labelName.text] ];
-    [view addSubview:labelStyle];
-    return view;
+    self.headerView = [[HeaderView alloc]init];
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"HeaderView" owner:self options:nil];
+    self.headerView = [nib objectAtIndex:0];
+    [self initHeader:self.headerView inSection:section];
+    return self.headerView;
+}
+
+-(void)initHeader:(HeaderView *) headerView inSection: (NSInteger)section{
+    [headerView.labelGroup setText:[self.groupSection allKeys][section]];
+    [headerView.labelStyle setText:[self.music styleForGroup: headerView.labelGroup.text]];
 }
 
 -(CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 25;
+    [self initHeader:self.headerView inSection:section];
+    return [self.headerView systemLayoutSizeFittingSize:UILayoutFittingExpandedSize ].height+1;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -119,15 +116,9 @@
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     AlbumTableViewCell * cell = (AlbumTableViewCell *)[self tableView:self.tableViewLibrary cellForRowAtIndexPath:indexPath];
-    AlbumDetailViewController * albumDetail= [[[AlbumDetailViewController alloc] initWithNibName:nil bundle:nil withImage:cell.imageViewAlbum.image withName:cell.labelName.text withGroup:cell.labelGroup.text withYear:cell.labelYear.text]autorelease];
+    AlbumDetailViewController * albumDetail= [[AlbumDetailViewController alloc] initWithNibName:nil bundle:nil withImage:cell.imageViewAlbum.image withName:cell.labelName.text withGroup:cell.labelGroup.text withYear:cell.labelYear.text];
     [self.navigationController pushViewController:albumDetail animated:YES];
+    [self.tableViewLibrary deselectRowAtIndexPath:indexPath animated:YES];
 }
-- (void)dealloc {
-    [_tableViewLibrary release];
-    [_tableData release];
-    [_music release];
-    [_cellPrototype release];
-    [_groupSection release];
-    [super dealloc];
-}
+
 @end

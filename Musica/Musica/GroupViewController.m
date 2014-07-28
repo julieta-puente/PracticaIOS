@@ -9,8 +9,8 @@
 #import "GroupViewController.h"
 
 @interface GroupViewController () <UITextFieldDelegate, UITextViewDelegate,UIScrollViewDelegate,UIGestureRecognizerDelegate>
-@property (retain,nonatomic) MusicLibrary * music;
-@property (retain,nonatomic) UIView * fResponder;
+@property (strong,nonatomic) MusicLibrary * music;
+@property (strong,nonatomic) UIView * fResponder;
 @end
 
 @implementation GroupViewController
@@ -34,8 +34,8 @@
 {
     [super viewDidLoad];
     self.title= @"Grupo";
-    self.navigationItem.rightBarButtonItem =[[[UIBarButtonItem alloc]
-                                              initWithTitle:@"OK" style: UIBarButtonItemStyleDone target:self action:@selector(save:)] autorelease];
+    self.navigationItem.rightBarButtonItem =[[UIBarButtonItem alloc]
+                                              initWithTitle:@"OK" style: UIBarButtonItemStyleDone target:self action:@selector(save:)] ;
     self.nameTextField.delegate=self;
     self.styleTextField.delegate=self;
     self.descriptionTextView.delegate=self;
@@ -52,7 +52,7 @@
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
     
-    UITapGestureRecognizer * tapGesture = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapPressed:)]autorelease];
+    UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapPressed:)];
     [self.view addGestureRecognizer:tapGesture];
 
  
@@ -109,16 +109,4 @@
     [self.fResponder resignFirstResponder];
 }
 
-
-#pragma mark -dealloc
--(void) dealloc {
-    [_nameTextField release];
-    [_styleTextField release];
-    [_descriptionTextView release];
-    [_groupScrollView release];
-    [_insideView release];
-    [_music release];
-    [_fResponder release];
-    [super dealloc];
-}
 @end

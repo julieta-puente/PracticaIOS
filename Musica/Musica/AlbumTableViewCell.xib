@@ -18,7 +18,7 @@
                         <rect key="frame" x="160" y="0.0" width="160" height="43"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="45" translatesAutoresizingMaskIntoConstraints="NO" id="55i-m6-dfe">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="45" translatesAutoresizingMaskIntoConstraints="NO" id="55i-m6-dfe">
                                 <rect key="frame" x="1" y="11" width="45" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -35,8 +35,8 @@
                         <constraints>
                             <constraint firstItem="Cn3-iU-lLw" firstAttribute="top" secondItem="wfZ-dv-2JE" secondAttribute="top" priority="250" constant="11" id="2Em-lC-bW1"/>
                             <constraint firstAttribute="trailing" secondItem="Cn3-iU-lLw" secondAttribute="trailing" priority="250" constant="22" id="Hob-01-her"/>
-                            <constraint firstItem="55i-m6-dfe" firstAttribute="leading" secondItem="wfZ-dv-2JE" secondAttribute="leading" constant="9" id="MaT-GF-pUo"/>
-                            <constraint firstItem="Cn3-iU-lLw" firstAttribute="leading" secondItem="55i-m6-dfe" secondAttribute="trailing" priority="250" constant="35" id="Wt9-b4-Vnh"/>
+                            <constraint firstItem="55i-m6-dfe" firstAttribute="leading" secondItem="wfZ-dv-2JE" secondAttribute="leading" constant="1" id="MaT-GF-pUo"/>
+                            <constraint firstItem="Cn3-iU-lLw" firstAttribute="leading" secondItem="55i-m6-dfe" secondAttribute="trailing" priority="250" constant="10" id="Wt9-b4-Vnh"/>
                             <constraint firstAttribute="centerY" secondItem="55i-m6-dfe" secondAttribute="centerY" id="aNK-ZT-r97"/>
                             <constraint firstAttribute="bottom" secondItem="55i-m6-dfe" secondAttribute="bottom" constant="11" id="aia-t7-w3F"/>
                             <constraint firstAttribute="bottom" secondItem="Cn3-iU-lLw" secondAttribute="bottom" constant="11" id="fzI-Ud-vTp"/>
@@ -70,7 +70,7 @@
                             <constraint firstAttribute="bottom" secondItem="B3X-8i-ixR" secondAttribute="bottom" priority="250" constant="11" id="WNP-Fb-wYK"/>
                             <constraint firstAttribute="centerY" secondItem="EFl-Qp-0Oq" secondAttribute="centerY" id="War-61-Xhn"/>
                             <constraint firstAttribute="bottom" secondItem="EFl-Qp-0Oq" secondAttribute="bottom" id="Wbu-Km-JhA"/>
-                            <constraint firstItem="B3X-8i-ixR" firstAttribute="leading" secondItem="EFl-Qp-0Oq" secondAttribute="trailing" multiplier="1.33333" constant="18" id="yfZ-Qi-G8N"/>
+                            <constraint firstItem="B3X-8i-ixR" firstAttribute="leading" secondItem="EFl-Qp-0Oq" secondAttribute="trailing" multiplier="1.33333" constant="5" id="yfZ-Qi-G8N"/>
                         </constraints>
                     </view>
                 </subviews>

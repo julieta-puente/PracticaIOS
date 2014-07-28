@@ -11,7 +11,7 @@
 
 @property (nonatomic,copy) NSString * name;
 @property (nonatomic,copy) NSString * year;
-@property (nonatomic, retain) NSString * imageName;
+@property (nonatomic, strong) NSString * imageName;
 @end
 
 @implementation Album
@@ -37,10 +37,5 @@
 -(NSString *) getName{
     return self.name;
 }
--(void) dealloc{
-    [_name release];
-    [_year release];
-    [_imageName release];
-    [super dealloc];
-}
+
 @end

@@ -26,6 +26,8 @@
 		4D7BF439197D5D3F00274E66 /* LibraryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D7BF437197D5D3F00274E66 /* LibraryViewController.xib */; };
 		4D7BF43D197D7B1500274E66 /* AlbumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D7BF43B197D7B1500274E66 /* AlbumTableViewCell.m */; };
 		4D7BF43E197D7B1500274E66 /* AlbumTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D7BF43C197D7B1500274E66 /* AlbumTableViewCell.xib */; };
+		4D8A18AA1986A9640062D162 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8A18A91986A9640062D162 /* HeaderView.m */; };
+		4D8A18AC1986A97E0062D162 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8A18AB1986A97E0062D162 /* HeaderView.xib */; };
 		4DC06AC3197EA787007376DD /* oasis.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4DC06AC0197EA787007376DD /* oasis.jpg */; };
 		4DC06AC4197EA787007376DD /* thebeatles.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4DC06AC1197EA787007376DD /* thebeatles.jpg */; };
 		4DC06AC5197EA787007376DD /* thedoors.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4DC06AC2197EA787007376DD /* thedoors.jpg */; };
@@ -85,6 +87,9 @@
 		4D7BF43A197D7B1500274E66 /* AlbumTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumTableViewCell.h; sourceTree = "<group>"; };
 		4D7BF43B197D7B1500274E66 /* AlbumTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumTableViewCell.m; sourceTree = "<group>"; };
 		4D7BF43C197D7B1500274E66 /* AlbumTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumTableViewCell.xib; sourceTree = "<group>"; };
+		4D8A18A81986A9640062D162 /* HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
+		4D8A18A91986A9640062D162 /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
+		4D8A18AB1986A97E0062D162 /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HeaderView.xib; path = ../HeaderView.xib; sourceTree = "<group>"; };
 		4DC06AC0197EA787007376DD /* oasis.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = oasis.jpg; sourceTree = "<group>"; };
 		4DC06AC1197EA787007376DD /* thebeatles.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thebeatles.jpg; sourceTree = "<group>"; };
 		4DC06AC2197EA787007376DD /* thedoors.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thedoors.jpg; sourceTree = "<group>"; };
@@ -194,6 +199,9 @@
 				4D7BF43A197D7B1500274E66 /* AlbumTableViewCell.h */,
 				4D7BF43B197D7B1500274E66 /* AlbumTableViewCell.m */,
 				4D7BF43C197D7B1500274E66 /* AlbumTableViewCell.xib */,
+				4D8A18A81986A9640062D162 /* HeaderView.h */,
+				4D8A18A91986A9640062D162 /* HeaderView.m */,
+				4D8A18AB1986A97E0062D162 /* HeaderView.xib */,
 				4D4C9F0C19744376004541F8 /* MusicLibrary.h */,
 				4D4C9F0D19744376004541F8 /* MusicLibrary.m */,
 				4D4C9F0F197452E3004541F8 /* Group.h */,
@@ -325,6 +333,7 @@
 				4DC06AC3197EA787007376DD /* oasis.jpg in Resources */,
 				4DFEC9F319741BF7009B6499 /* Images.xcassets in Resources */,
 				4D4C9F0619742146004541F8 /* AlbumViewController.xib in Resources */,
+				4D8A18AC1986A97E0062D162 /* HeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,6 +353,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D588955197561C00042A3E9 /* Song.m in Sources */,
+				4D8A18AA1986A9640062D162 /* HeaderView.m in Sources */,
 				4D4C9F0019741F9A004541F8 /* GroupViewController.m in Sources */,
 				4D7BF438197D5D3F00274E66 /* LibraryViewController.m in Sources */,
 				4D4C9F0519742146004541F8 /* AlbumViewController.m in Sources */,
@@ -405,7 +415,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -444,7 +454,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -475,6 +485,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Musica/Musica-Prefix.pch";
 				INFOPLIST_FILE = "Musica/Musica-Info.plist";
@@ -488,6 +499,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Musica/Musica-Prefix.pch";
 				INFOPLIST_FILE = "Musica/Musica-Info.plist";

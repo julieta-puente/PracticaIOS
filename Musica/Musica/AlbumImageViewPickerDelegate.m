@@ -9,7 +9,7 @@
 #import "AlbumImageViewPickerDelegate.h"
 
 @interface AlbumImageViewPickerDelegate()
-@property (retain, nonatomic) NSArray * imagesNames;
+@property (strong, nonatomic) NSArray * imagesNames;
 @property (copy, nonatomic) NSString * selection;
 
 @end
@@ -51,10 +51,5 @@
     return self.selection;
 }
 
--(void) dealloc {
-    [_imagesNames release];
-    [_selection release];
-    [super dealloc];
-}
 
 @end

@@ -11,12 +11,12 @@
 
 @interface GroupViewController : UIViewController
 
-@property (retain, nonatomic) IBOutlet UITextField *nameTextField;
-@property (retain, nonatomic) IBOutlet UITextField *styleTextField;
-@property (retain, nonatomic) IBOutlet UITextView *descriptionTextView;
+@property (strong, nonatomic) IBOutlet UITextField *nameTextField;
+@property (strong, nonatomic) IBOutlet UITextField *styleTextField;
+@property (strong, nonatomic) IBOutlet UITextView *descriptionTextView;
 
-@property (retain, nonatomic) IBOutlet UIScrollView * groupScrollView;
-@property (retain, nonatomic) IBOutlet UIView *insideView;
+@property (strong, nonatomic) IBOutlet UIScrollView * groupScrollView;
+@property (strong, nonatomic) IBOutlet UIView *insideView;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withLibrary: (MusicLibrary*) music;

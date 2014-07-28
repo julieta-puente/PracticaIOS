@@ -22,11 +22,4 @@
     // Configure the view for the selected state
 }
 
-- (void)dealloc {
-    [_imageViewAlbum release];
-    [_labelName release];
-    [_labelYear release];
-    [_labelGroup release];
-    [super dealloc];
-}
 @end

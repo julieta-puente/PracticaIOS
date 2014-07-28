@@ -19,6 +19,6 @@
 @interface AlbumImageViewPickerDelegate : NSObject  <UIPickerViewDelegate,UIPickerViewDataSource>
 
 -(NSString *) getSelection;
-@property (assign, nonatomic) id <ImageUpdate> delegate;
+@property (weak, nonatomic) id <ImageUpdate> delegate;
 
 @end

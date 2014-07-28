@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface AlbumDetailViewController : UIViewController
-@property (retain, nonatomic) IBOutlet UIImageView *imageAlbum;
-@property (retain, nonatomic) IBOutlet UILabel *labelName;
-@property (retain, nonatomic) IBOutlet UILabel *labelGroup;
-@property (retain, nonatomic) IBOutlet UILabel *labelYear;
+@property (strong, nonatomic) IBOutlet UIImageView *imageAlbum;
+@property (strong, nonatomic) IBOutlet UILabel *labelName;
+@property (strong, nonatomic) IBOutlet UILabel *labelGroup;
+@property (strong, nonatomic) IBOutlet UILabel *labelYear;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withImage: (UIImage *) image withName: (NSString *) name withGroup: (NSString *) group withYear: (NSString *) year;
 @end
+

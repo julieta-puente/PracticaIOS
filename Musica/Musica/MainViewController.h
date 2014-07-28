@@ -11,7 +11,7 @@
 
 @interface MainViewController : UIViewController
 
-@property (nonatomic,retain) MusicLibrary * music;
+@property (nonatomic,strong) MusicLibrary * music;
 
 - (IBAction)pushAlbumViewController:(UIButton *)sender;
 - (IBAction)pushGroupViewController:(UIButton *)sender;

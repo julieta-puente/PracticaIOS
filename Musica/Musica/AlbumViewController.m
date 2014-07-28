@@ -11,9 +11,9 @@
 
 @interface AlbumViewController () <UIPickerViewDelegate,UITextViewDelegate,UIPickerViewDataSource,UITextFieldDelegate,UIScrollViewDelegate,ImageUpdate>
 @property (copy, nonatomic) NSString * pickerSelection;
-@property (retain,nonatomic) MusicLibrary * music;
-@property (retain, nonatomic) UIView * fResponder;
-@property (retain, nonatomic) AlbumImageViewPickerDelegate * imageViewPicker;
+@property (strong,nonatomic) MusicLibrary * music;
+@property (strong, nonatomic) UIView * fResponder;
+@property (strong, nonatomic) AlbumImageViewPickerDelegate * imageViewPicker;
 @end
 
 
@@ -33,8 +33,6 @@
 }
 
 - (IBAction)save:(id)sender {
-    
-//    self.pickerSelection = [[self.music getGroups] objectAtIndex:[self.groupPickerView selectedRowInComponent:0]];
     [self.music  addAlbum:self.nameTextField.text withYear:self.yearTextField.text withImageName: [self.imageViewPicker getSelection] forGroup:self.pickerSelection];
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -47,8 +45,8 @@
     self.yearTextField.delegate=self;
     self.groupPickerView.delegate=self;
     self.albumImagePickerView.delegate=self.imageViewPicker;
-    self.navigationItem.rightBarButtonItem =[[[UIBarButtonItem alloc]
-                                              initWithTitle:@"OK" style: UIBarButtonItemStyleDone target:self action:@selector(save:)] autorelease];
+    self.navigationItem.rightBarButtonItem =[[UIBarButtonItem alloc]
+                                              initWithTitle:@"OK" style: UIBarButtonItemStyleDone target:self action:@selector(save:)];
     self.albumScrollView.delegate=self;
     [self.albumScrollView setScrollEnabled:YES];
     self.albumScrollView.contentSize = CGSizeMake(self.insideView.frame.size.width, self.insideView.frame.size.height);
@@ -60,7 +58,7 @@
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
-    UITapGestureRecognizer * tapGesture = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapPressed:)]autorelease];
+    UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapPressed:)];
     [self.view addGestureRecognizer:tapGesture];
     [self pickerSelectionWasMade:self.imageViewPicker];
     self.pickerSelection = [[self.music getGroups] firstObject];
@@ -145,19 +143,4 @@
     self.albumImageView.image = [UIImage imageNamed: [imagePicker getSelection]];
 }
 
-#pragma mark -dealloc
--(void) dealloc{
-    [_nameTextField release];
-    [_yearTextField release];
-    [_groupPickerView release];
-    [_music release];
-    [_albumScrollView release];
-    [_insideView release];
-    [_fResponder release];
-    [_pickerSelection release];
-    [_albumImagePickerView release];
-    [_albumImageView release];
-    [_imageViewPicker release];
-    [super dealloc];
-}
 @end

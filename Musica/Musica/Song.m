@@ -23,9 +23,4 @@
     return self;
 }
 
--(void) dealloc{
-    [_duration release];
-    [_name release];
-    [super dealloc];
-}
 @end

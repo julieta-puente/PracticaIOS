@@ -31,22 +31,19 @@
 }
 
 - (IBAction)pushAlbumViewController:(UIButton *)sender {
-    AlbumViewController * albumVC= [[[AlbumViewController alloc]initWithNibName:nil bundle:nil withLibrary: self.music]autorelease];
+    AlbumViewController * albumVC= [[AlbumViewController alloc]initWithNibName:nil bundle:nil withLibrary: self.music];
     [self.navigationController pushViewController:albumVC animated:YES];
 }
 
 - (IBAction)pushGroupViewController:(UIButton *)sender {
-    GroupViewController * groupVC= [[[GroupViewController alloc]initWithNibName:nil bundle:nil withLibrary:self.music]autorelease];
+    GroupViewController * groupVC=[[GroupViewController alloc]initWithNibName:nil bundle:nil withLibrary:self.music];
     [self.navigationController pushViewController:groupVC animated:YES];
 }
 
 - (IBAction)pushSongViewController:(UIButton *)sender {
-    SongViewController * songVC= [[[SongViewController alloc]initWithNibName:nil bundle:nil withLibrary: self.music]autorelease];
+    SongViewController * songVC= [[SongViewController alloc]initWithNibName:nil bundle:nil withLibrary: self.music];
     [self.navigationController pushViewController:songVC animated:YES];
 }
 
--(void) dealloc{
-    [_music release];
-    [super dealloc];
-}
+
 @end

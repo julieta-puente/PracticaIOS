@@ -9,7 +9,7 @@
 #import "AlbumDetailViewController.h"
 
 @interface AlbumDetailViewController ()
-@property (retain, nonatomic) UIImage * image;
+@property (strong, nonatomic) UIImage * image;
 @property (copy, nonatomic) NSString * name;
 @property (copy, nonatomic) NSString * group;
 @property (copy, nonatomic) NSString * year;
@@ -31,10 +31,10 @@
 
 - (void)viewDidLoad
 {
+    self.labelGroup.text=self.group;
     self.imageAlbum.image=self.image;
     self.labelName.text=self.name;
     self.labelYear.text=self.year;
-    self.labelGroup.text=self.group;
 
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -46,15 +46,4 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)dealloc {
-    [_imageAlbum release];
-    [_labelName release];
-    [_labelGroup release];
-    [_labelYear release];
-    [_name release];
-    [_group release];
-    [_year release];
-    [_image release];
-    [super dealloc];
-}
 @end

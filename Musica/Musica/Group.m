@@ -26,9 +26,5 @@
 -(NSString *) getStyle{
     return self.style;
 }
--(void) dealloc{
-    [_style release];
-    [_description release];
-    [super dealloc];
-}
+
 @end

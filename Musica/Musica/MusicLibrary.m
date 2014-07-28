@@ -12,9 +12,9 @@
 #import "Song.h"
 
 @interface MusicLibrary()
-@property (retain, nonatomic) NSMutableDictionary * groups;
-@property (retain, nonatomic) NSMutableDictionary * albums;
-@property (retain, nonatomic) NSMutableDictionary * songs;
+@property (strong, nonatomic) NSMutableDictionary * groups;
+@property (strong, nonatomic) NSMutableDictionary * albums;
+@property (strong, nonatomic) NSMutableDictionary * songs;
 @end
 
 @implementation MusicLibrary
@@ -54,7 +54,7 @@
 }
 
 -(void) addGroup:(NSString *)group withStyle:(NSString *)style withDescription:(NSString *)desc{
-    Group * g = [[[Group alloc]initWithStyle:style withDescription:desc]autorelease];
+    Group * g = [[Group alloc]initWithStyle:style withDescription:desc];
     [self.groups setObject:g forKey:group];
 }
 
@@ -68,7 +68,7 @@
 }
 
 -(void) addAlbum:(NSString *)album withYear:(NSString *)year withImageName: (NSString *) imageName forGroup:(NSString *) group{
-    Album * a= [[[Album alloc] initWithName: album withYear:year withImageName:imageName]autorelease];
+    Album * a= [[Album alloc] initWithName: album withYear:year withImageName:imageName];
     NSMutableArray * auxArray = [self.albums objectForKey:group];
     if (auxArray == nil){
         auxArray = [NSMutableArray array];
@@ -88,7 +88,7 @@
 }
 
 -(void) addSong:(NSString *)song withDuration:(NSString *)dur forAlbum:(NSString *)album{
-    Song * s= [[[Song alloc] initWithName:song withDuration:dur]autorelease];
+    Song * s= [[Song alloc] initWithName:song withDuration:dur];
     [self.songs setObject: s forKey:album];
 }
 
@@ -96,10 +96,4 @@
     return [[self.groups objectForKey:group] getStyle];
 }
 
--(void) dealloc{
-    [_groups release];
-    [_songs release];
-    [_albums release];
-    [super dealloc];
-}
 @end

@@ -11,14 +11,14 @@
 
 @interface AlbumViewController : UIViewController 
 
-@property (retain, nonatomic) IBOutlet UITextField * nameTextField;
-@property (retain, nonatomic) IBOutlet UITextField * yearTextField;
-@property (retain, nonatomic) IBOutlet UIPickerView * groupPickerView;
-@property (retain, nonatomic) IBOutlet UIScrollView * albumScrollView;
-@property (retain, nonatomic) IBOutlet UIView * insideView;
+@property (strong, nonatomic) IBOutlet UITextField * nameTextField;
+@property (strong, nonatomic) IBOutlet UITextField * yearTextField;
+@property (strong, nonatomic) IBOutlet UIPickerView * groupPickerView;
+@property (strong, nonatomic) IBOutlet UIScrollView * albumScrollView;
+@property (strong, nonatomic) IBOutlet UIView * insideView;
 
-@property (retain, nonatomic) IBOutlet UIPickerView *albumImagePickerView;
-@property (retain, nonatomic) IBOutlet UIImageView *albumImageView;
+@property (strong, nonatomic) IBOutlet UIPickerView *albumImagePickerView;
+@property (strong, nonatomic) IBOutlet UIImageView *albumImageView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withLibrary: (MusicLibrary*) music;
 - (IBAction)save:(id)sender;

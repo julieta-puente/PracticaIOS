@@ -38,8 +38,8 @@
     self.nameTextField.delegate=self;
     self.albumPickerView.delegate=self;
     self.durationTextField.delegate=self;
-    self.navigationItem.rightBarButtonItem =[[[UIBarButtonItem alloc]
-                                              initWithTitle:@"OK" style: UIBarButtonItemStyleDone target:self action:@selector(save:)] autorelease];
+    self.navigationItem.rightBarButtonItem =[[UIBarButtonItem alloc]
+                                              initWithTitle:@"OK" style: UIBarButtonItemStyleDone target:self action:@selector(save:)];
     self.songScrollView.delegate=self;
     [self.songScrollView setScrollEnabled:YES];
     self.songScrollView.contentSize = CGSizeMake(self.insideView.frame.size.width, self.insideView.frame.size.height);
@@ -51,7 +51,7 @@
                                              selector:@selector(keyboardWillHide:)
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
-    UITapGestureRecognizer * tapGesture = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapPressed:)]autorelease];
+    UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapPressed:)];
     [self.view addGestureRecognizer:tapGesture];
     self.albumNames = [self.music getAlbumNames];
 }
@@ -130,18 +130,4 @@
     [self.fResponder resignFirstResponder];
 }
 
-#pragma mark -dealloc
--(void) dealloc{
-    [_nameTextField release];
-    [_durationTextField release];
-    [_albumPickerView release];
-    [_pickerSelection release];
-    [_music release];
-    [_songScrollView release];
-    [_insideView release];
-    [_fResponder release];
-    [_pickerSelection release];
-    [_albumNames release];
-    [super dealloc];
-}
 @end
