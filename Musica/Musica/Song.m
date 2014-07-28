@@ -9,23 +9,23 @@
 #import "Song.h"
 @interface Song()
 @property (nonatomic,copy) NSString * duration;
-@property (nonatomic,copy) NSString * album;
+@property (nonatomic, copy) NSString * name;
 
 @end
 
 @implementation Song
 
--(id) initWithDur:(NSString *) dur withAlbum: (NSString*) album{
+-(id) initWithName: (NSString *) name withDuration:(NSString *) dur{
     if([super init]){
         self.duration = dur;
-        self.album=album;
+        self.name= name;
     }
     return self;
 }
 
 -(void) dealloc{
-    [_album release];
     [_duration release];
+    [_name release];
     [super dealloc];
 }
 @end

@@ -10,5 +10,5 @@
 
 @interface Song : NSObject
 
--(id) initWithDur:(NSString *) dur withAlbum: (NSString*) album;
+-(id) initWithName: (NSString *) name withDuration:(NSString *) dur;
 @end

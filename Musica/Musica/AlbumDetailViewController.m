@@ -8,13 +8,7 @@
 
 #import "AlbumDetailViewController.h"
 
-@interface AlbumDetailViewController (){
-    UIImageView * _imageAlbum;
-    UILabel * _labelName;
-    UILabel * _labelGroup;
-    UILabel * _labelYear;
-
-}
+@interface AlbumDetailViewController ()
 @property (retain, nonatomic) UIImage * image;
 @property (copy, nonatomic) NSString * name;
 @property (copy, nonatomic) NSString * group;
@@ -22,11 +16,6 @@
 @end
 
 @implementation AlbumDetailViewController
-
-@synthesize imageAlbum=_imageAlbum;
-@synthesize labelName=_labelName;
-@synthesize labelGroup=_labelGroup;
-@synthesize labelYear=_labelYear;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withImage: (UIImage *) image withName: (NSString *) name withGroup: (NSString *) group withYear: (NSString *) year
 {

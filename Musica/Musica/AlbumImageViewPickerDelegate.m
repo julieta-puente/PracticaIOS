@@ -8,22 +8,13 @@
 
 #import "AlbumImageViewPickerDelegate.h"
 
-@interface AlbumImageViewPickerDelegate(){
-    NSArray * _imagesNames;
-    NSString * _selection;
-    id<ImageUpdate> _delegate;
-    
-}
+@interface AlbumImageViewPickerDelegate()
 @property (retain, nonatomic) NSArray * imagesNames;
 @property (copy, nonatomic) NSString * selection;
 
 @end
 
 @implementation AlbumImageViewPickerDelegate
-
-@synthesize imagesNames=_imagesNames;
-@synthesize selection=_selection;
-@synthesize delegate=_delegate;
 
 - (id)init
 {

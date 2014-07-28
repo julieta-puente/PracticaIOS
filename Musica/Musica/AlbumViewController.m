@@ -35,7 +35,7 @@
 - (IBAction)save:(id)sender {
     
 //    self.pickerSelection = [[self.music getGroups] objectAtIndex:[self.groupPickerView selectedRowInComponent:0]];
-    [self.music addAlbum:self.nameTextField.text withYear:self.yearTextField.text withGroup:self.pickerSelection withImageName:[self.imageViewPicker getSelection]];
+    [self.music  addAlbum:self.nameTextField.text withYear:self.yearTextField.text withImageName: [self.imageViewPicker getSelection] forGroup:self.pickerSelection];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

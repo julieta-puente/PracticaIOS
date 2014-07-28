@@ -10,6 +10,7 @@
 #import "AlbumTableViewCell.h"
 #import "MusicLibrary.h"
 #import "AlbumDetailViewController.h"
+#import "Album.h"
 
 
 @interface LibraryViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -17,7 +18,7 @@
 @property (retain, nonatomic) NSArray * tableData;
 @property (retain,nonatomic) MusicLibrary * music;
 @property (retain, nonatomic) AlbumTableViewCell * cellPrototype;
-@property (retain, nonatomic) NSMutableDictionary * groupSection;
+@property (retain, nonatomic) NSDictionary * groupSection;
 
 @end
 
@@ -28,7 +29,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.music=music;
-        self.groupSection = [NSMutableDictionary dictionary];
+        self.groupSection = [self.music getAlbums];
     
     }
     return self;
@@ -47,22 +48,12 @@
 }
 
 -(void) viewDidAppear:(BOOL)animated{
-    for (NSString *  group in [self.music getGroups]) {
-        [self.groupSection setObject: [NSMutableArray array] forKey: group];
-    }
-    for (NSString * album in [self.music getAlbums]) {
-        NSString * group= [self.music groupForAlbum:album];
-        NSMutableArray * albumArray= [self.groupSection objectForKey:group];
-        [albumArray addObject:album];
-        [self.groupSection setObject:albumArray forKey:group];
-    }
     [self.tableViewLibrary reloadData];
     [super viewDidAppear:animated];
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-//    return [[self.music getAlbums]count];
     NSString * name = [self.groupSection allKeys][section];
     return [[self.groupSection objectForKey:name] count];
 }
@@ -88,10 +79,11 @@
 
 -(void) initCellContent: (AlbumTableViewCell *) cell cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString * name = [self.groupSection allKeys][indexPath.section];
-    cell.labelName.text= [self.groupSection objectForKey:name][indexPath.row];
-    cell.labelYear.text= [self.music yearForAlbum:cell.labelName.text];
-    cell.labelGroup.text=[self.music groupForAlbum:cell.labelName.text];
-    cell.imageViewAlbum.image = [UIImage imageNamed:[self.music imageForAlbum:cell.labelName.text]];
+    Album * album= [self.groupSection objectForKey:name][indexPath.row];
+    cell.labelName.text= [album getName];
+    cell.labelYear.text= [album getYear];
+    cell.labelGroup.text=name;
+    cell.imageViewAlbum.image = [UIImage imageNamed:[album getImageName]];
 }
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     return @"Albumes";
@@ -127,13 +119,15 @@
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     AlbumTableViewCell * cell = (AlbumTableViewCell *)[self tableView:self.tableViewLibrary cellForRowAtIndexPath:indexPath];
-    AlbumDetailViewController * albumDetail= [[AlbumDetailViewController alloc] initWithNibName:nil bundle:nil withImage:cell.imageViewAlbum.image withName:cell.labelName.text withGroup:cell.labelGroup.text withYear:cell.labelYear.text];
+    AlbumDetailViewController * albumDetail= [[[AlbumDetailViewController alloc] initWithNibName:nil bundle:nil withImage:cell.imageViewAlbum.image withName:cell.labelName.text withGroup:cell.labelGroup.text withYear:cell.labelYear.text]autorelease];
     [self.navigationController pushViewController:albumDetail animated:YES];
 }
 - (void)dealloc {
     [_tableViewLibrary release];
     [_tableData release];
     [_music release];
+    [_cellPrototype release];
+    [_groupSection release];
     [super dealloc];
 }
 @end

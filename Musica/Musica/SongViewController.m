@@ -12,6 +12,7 @@
 @property (copy, nonatomic) NSString * pickerSelection;
 @property (strong,nonatomic) MusicLibrary * music;
 @property (strong, nonatomic) UIView * fResponder;
+@property (strong, nonatomic) NSArray * albumNames;
 @end
 
 @implementation SongViewController
@@ -26,7 +27,7 @@
 }
 
 - (IBAction)save:(id)sender {
-    [self.music addSong:self.nameTextField.text withDur:self.durationTextField.text withAlbum:self.pickerSelection];
+    [self.music addSong:self.nameTextField.text withDuration:self.durationTextField.text forAlbum:self.pickerSelection];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -52,6 +53,7 @@
                                                object:nil];
     UITapGestureRecognizer * tapGesture = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapPressed:)]autorelease];
     [self.view addGestureRecognizer:tapGesture];
+    self.albumNames = [self.music getAlbumNames];
 }
 
 - (void)didReceiveMemoryWarning
@@ -109,17 +111,17 @@
 
 // returns the # of rows in each component..
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-    return [[self.music getAlbums] count];
+    return [self.albumNames count];
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return [self.music getAlbums] [row];
+    return self.albumNames[row];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    self.pickerSelection = [self.music getAlbums][row];
+    self.pickerSelection = self.albumNames[row];
 }
 
 #pragma mark - gesture
@@ -139,6 +141,7 @@
     [_insideView release];
     [_fResponder release];
     [_pickerSelection release];
+    [_albumNames release];
     [super dealloc];
 }
 @end

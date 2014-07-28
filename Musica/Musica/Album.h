@@ -10,8 +10,8 @@
 
 @interface Album : NSObject
 
--(id) initWithYear:(NSString *) year withGroup: (NSString*) group withImage: (NSString *) imageName;
--(NSString *) getGroup;
+-(id) initWithName: (NSString *) name withYear:(NSString *) year withImageName: (NSString *) imageName;
 -(NSString *) getYear;
 -(NSString *) getImageName;
+-(NSString *) getName;
 @end
