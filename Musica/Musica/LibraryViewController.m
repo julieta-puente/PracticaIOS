@@ -20,7 +20,7 @@
 @property (strong,nonatomic) MusicLibrary * music;
 @property (strong, nonatomic) AlbumTableViewCell * cellPrototype;
 @property (strong, nonatomic) NSDictionary * groupSection;
-@property (strong, nonatomic) HeaderView * headerView;
+@property (strong, nonatomic) HeaderView * headerPrototype;
 
 @end
 
@@ -45,6 +45,9 @@
     NSString * cellIdentifier =@"CellIdentifier";
     [self.tableViewLibrary registerNib:[UINib nibWithNibName:@"AlbumTableViewCell" bundle:nil] forCellReuseIdentifier:cellIdentifier];
     self.cellPrototype = [self.tableViewLibrary dequeueReusableCellWithIdentifier:cellIdentifier];
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"HeaderView" owner:self options:nil];
+    self.headerPrototype = [nib objectAtIndex:0];
+    
 }
 
 -(void) viewDidAppear:(BOOL)animated{
@@ -67,12 +70,6 @@
     static NSString * cellIdentifier = @"CellIdentifier";
     
     AlbumTableViewCell * cell = (AlbumTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    
-    if (cell == nil) {
-        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"AlbumTableViewCell" owner:self options:nil];
-        cell = [nib objectAtIndex:0];
-   }
-  
     [self initCellContent:cell cellForRowAtIndexPath:indexPath];
     return cell;
 }
@@ -87,11 +84,11 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    self.headerView = [[HeaderView alloc]init];
+    HeaderView * headerView;
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"HeaderView" owner:self options:nil];
-    self.headerView = [nib objectAtIndex:0];
-    [self initHeader:self.headerView inSection:section];
-    return self.headerView;
+    headerView = [nib objectAtIndex:0];
+    [self initHeader:headerView inSection:section];
+    return headerView;
 }
 
 -(void)initHeader:(HeaderView *) headerView inSection: (NSInteger)section{
@@ -100,8 +97,12 @@
 }
 
 -(CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    [self initHeader:self.headerView inSection:section];
-    return [self.headerView systemLayoutSizeFittingSize:UILayoutFittingExpandedSize ].height+1;
+    [self initHeader:self.headerPrototype inSection:section];
+    return [self.headerPrototype systemLayoutSizeFittingSize:UILayoutFittingExpandedSize ].height+1;
+}
+
+-(CGFloat) tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section{
+    return 25.f;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

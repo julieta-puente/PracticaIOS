@@ -10,15 +10,14 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label Label Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="157" translatesAutoresizingMaskIntoConstraints="NO" id="e4N-Nq-k6X">
-                    <rect key="frame" x="10" y="4" width="157" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="label label la " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="h1A-C2-rNK">
+                    <rect key="frame" x="10" y="4" width="100" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="42" translatesAutoresizingMaskIntoConstraints="NO" id="Ib7-WS-NvF">
-                    <rect key="frame" x="177" y="4" width="42" height="21"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="42" translatesAutoresizingMaskIntoConstraints="NO" id="kID-RC-C6t">
+                    <rect key="frame" x="149" y="4" width="42" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
@@ -26,19 +25,17 @@
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="Ib7-WS-NvF" secondAttribute="bottom" constant="5" id="XzY-FO-FdO"/>
-                <constraint firstItem="Ib7-WS-NvF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="cWr-cK-pg9"/>
-                <constraint firstItem="Ib7-WS-NvF" firstAttribute="leading" secondItem="e4N-Nq-k6X" secondAttribute="trailing" constant="10" id="i2g-jd-spb"/>
-                <constraint firstAttribute="trailing" secondItem="Ib7-WS-NvF" secondAttribute="trailing" constant="101" id="js2-hU-QL6"/>
-                <constraint firstAttribute="centerY" secondItem="e4N-Nq-k6X" secondAttribute="centerY" id="ni5-zX-g83"/>
-                <constraint firstAttribute="centerY" secondItem="Ib7-WS-NvF" secondAttribute="centerY" constant="0.5" id="sl6-kW-Uoq"/>
-                <constraint firstItem="e4N-Nq-k6X" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="w0j-Eo-pg7"/>
+                <constraint firstItem="h1A-C2-rNK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="6Hl-Lk-GGF"/>
+                <constraint firstItem="kID-RC-C6t" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="ZaZ-UN-TSC"/>
+                <constraint firstAttribute="centerY" secondItem="kID-RC-C6t" secondAttribute="centerY" constant="0.5" id="hNA-N5-GYn"/>
+                <constraint firstAttribute="trailing" secondItem="kID-RC-C6t" secondAttribute="trailing" constant="129" id="lT0-Rp-qc9"/>
+                <constraint firstItem="h1A-C2-rNK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="sLM-qS-TuK"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="labelGroup" destination="e4N-Nq-k6X" id="KWP-bY-T1L"/>
-                <outlet property="labelStyle" destination="Ib7-WS-NvF" id="kIv-Ob-HX7"/>
+                <outlet property="labelGroup" destination="h1A-C2-rNK" id="BVO-vn-AnF"/>
+                <outlet property="labelStyle" destination="kID-RC-C6t" id="zzJ-dF-rzd"/>
             </connections>
         </view>
     </objects>
