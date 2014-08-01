@@ -23,7 +23,6 @@
     libraryViewController.title= @"Biblioteca";
     UINavigationController * navController =[[UINavigationController alloc]initWithRootViewController: mainViewController];
     UINavigationController * navControllerLibrary =[[UINavigationController alloc]initWithRootViewController: libraryViewController];
-    
     UITabBarController * tabController = [[UITabBarController alloc] initWithNibName:nil bundle:nil];
     [tabController setViewControllers:@[navController, navControllerLibrary]];
     self.window.rootViewController= tabController;

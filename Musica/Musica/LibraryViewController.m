@@ -102,7 +102,7 @@
 }
 
 -(CGFloat) tableView:(UITableView *)tableView estimatedHeightForHeaderInSection:(NSInteger)section{
-    return 25.f;
+    return 40.f;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -116,8 +116,9 @@
 }
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    AlbumTableViewCell * cell = (AlbumTableViewCell *)[self tableView:self.tableViewLibrary cellForRowAtIndexPath:indexPath];
-    AlbumDetailViewController * albumDetail= [[AlbumDetailViewController alloc] initWithNibName:nil bundle:nil withImage:cell.imageViewAlbum.image withName:cell.labelName.text withGroup:cell.labelGroup.text withYear:cell.labelYear.text];
+    NSString * group = [self.groupSection allKeys][indexPath.section];
+    Album * album = [self.groupSection objectForKey:group][indexPath.row];
+    AlbumDetailViewController * albumDetail= [[AlbumDetailViewController alloc] initWithNibName:nil bundle:nil withAlbum:album withGroup: group];
     [self.navigationController pushViewController:albumDetail animated:YES];
     [self.tableViewLibrary deselectRowAtIndexPath:indexPath animated:YES];
 }

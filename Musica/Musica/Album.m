@@ -9,9 +9,7 @@
 #import "Album.h"
 @interface Album()
 
-@property (nonatomic,copy) NSString * name;
-@property (nonatomic,copy) NSString * year;
-@property (nonatomic, strong) NSString * imageName;
+
 @end
 
 @implementation Album

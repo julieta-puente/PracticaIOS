@@ -14,4 +14,8 @@
 -(NSString *) getYear;
 -(NSString *) getImageName;
 -(NSString *) getName;
+
+@property (nonatomic,copy) NSString * name;
+@property (nonatomic,copy) NSString * year;
+@property (nonatomic, strong) NSString * imageName;
 @end
