@@ -7,7 +7,7 @@
 //
 
 #import "Album.h"
-@interface Album()
+@interface Album()<NSCoding>
 
 
 @end
@@ -23,6 +23,19 @@
     return self;
 }
 
+- (void)encodeWithCoder:(NSCoder *)encoder{
+    [encoder encodeObject:self.name forKey:@"name"];
+    [encoder encodeObject:self.year forKey:@"year"];
+    [encoder encodeObject:self.imageName forKey:@"imageName"];
+}
+- (id)initWithCoder:(NSCoder *)decoder{
+    if (self = [super init]) {
+        self.name = [decoder decodeObjectForKey:@"name"];
+        self.year = [decoder decodeObjectForKey:@"year"];
+        self.imageName = [decoder decodeObjectForKey:@"imageName"];
+    }
+    return self;
+}
 
 -(NSString *) getYear{
     return self.year;
@@ -36,4 +49,7 @@
     return self.name;
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat: @"Album: Nombre=%@ Año=%@", self.name, self.year];
+}
 @end

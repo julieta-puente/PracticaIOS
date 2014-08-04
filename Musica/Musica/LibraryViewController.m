@@ -47,14 +47,46 @@
     self.cellPrototype = [self.tableViewLibrary dequeueReusableCellWithIdentifier:cellIdentifier];
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"HeaderView" owner:self options:nil];
     self.headerPrototype = [nib objectAtIndex:0];
-    
+    self.navigationItem.rightBarButtonItem =[[UIBarButtonItem alloc]
+                                             initWithTitle:@"Exportar" style: UIBarButtonItemStyleDone target:self action:@selector(export:)] ;
 }
 
 -(void) viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self.tableViewLibrary reloadData];
 }
+#pragma mark - File System
 
+-(void) export: (id) sender{
+    NSFileManager * filemg;
+    filemg = [NSFileManager defaultManager];
+    NSMutableData * data=[[NSMutableData alloc] init];
+    NSKeyedArchiver* archiver=[[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+    for (NSString * key in [self.groupSection allKeys]) {
+        NSData * albumArray = [self.groupSection objectForKey:key];
+        [archiver encodeObject:key forKey:[NSString stringWithFormat:@"Group:%@",key ]];
+        [archiver encodeObject:albumArray forKey:[NSString stringWithFormat:@"AlbumFor:%@",key ]];
+    }
+    [archiver finishEncoding];
+    [filemg createFileAtPath: @"/Users/jpuente/Documents/newfile.txt" contents: data attributes: nil];
+
+}
+//-(void) load{
+//    NSDictionary * ret;
+//    NSData* data=[NSData dataWithContentsOfFile:@"/Users/jpuente/Documents/newfile.txt"];
+//    if (data)
+//    {
+//        NSKeyedUnarchiver* unarchiver=[[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+//        if (unarchiver)
+//        {
+//                ret=(NSDictionary*)[unarchiver decodeObjectForKey:@"AlbumArray"];
+//            [unarchiver finishDecoding];
+//        }
+//    }
+//    NSLog(@"%@", [[ret objectForKey:@"The Beatles" ] objectAtIndex:0]);
+//}
+
+#pragma mark - table
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     NSString * name = [self.groupSection allKeys][section];
