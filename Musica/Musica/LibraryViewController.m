@@ -58,20 +58,54 @@
 #pragma mark - File System
 
 -(void) export: (id) sender{
-    NSFileManager * filemg;
-    filemg = [NSFileManager defaultManager];
-    NSMutableData * data=[[NSMutableData alloc] init];
-    NSKeyedArchiver* archiver=[[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
-    for (NSString * key in [self.groupSection allKeys]) {
-        NSData * albumArray = [self.groupSection objectForKey:key];
-        [archiver encodeObject:key forKey:[NSString stringWithFormat:@"Group:%@",key ]];
-        [archiver encodeObject:albumArray forKey:[NSString stringWithFormat:@"AlbumFor:%@",key ]];
-    }
+//    NSFileManager * filemg;
+//    filemg = [NSFileManager defaultManager];
+//    NSMutableData * data=[[NSMutableData alloc] init];
+//    NSKeyedArchiver* archiver=[[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+//    for (NSString * key in [self.groupSection allKeys]) {
+//        NSData * albumArray = [self.groupSection objectForKey:key];
+//        [archiver encodeObject:key forKey:[NSString stringWithFormat:@"Group:%@",key ]];
+//        [archiver encodeObject:albumArray forKey:[NSString stringWithFormat:@"AlbumFor:%@",key ]];
+//    }
+//    [archiver finishEncoding];
+//    [filemg createFileAtPath: @"/Users/jpuente/Documents/newfile2.txt" contents: data attributes: nil];
+    NSError *error;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectoryPath = [paths objectAtIndex:0];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    [fileManager createDirectoryAtPath:documentsDirectoryPath withIntermediateDirectories:YES attributes:nil error:&error];
+    
+    NSString *filePath =  [documentsDirectoryPath stringByAppendingPathComponent:@"SomeFile.txt"];
+
+    NSMutableData *data = [[NSMutableData alloc] init];
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:data];
+    NSArray * albumArray = [self.groupSection objectForKey:@"Queen"];
+    [archiver encodeObject:albumArray forKey:@"Album"];
     [archiver finishEncoding];
-    [filemg createFileAtPath: @"/Users/jpuente/Documents/newfile.txt" contents: data attributes: nil];
+    [data writeToFile:filePath atomically:YES];
+    NSLog(@"%@", filePath);
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]){
+        NSLog(@"El archivo se encontro");
+    }
+    
+    
+     NSArray * myData=[NSKeyedUnarchiver unarchiveObjectWithFile:filePath];
+     NSLog(@"%@", [myData objectAtIndex:0]);
+   // [self load];
+//load the saved data
+//    NSString *dataPath = [documentsDirectoryPath stringByAppendingPathComponent: @"SomeFile.txt"];
+//    NSData *codedData = [[NSData alloc] initWithContentsOfFile:dataPath];
+//
+//    
+//    NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:codedData];
+//    
+//    NSArray * myData;
+//    myData = (NSArray *)[unarchiver decodeObjectForKey:@"Album"];
+//    [unarchiver finishDecoding];
+//     NSLog(@"%@", [myData objectAtIndex:0]);
 
 }
-//-(void) load{
+-(void) load{
 //    NSDictionary * ret;
 //    NSData* data=[NSData dataWithContentsOfFile:@"/Users/jpuente/Documents/newfile.txt"];
 //    if (data)
@@ -84,7 +118,19 @@
 //        }
 //    }
 //    NSLog(@"%@", [[ret objectForKey:@"The Beatles" ] objectAtIndex:0]);
-//}
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectoryPath = [paths objectAtIndex:0];
+    NSString *dataPath = [documentsDirectoryPath stringByAppendingPathComponent: @"SomeFile.txt"];
+    NSData *codedData = [[NSData alloc] initWithContentsOfFile:dataPath];
+
+
+    NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:codedData];
+
+    NSArray * myData;
+    myData = (NSArray *)[unarchiver decodeObjectForKey:@"Album"];
+    [unarchiver finishDecoding];
+     NSLog(@"%@", [myData objectAtIndex:0]);
+}
 
 #pragma mark - table
 
