@@ -8,6 +8,8 @@
 
 #import "AlbumViewController.h"
 #import "AlbumImageViewPickerDelegate.h"
+#import "MBProgressHUD.h"
+
 
 @interface AlbumViewController () <UIPickerViewDelegate,UITextViewDelegate,UIPickerViewDataSource,UITextFieldDelegate,UIScrollViewDelegate,ImageUpdate>
 @property (copy, nonatomic) NSString * pickerSelection;
@@ -27,19 +29,15 @@
         self.music=music;
         self.imageViewPicker=[[AlbumImageViewPickerDelegate alloc]init];
         self.imageViewPicker.delegate=self;
-        
     }
     return self;
 }
 
-- (IBAction)save:(id)sender {
-    [self.music  addAlbum:self.nameTextField.text withYear:self.yearTextField.text withImageName: [self.imageViewPicker getSelection] forGroup:self.pickerSelection];
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 - (void)viewDidLoad
 {
+   
     [super viewDidLoad];
+    
     self.title= @"Album";
     self.nameTextField.delegate=self;
     self.yearTextField.delegate=self;
@@ -65,10 +63,20 @@
 
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark- Save Object
+- (IBAction)save:(id)sender {
+    MBProgressHUD * HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    HUD.labelText = @"Guardando";
+    HUD.detailsLabelText = @"Por favor espere";
+    HUD.mode = MBProgressHUDModeIndeterminate;
+    [self.view addSubview:HUD];
+    [HUD showWhileExecuting:@selector(popView) onTarget:self withObject:nil animated:YES];
+    
+}
+-(void) popView{
+    [self.music  addAlbum:self.nameTextField.text withYear:self.yearTextField.text withImageName: [self.imageViewPicker getSelection] forGroup:self.pickerSelection];
+    sleep(1.5);
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "MusicLibrary.h"
+@class LibraryViewController;
 
 @interface LibraryViewController : UIViewController
 
 
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withMusic: (MusicLibrary *) music;
+
 @end

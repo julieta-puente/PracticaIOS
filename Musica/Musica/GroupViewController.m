@@ -7,6 +7,7 @@
 //
 
 #import "GroupViewController.h"
+#import "MBProgressHUD.h"
 
 @interface GroupViewController () <UITextFieldDelegate, UITextViewDelegate,UIScrollViewDelegate,UIGestureRecognizerDelegate>
 @property (strong,nonatomic) MusicLibrary * music;
@@ -23,11 +24,6 @@
         self.music= music;
     }
     return self;
-}
-
-- (IBAction)save:(id)sender {
-    [self.music addGroup:self.nameTextField.text withStyle: self.styleTextField.text withDescription:self.descriptionTextView.text];
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewDidLoad
@@ -57,11 +53,20 @@
 
  
 }
+#pragma mark- Save Object
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)save:(id)sender {
+    MBProgressHUD * HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    HUD.labelText = @"Guardando";
+    HUD.detailsLabelText = @"Por favor espere";
+    HUD.mode = MBProgressHUDModeIndeterminate;
+    [self.view addSubview:HUD];
+    [HUD showWhileExecuting:@selector(popView) onTarget:self withObject:nil animated:YES];
+}
+-(void) popView{
+    [self.music addGroup:self.nameTextField.text withStyle: self.styleTextField.text withDescription:self.descriptionTextView.text];
+    sleep(1.5);
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - First Responder

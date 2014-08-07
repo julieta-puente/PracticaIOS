@@ -7,7 +7,7 @@
 //
 
 #import "SongViewController.h"
-
+#import "MBProgressHUD.h"
 @interface SongViewController () <UIPickerViewDelegate,UIPickerViewDataSource,UITextViewDelegate,UITextFieldDelegate,UIScrollViewDelegate>
 @property (copy, nonatomic) NSString * pickerSelection;
 @property (strong,nonatomic) MusicLibrary * music;
@@ -26,10 +26,6 @@
     return self;
 }
 
-- (IBAction)save:(id)sender {
-    [self.music addSong:self.nameTextField.text withDuration:self.durationTextField.text forAlbum:self.pickerSelection];
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 - (void)viewDidLoad
 {
@@ -54,13 +50,27 @@
     UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapPressed:)];
     [self.view addGestureRecognizer:tapGesture];
     self.albumNames = [self.music getAlbumNames];
+    self.pickerSelection = [self.albumNames firstObject];
+    
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark- Save Object
+
+- (IBAction)save:(id)sender {
+    MBProgressHUD * HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    HUD.labelText = @"Guardando";
+    HUD.detailsLabelText = @"Por favor espere";
+    HUD.mode = MBProgressHUDModeIndeterminate;
+    [self.view addSubview:HUD];
+    [HUD showWhileExecuting:@selector(popView) onTarget:self withObject:nil animated:YES];
+    
 }
+-(void) popView{
+    [self.music addSong:self.nameTextField.text withDuration:self.durationTextField.text forAlbum:self.pickerSelection];
+    sleep(1.5);
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 #pragma mark - First Responder
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
@@ -74,7 +84,7 @@
 
 #pragma mark - Keyboard
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField;  {
+- (BOOL)textFieldShouldReturn:(UITextField *)textField  {
     [textField resignFirstResponder];
     return YES;
 }
