@@ -26,8 +26,18 @@
 		4D7BF439197D5D3F00274E66 /* LibraryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D7BF437197D5D3F00274E66 /* LibraryViewController.xib */; };
 		4D7BF43D197D7B1500274E66 /* AlbumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D7BF43B197D7B1500274E66 /* AlbumTableViewCell.m */; };
 		4D7BF43E197D7B1500274E66 /* AlbumTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D7BF43C197D7B1500274E66 /* AlbumTableViewCell.xib */; };
+		4D815BF219951DA6008577DF /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D815BF019951DA6008577DF /* SearchViewController.m */; };
+		4D815BF319951DA6008577DF /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D815BF119951DA6008577DF /* SearchViewController.xib */; };
+		4D815BF719951F3B008577DF /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D815BF519951F3A008577DF /* SearchTableViewCell.m */; };
+		4D815BF819951F3B008577DF /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D815BF619951F3A008577DF /* SearchTableViewCell.xib */; };
+		4D860EC21998EF53007B80E0 /* SearchedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D860EC11998EF53007B80E0 /* SearchedObject.m */; };
+		4D860EC619991C15007B80E0 /* SearchBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D860EC419991C15007B80E0 /* SearchBarViewController.m */; };
+		4D860EC719991C15007B80E0 /* SearchBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D860EC519991C15007B80E0 /* SearchBarViewController.xib */; };
 		4D8A18AA1986A9640062D162 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8A18A91986A9640062D162 /* HeaderView.m */; };
 		4D8A18AC1986A97E0062D162 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8A18AB1986A97E0062D162 /* HeaderView.xib */; };
+		4D9BC06D199A4F5F000C328B /* NoResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9BC06B199A4F5F000C328B /* NoResultViewController.m */; };
+		4D9BC06E199A4F5F000C328B /* NoResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D9BC06C199A4F5F000C328B /* NoResultViewController.xib */; };
+		4D9BC073199A7DCC000C328B /* SearchService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9BC072199A7DCC000C328B /* SearchService.m */; };
 		4DAE0328199275310078DEB4 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAE0327199275310078DEB4 /* MBProgressHUD.m */; };
 		4DC06AC3197EA787007376DD /* oasis.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4DC06AC0197EA787007376DD /* oasis.jpg */; };
 		4DC06AC4197EA787007376DD /* thebeatles.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4DC06AC1197EA787007376DD /* thebeatles.jpg */; };
@@ -88,9 +98,25 @@
 		4D7BF43A197D7B1500274E66 /* AlbumTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumTableViewCell.h; sourceTree = "<group>"; };
 		4D7BF43B197D7B1500274E66 /* AlbumTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumTableViewCell.m; sourceTree = "<group>"; };
 		4D7BF43C197D7B1500274E66 /* AlbumTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlbumTableViewCell.xib; sourceTree = "<group>"; };
+		4D815BEF19951DA6008577DF /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		4D815BF019951DA6008577DF /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		4D815BF119951DA6008577DF /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		4D815BF419951F3A008577DF /* SearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewCell.h; sourceTree = "<group>"; };
+		4D815BF519951F3A008577DF /* SearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewCell.m; sourceTree = "<group>"; };
+		4D815BF619951F3A008577DF /* SearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
+		4D860EC01998EF53007B80E0 /* SearchedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchedObject.h; sourceTree = "<group>"; };
+		4D860EC11998EF53007B80E0 /* SearchedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchedObject.m; sourceTree = "<group>"; };
+		4D860EC319991C15007B80E0 /* SearchBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBarViewController.h; sourceTree = "<group>"; };
+		4D860EC419991C15007B80E0 /* SearchBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchBarViewController.m; sourceTree = "<group>"; };
+		4D860EC519991C15007B80E0 /* SearchBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchBarViewController.xib; sourceTree = "<group>"; };
 		4D8A18A81986A9640062D162 /* HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
 		4D8A18A91986A9640062D162 /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
 		4D8A18AB1986A97E0062D162 /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HeaderView.xib; path = ../HeaderView.xib; sourceTree = "<group>"; };
+		4D9BC06A199A4F5F000C328B /* NoResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoResultViewController.h; sourceTree = "<group>"; };
+		4D9BC06B199A4F5F000C328B /* NoResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoResultViewController.m; sourceTree = "<group>"; };
+		4D9BC06C199A4F5F000C328B /* NoResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoResultViewController.xib; sourceTree = "<group>"; };
+		4D9BC071199A7DCC000C328B /* SearchService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchService.h; sourceTree = "<group>"; };
+		4D9BC072199A7DCC000C328B /* SearchService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchService.m; sourceTree = "<group>"; };
 		4DAE0326199275310078DEB4 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		4DAE0327199275310078DEB4 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		4DC06AC0197EA787007376DD /* oasis.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = oasis.jpg; sourceTree = "<group>"; };
@@ -215,8 +241,24 @@
 				4D4C9F1319745E88004541F8 /* Album.m */,
 				4D588953197561C00042A3E9 /* Song.h */,
 				4D588954197561C00042A3E9 /* Song.m */,
+				4D815BEF19951DA6008577DF /* SearchViewController.h */,
+				4D815BF019951DA6008577DF /* SearchViewController.m */,
+				4D815BF119951DA6008577DF /* SearchViewController.xib */,
+				4D815BF419951F3A008577DF /* SearchTableViewCell.h */,
+				4D815BF519951F3A008577DF /* SearchTableViewCell.m */,
+				4D815BF619951F3A008577DF /* SearchTableViewCell.xib */,
 				4DFEC9F219741BF7009B6499 /* Images.xcassets */,
 				4DFEC9E719741BF7009B6499 /* Supporting Files */,
+				4D860EC01998EF53007B80E0 /* SearchedObject.h */,
+				4D860EC11998EF53007B80E0 /* SearchedObject.m */,
+				4D860EC319991C15007B80E0 /* SearchBarViewController.h */,
+				4D860EC419991C15007B80E0 /* SearchBarViewController.m */,
+				4D860EC519991C15007B80E0 /* SearchBarViewController.xib */,
+				4D9BC06A199A4F5F000C328B /* NoResultViewController.h */,
+				4D9BC06B199A4F5F000C328B /* NoResultViewController.m */,
+				4D9BC06C199A4F5F000C328B /* NoResultViewController.xib */,
+				4D9BC071199A7DCC000C328B /* SearchService.h */,
+				4D9BC072199A7DCC000C328B /* SearchService.m */,
 			);
 			path = Musica;
 			sourceTree = "<group>";
@@ -326,16 +368,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D58BCF2197FFE2B00CC31E6 /* AlbumDetailViewController.xib in Resources */,
+				4D815BF819951F3B008577DF /* SearchTableViewCell.xib in Resources */,
 				4D4C9F0119741F9A004541F8 /* GroupViewController.xib in Resources */,
 				4DC06AC4197EA787007376DD /* thebeatles.jpg in Resources */,
+				4D9BC06E199A4F5F000C328B /* NoResultViewController.xib in Resources */,
 				4D58BCED197FE89600CC31E6 /* queen.jpg in Resources */,
 				4DFEC9EB19741BF7009B6499 /* InfoPlist.strings in Resources */,
 				4DC06AC5197EA787007376DD /* thedoors.jpg in Resources */,
 				4D4C9EFC19741CDB004541F8 /* MainViewController.xib in Resources */,
 				4D7BF43E197D7B1500274E66 /* AlbumTableViewCell.xib in Resources */,
+				4D815BF319951DA6008577DF /* SearchViewController.xib in Resources */,
 				4D7BF439197D5D3F00274E66 /* LibraryViewController.xib in Resources */,
 				4D4C9F0B197421FB004541F8 /* SongViewController.xib in Resources */,
 				4DC06AC3197EA787007376DD /* oasis.jpg in Resources */,
+				4D860EC719991C15007B80E0 /* SearchBarViewController.xib in Resources */,
 				4DFEC9F319741BF7009B6499 /* Images.xcassets in Resources */,
 				4D4C9F0619742146004541F8 /* AlbumViewController.xib in Resources */,
 				4D8A18AC1986A97E0062D162 /* HeaderView.xib in Resources */,
@@ -362,17 +408,23 @@
 				4D4C9F0019741F9A004541F8 /* GroupViewController.m in Sources */,
 				4D7BF438197D5D3F00274E66 /* LibraryViewController.m in Sources */,
 				4D4C9F0519742146004541F8 /* AlbumViewController.m in Sources */,
+				4D815BF719951F3B008577DF /* SearchTableViewCell.m in Sources */,
+				4D815BF219951DA6008577DF /* SearchViewController.m in Sources */,
 				4DFEC9F119741BF7009B6499 /* AppDelegate.m in Sources */,
 				4D4C9F0A197421FB004541F8 /* SongViewController.m in Sources */,
 				4D4C9F0E19744376004541F8 /* MusicLibrary.m in Sources */,
 				4D7BF43D197D7B1500274E66 /* AlbumTableViewCell.m in Sources */,
+				4D9BC06D199A4F5F000C328B /* NoResultViewController.m in Sources */,
 				4D4C9EFB19741CDB004541F8 /* MainViewController.m in Sources */,
 				4DC06ACE197EADF1007376DD /* AlbumImageViewPickerDelegate.m in Sources */,
 				4D4C9F1419745E88004541F8 /* Album.m in Sources */,
+				4D860EC619991C15007B80E0 /* SearchBarViewController.m in Sources */,
 				4DFEC9ED19741BF7009B6499 /* main.m in Sources */,
 				4D4C9F11197452E3004541F8 /* Group.m in Sources */,
+				4D860EC21998EF53007B80E0 /* SearchedObject.m in Sources */,
 				4D58BCF1197FFE2B00CC31E6 /* AlbumDetailViewController.m in Sources */,
 				4DAE0328199275310078DEB4 /* MBProgressHUD.m in Sources */,
+				4D9BC073199A7DCC000C328B /* SearchService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
