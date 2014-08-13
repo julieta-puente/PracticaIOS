@@ -49,8 +49,25 @@
     [cell.labelTitle setText:obj.title];
     [cell.labelPrice setText:[NSString stringWithFormat:@"$ %@", obj.price ]];
     NSURL *url = [NSURL URLWithString:obj.thumbnail];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    cell.imageViewSearch.image= [UIImage imageWithData:data];
+//    NSData *data = [NSData dataWithContentsOfURL:url];
+//    cell.imageViewSearch.image= [UIImage imageWithData:data];
+    
+    NSURLSession *delegateFreeSession = [NSURLSession sessionWithConfiguration: [NSURLSessionConfiguration defaultSessionConfiguration] delegate: nil delegateQueue: [NSOperationQueue mainQueue]];
+    UIActivityIndicatorView * spinner= [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    spinner.center = CGPointMake(cell.imageView.center.x +270,cell.imageView.center.y+30);
+    [[cell contentView] addSubview:spinner];
+    [spinner startAnimating];
+    [[delegateFreeSession dataTaskWithURL: url
+                        completionHandler:^(NSData *data, NSURLResponse *response,
+                                            NSError *error) {
+                            NSLog(@"Got response %@ with error %@.\n", response, error);
+                            NSLog(@"DATA:\n%@\nEND DATA\n",
+                                  [[NSString alloc] initWithData: data
+                                                        encoding: NSUTF8StringEncoding]);
+                            cell.imageViewSearch.image= [UIImage imageWithData:data];
+                            [spinner stopAnimating];
+                        }] resume];
+
 }
 
 

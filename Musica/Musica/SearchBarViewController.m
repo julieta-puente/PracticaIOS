@@ -74,6 +74,7 @@
     self.HUD.labelText = @"Buscando";
     self.HUD.detailsLabelText = @"Por favor espere";
     self.HUD.mode = MBProgressHUDModeIndeterminate;
+    self.HUD.yOffset = -30.0;
     [self.HUD show:YES];
     [self.view addSubview:self.HUD];
 }
