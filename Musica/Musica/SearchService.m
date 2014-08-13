@@ -7,6 +7,7 @@
 //
 
 #import "SearchService.h"
+#import "SearchedObject.h"
 
 @interface SearchService()
 @property (copy,nonatomic) NSString * searchString;
@@ -20,10 +21,44 @@
         if (error) {
             [self.delegate fetchFailed:error];
         } else {
-            [self.delegate receivedJSON:data];
+            [self receivedJSON:data];
         }
     }];
 
 }
 
+
+-(void) receivedJSON:(NSData *) data{
+    NSError *localError = nil;
+    NSDictionary *parsedObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:&localError];
+    
+    if (localError != nil) {
+        NSLog(@"%@", localError);
+        return;
+    }
+    
+    NSMutableArray * objects = [[NSMutableArray alloc] init];
+    
+    NSArray *results = [parsedObject valueForKey:@"results"];
+    
+    if( [results count] == 0){
+        [self.delegate noResultsFound];
+    }else{
+        
+        for (NSDictionary * objDic in results) {
+            SearchedObject * obj = [[SearchedObject alloc] init];
+            
+            for (NSString *key in objDic) {
+                if ([obj respondsToSelector:NSSelectorFromString(key)]) {
+                    [obj setValue:[objDic valueForKey:key] forKey:key];
+                }
+            }
+            
+            [objects addObject:obj];
+        }
+        [self.delegate resultsReceived:objects];
+    }
+    
+    
+}
 @end

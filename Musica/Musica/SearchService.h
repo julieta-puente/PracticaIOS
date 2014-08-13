@@ -10,7 +10,8 @@
 
 @protocol ComunicatorResponse
 -(void) fetchFailed:(NSError *) error;
--(void) receivedJSON:(NSData *) data;
+-(void) noResultsFound;
+-(void) resultsReceived:(NSArray *) results;
 @end
 
 @interface SearchService : NSObject

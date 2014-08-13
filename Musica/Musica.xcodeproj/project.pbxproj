@@ -38,6 +38,7 @@
 		4D9BC06D199A4F5F000C328B /* NoResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9BC06B199A4F5F000C328B /* NoResultViewController.m */; };
 		4D9BC06E199A4F5F000C328B /* NoResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D9BC06C199A4F5F000C328B /* NoResultViewController.xib */; };
 		4D9BC073199A7DCC000C328B /* SearchService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9BC072199A7DCC000C328B /* SearchService.m */; };
+		4D9BC078199BA7AD000C328B /* KeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9BC077199BA7AD000C328B /* KeyboardToolbar.m */; };
 		4DAE0328199275310078DEB4 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAE0327199275310078DEB4 /* MBProgressHUD.m */; };
 		4DC06AC3197EA787007376DD /* oasis.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4DC06AC0197EA787007376DD /* oasis.jpg */; };
 		4DC06AC4197EA787007376DD /* thebeatles.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4DC06AC1197EA787007376DD /* thebeatles.jpg */; };
@@ -117,6 +118,8 @@
 		4D9BC06C199A4F5F000C328B /* NoResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoResultViewController.xib; sourceTree = "<group>"; };
 		4D9BC071199A7DCC000C328B /* SearchService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchService.h; sourceTree = "<group>"; };
 		4D9BC072199A7DCC000C328B /* SearchService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchService.m; sourceTree = "<group>"; };
+		4D9BC076199BA7AD000C328B /* KeyboardToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardToolbar.h; sourceTree = "<group>"; };
+		4D9BC077199BA7AD000C328B /* KeyboardToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardToolbar.m; sourceTree = "<group>"; };
 		4DAE0326199275310078DEB4 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		4DAE0327199275310078DEB4 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		4DC06AC0197EA787007376DD /* oasis.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = oasis.jpg; sourceTree = "<group>"; };
@@ -259,6 +262,8 @@
 				4D9BC06C199A4F5F000C328B /* NoResultViewController.xib */,
 				4D9BC071199A7DCC000C328B /* SearchService.h */,
 				4D9BC072199A7DCC000C328B /* SearchService.m */,
+				4D9BC076199BA7AD000C328B /* KeyboardToolbar.h */,
+				4D9BC077199BA7AD000C328B /* KeyboardToolbar.m */,
 			);
 			path = Musica;
 			sourceTree = "<group>";
@@ -419,6 +424,7 @@
 				4DC06ACE197EADF1007376DD /* AlbumImageViewPickerDelegate.m in Sources */,
 				4D4C9F1419745E88004541F8 /* Album.m in Sources */,
 				4D860EC619991C15007B80E0 /* SearchBarViewController.m in Sources */,
+				4D9BC078199BA7AD000C328B /* KeyboardToolbar.m in Sources */,
 				4DFEC9ED19741BF7009B6499 /* main.m in Sources */,
 				4D4C9F11197452E3004541F8 /* Group.m in Sources */,
 				4D860EC21998EF53007B80E0 /* SearchedObject.m in Sources */,

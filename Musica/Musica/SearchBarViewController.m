@@ -10,8 +10,8 @@
 #import "SearchViewController.h"
 #import "SearchService.h"
 #import "MBProgressHUD.h"
-#import "SearchedObject.h"
 #import "NoResultViewController.h"
+#import "KeyboardToolbar.h"
 
 @interface SearchBarViewController ()<UISearchBarDelegate, UISearchDisplayDelegate, ComunicatorResponse>
 
@@ -42,11 +42,23 @@
     [self.view addGestureRecognizer:tapGesture];
     self.service= [[SearchService alloc]init];
     self.service.delegate=self;
+    
+    
+    KeyboardToolbar *toolBar = [[KeyboardToolbar alloc] initWithFrame:CGRectMake(0.0f,
+                                                                     0.0f,
+                                                                     self.view.window.frame.size.width,
+                                                                     35.0f)];
+    toolBar.okButton.action=@selector(doneEditing);
+    self.searchBar.inputAccessoryView = toolBar;
 }
 
 -(void) viewWillAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     self.searchBar.text = nil;
+}
+
+-(void) doneEditing{
+    [self.searchBar resignFirstResponder];
 }
 -(void) onTapPressed: (id) sender{
     [self.searchBar resignFirstResponder];
@@ -71,52 +83,28 @@
 }
 
 -(void) fetchFailed:(NSError *) error{
-    NSLog(@"Se rompio todo %@",error);
+    UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"Se produjo un error en la conexión" message:@"Por favor inténtelo nuevamente" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
     [self.HUD hide:YES];
 }
--(void) receivedJSON:(NSData *) data{
-    NSError *localError = nil;
-    NSDictionary *parsedObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:&localError];
+
+-(void) noResultsFound{
     
-    if (localError != nil) {
-        NSLog(@"%@", localError);
-        return;
-    }
-    
-    NSMutableArray * objects = [[NSMutableArray alloc] init];
-    
-    NSArray *results = [parsedObject valueForKey:@"results"];
-    
-    if( [results count]==0){
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            NoResultViewController * noResultView = [[NoResultViewController alloc]initWithNibName:nil bundle:nil];
-            [self.navigationController pushViewController:noResultView animated:YES];
-            [self.searchBar resignFirstResponder];
-            [self.HUD hide:YES];
-        });
-    }else{
-        for (NSDictionary * objDic in results) {
-            SearchedObject * obj = [[SearchedObject alloc] init];
-            
-            for (NSString *key in objDic) {
-                if ([obj respondsToSelector:NSSelectorFromString(key)]) {
-                    [obj setValue:[objDic valueForKey:key] forKey:key];
-                }
-            }
-            
-            [objects addObject:obj];
-        }
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            SearchViewController * searchView = [[SearchViewController alloc]initWithNibName:nil bundle:nil withData:objects];
-            [self.navigationController pushViewController:searchView animated:YES];
-            [self.searchBar resignFirstResponder];
-            [self.HUD hide:YES];
-        });
-        
-    }
-    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NoResultViewController * noResultView = [[NoResultViewController alloc]initWithNibName:nil bundle:nil];
+        [self.navigationController pushViewController:noResultView animated:YES];
+        [self.searchBar resignFirstResponder];
+        [self.HUD hide:YES];
+    });
+}
+
+-(void) resultsReceived:(NSArray *)results{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        SearchViewController * searchView = [[SearchViewController alloc]initWithNibName:nil bundle:nil withData:results];
+        [self.navigationController pushViewController:searchView animated:YES];
+        [self.searchBar resignFirstResponder];
+        [self.HUD hide:YES];
+    });
 }
 
 @end
