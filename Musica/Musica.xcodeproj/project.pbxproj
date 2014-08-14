@@ -39,6 +39,8 @@
 		4D9BC06E199A4F5F000C328B /* NoResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D9BC06C199A4F5F000C328B /* NoResultViewController.xib */; };
 		4D9BC073199A7DCC000C328B /* SearchService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9BC072199A7DCC000C328B /* SearchService.m */; };
 		4D9BC078199BA7AD000C328B /* KeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9BC077199BA7AD000C328B /* KeyboardToolbar.m */; };
+		4D9BC07B199BC1D1000C328B /* FetchImageService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9BC07A199BC1D1000C328B /* FetchImageService.m */; };
+		4D9BC07F199CF556000C328B /* noimage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D9BC07E199CF556000C328B /* noimage.jpg */; };
 		4DAE0328199275310078DEB4 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAE0327199275310078DEB4 /* MBProgressHUD.m */; };
 		4DC06AC3197EA787007376DD /* oasis.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4DC06AC0197EA787007376DD /* oasis.jpg */; };
 		4DC06AC4197EA787007376DD /* thebeatles.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4DC06AC1197EA787007376DD /* thebeatles.jpg */; };
@@ -120,6 +122,9 @@
 		4D9BC072199A7DCC000C328B /* SearchService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchService.m; sourceTree = "<group>"; };
 		4D9BC076199BA7AD000C328B /* KeyboardToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardToolbar.h; sourceTree = "<group>"; };
 		4D9BC077199BA7AD000C328B /* KeyboardToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardToolbar.m; sourceTree = "<group>"; };
+		4D9BC079199BC1D1000C328B /* FetchImageService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchImageService.h; sourceTree = "<group>"; };
+		4D9BC07A199BC1D1000C328B /* FetchImageService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchImageService.m; sourceTree = "<group>"; };
+		4D9BC07E199CF556000C328B /* noimage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = noimage.jpg; sourceTree = "<group>"; };
 		4DAE0326199275310078DEB4 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		4DAE0327199275310078DEB4 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		4DC06AC0197EA787007376DD /* oasis.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = oasis.jpg; sourceTree = "<group>"; };
@@ -204,6 +209,7 @@
 		4DFEC9E619741BF7009B6499 /* Musica */ = {
 			isa = PBXGroup;
 			children = (
+				4D9BC07E199CF556000C328B /* noimage.jpg */,
 				4D58BCEE197FFE2B00CC31E6 /* AlbumDetailViewController.h */,
 				4D58BCEF197FFE2B00CC31E6 /* AlbumDetailViewController.m */,
 				4D58BCF0197FFE2B00CC31E6 /* AlbumDetailViewController.xib */,
@@ -250,8 +256,6 @@
 				4D815BF419951F3A008577DF /* SearchTableViewCell.h */,
 				4D815BF519951F3A008577DF /* SearchTableViewCell.m */,
 				4D815BF619951F3A008577DF /* SearchTableViewCell.xib */,
-				4DFEC9F219741BF7009B6499 /* Images.xcassets */,
-				4DFEC9E719741BF7009B6499 /* Supporting Files */,
 				4D860EC01998EF53007B80E0 /* SearchedObject.h */,
 				4D860EC11998EF53007B80E0 /* SearchedObject.m */,
 				4D860EC319991C15007B80E0 /* SearchBarViewController.h */,
@@ -264,6 +268,10 @@
 				4D9BC072199A7DCC000C328B /* SearchService.m */,
 				4D9BC076199BA7AD000C328B /* KeyboardToolbar.h */,
 				4D9BC077199BA7AD000C328B /* KeyboardToolbar.m */,
+				4D9BC079199BC1D1000C328B /* FetchImageService.h */,
+				4D9BC07A199BC1D1000C328B /* FetchImageService.m */,
+				4DFEC9F219741BF7009B6499 /* Images.xcassets */,
+				4DFEC9E719741BF7009B6499 /* Supporting Files */,
 			);
 			path = Musica;
 			sourceTree = "<group>";
@@ -373,6 +381,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D58BCF2197FFE2B00CC31E6 /* AlbumDetailViewController.xib in Resources */,
+				4D9BC07F199CF556000C328B /* noimage.jpg in Resources */,
 				4D815BF819951F3B008577DF /* SearchTableViewCell.xib in Resources */,
 				4D4C9F0119741F9A004541F8 /* GroupViewController.xib in Resources */,
 				4DC06AC4197EA787007376DD /* thebeatles.jpg in Resources */,
@@ -420,6 +429,7 @@
 				4D4C9F0E19744376004541F8 /* MusicLibrary.m in Sources */,
 				4D7BF43D197D7B1500274E66 /* AlbumTableViewCell.m in Sources */,
 				4D9BC06D199A4F5F000C328B /* NoResultViewController.m in Sources */,
+				4D9BC07B199BC1D1000C328B /* FetchImageService.m in Sources */,
 				4D4C9EFB19741CDB004541F8 /* MainViewController.m in Sources */,
 				4DC06ACE197EADF1007376DD /* AlbumImageViewPickerDelegate.m in Sources */,
 				4D4C9F1419745E88004541F8 /* Album.m in Sources */,
