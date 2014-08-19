@@ -14,6 +14,7 @@
 
 - (void)awakeFromNib
 {
+    self.imageView.image=nil;
     self.imageService = [[FetchImageService alloc]init];
     self.imageService.delegate=self;
     self.spinner= [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];

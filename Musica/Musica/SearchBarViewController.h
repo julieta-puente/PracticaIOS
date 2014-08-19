@@ -10,5 +10,6 @@
 
 @interface SearchBarViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) IBOutlet UITableView *tableViewRecents;
 
 @end

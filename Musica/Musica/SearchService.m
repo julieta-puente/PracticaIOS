@@ -9,14 +9,27 @@
 #import "SearchService.h"
 #import "SearchedObject.h"
 
-@interface SearchService()
+@interface SearchService(){
+    NSInteger off;
+}
 @property (copy,nonatomic) NSString * searchString;
+
 @end
 
 @implementation SearchService
 -(void) searchApiWithString: (NSString *) search{
+    self.searchString=search;
+    [self fetchDataWithString:search withOffset:0];
+}
+
+-(void) fetchNextPage{
+    off+=15;
+    [self fetchDataWithString:self.searchString withOffset:(off)];
     
-    NSURL *url = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"https://api.mercadolibre.com/sites/MLA/search?q=%@",search ]];
+}
+-(void) fetchDataWithString: (NSString *) search withOffset: (NSInteger) offset{
+    NSURL *url = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"https://api.mercadolibre.com/sites/MLA/search?q=%@&limit=15&offset=%d",search,offset ]];
+    NSLog(@"%@",url);
     [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:url] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if (error) {
             [self.delegate fetchFailed:error];
@@ -24,9 +37,8 @@
             [self receivedJSON:data];
         }
     }];
-
+    
 }
-
 
 -(void) receivedJSON:(NSData *) data{
     NSError *localError = nil;
@@ -40,7 +52,11 @@
     NSMutableArray * objects = [[NSMutableArray alloc] init];
     
     NSArray *results = [parsedObject valueForKey:@"results"];
-    
+    NSDictionary * paging= [parsedObject valueForKey:@"paging"];
+    NSInteger total= [paging objectForKey:@"total"];
+    if(total>off){
+        [self.delegate allResultsLoaded];
+    }
     if( [results count] == 0){
         [self.delegate noResultsFound];
     }else{

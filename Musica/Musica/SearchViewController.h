@@ -10,5 +10,5 @@
 
 @interface SearchViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UITableView * tableViewSearch;
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withData:(NSArray *) data;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withSearchString:(NSString *) search;
 @end

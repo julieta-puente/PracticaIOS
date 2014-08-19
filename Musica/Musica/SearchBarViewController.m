@@ -8,15 +8,13 @@
 
 #import "SearchBarViewController.h"
 #import "SearchViewController.h"
-#import "SearchService.h"
-#import "MBProgressHUD.h"
-#import "NoResultViewController.h"
 #import "KeyboardToolbar.h"
+#import "RecentSearchTableViewCell.h"
 
-@interface SearchBarViewController ()<UISearchBarDelegate, UISearchDisplayDelegate, ComunicatorResponse>
+@interface SearchBarViewController ()<UISearchBarDelegate, UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate>
 
-@property (strong, nonatomic) SearchService * service;
-@property (strong, nonatomic) MBProgressHUD * HUD;
+@property (strong, nonatomic) NSMutableArray * recentSearch;
+@property (strong,nonatomic) RecentSearchTableViewCell * cellPrototype;
 @end
 
 @implementation SearchBarViewController
@@ -25,7 +23,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        self.recentSearch = [NSMutableArray array];
     }
     return self;
 }
@@ -38,74 +36,85 @@
     [self.searchBar setPlaceholder:@"Buscar"];
     self.searchBar.delegate= self;
     self.searchBar.showsCancelButton = YES;
-    UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapPressed:)];
-    [self.view addGestureRecognizer:tapGesture];
-    self.service= [[SearchService alloc]init];
-    self.service.delegate=self;
-    
-    
+
     KeyboardToolbar *toolBar = [[KeyboardToolbar alloc] initWithFrame:CGRectMake(0.0f,
                                                                      0.0f,
                                                                      self.view.window.frame.size.width,
                                                                      35.0f)];
     toolBar.okButton.action=@selector(doneEditing);
     self.searchBar.inputAccessoryView = toolBar;
+    self.tableViewRecents.delegate=self;
+    self.tableViewRecents.dataSource=self;
+    [self.tableViewRecents registerNib:[UINib nibWithNibName:@"RecentSearchTableViewCell" bundle:nil] forCellReuseIdentifier:@"CellIdentifier"];
+    self.cellPrototype = [self.tableViewRecents dequeueReusableCellWithIdentifier:@"CellIdentifier"];
+    
+    //ASADO: horripilante, algo mejor??
+    self.tableViewRecents.tableFooterView = [[UIView alloc] init] ;
 }
 
 -(void) viewWillAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     self.searchBar.text = nil;
+    [self.tableViewRecents reloadData];
 }
 
+
+#pragma mark- Search bar
 -(void) doneEditing{
     [self.searchBar resignFirstResponder];
 }
--(void) onTapPressed: (id) sender{
-    [self.searchBar resignFirstResponder];
-}
 
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
-    NSString * searchString =[searchBar.text stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
-    [self.service searchApiWithString:searchString];
-    if(self.HUD == nil){
+-(void) searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    if(![self.recentSearch containsObject:searchBar.text]){
         
-        self.HUD = [[MBProgressHUD alloc] initWithView:self.view];
+        [self.recentSearch addObject:searchBar.text];
     }
-    self.HUD.labelText = @"Buscando";
-    self.HUD.detailsLabelText = @"Por favor espere";
-    self.HUD.mode = MBProgressHUDModeIndeterminate;
-    self.HUD.yOffset = -30.0;
-    [self.HUD show:YES];
-    [self.view addSubview:self.HUD];
+    [self loadSearchWithString: searchBar.text];
 }
 
+-(void) loadSearchWithString: (NSString *) search{
+    SearchViewController * searchView = [[SearchViewController alloc]initWithNibName:nil bundle:nil withSearchString:search];
+    [self.navigationController pushViewController:searchView animated:YES];
+    
+}
 - (void)searchBarCancelButtonClicked:(UISearchBar *) searchBar{
     [searchBar resignFirstResponder];
 }
 
--(void) fetchFailed:(NSError *) error{
-    UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"Se produjo un error en la conexión" message:@"Por favor inténtelo nuevamente" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    [alert show];
-    [self.HUD hide:YES];
+
+#pragma mark - Table view
+
+-(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [self.recentSearch count];
 }
 
--(void) noResultsFound{
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NoResultViewController * noResultView = [[NoResultViewController alloc]initWithNibName:nil bundle:nil];
-        [self.navigationController pushViewController:noResultView animated:YES];
-        [self.searchBar resignFirstResponder];
-        [self.HUD hide:YES];
-    });
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString * cellIdentifier = @"CellIdentifier";
+    RecentSearchTableViewCell * cell=(RecentSearchTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    [self completeCell:cell cellForRowAtIndexPath:indexPath];
+    return cell;
 }
 
--(void) resultsReceived:(NSArray *)results{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        SearchViewController * searchView = [[SearchViewController alloc]initWithNibName:nil bundle:nil withData:results];
-        [self.navigationController pushViewController:searchView animated:YES];
-        [self.searchBar resignFirstResponder];
-        [self.HUD hide:YES];
-    });
+-(void) completeCell:(RecentSearchTableViewCell *) cell cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    cell.labelRecent.text =self.recentSearch[indexPath.row];
+    cell.accessoryType= UITableViewCellAccessoryDisclosureIndicator;
 }
+
+
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self loadSearchWithString:self.recentSearch [indexPath.row]];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self completeCell:self.cellPrototype cellForRowAtIndexPath:indexPath];
+    return [self.cellPrototype.contentView systemLayoutSizeFittingSize:UILayoutFittingExpandedSize].height;
+}
+
+
+-(CGFloat) tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 40.0f;
+}
+
 
 @end

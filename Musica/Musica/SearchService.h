@@ -8,13 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol ComunicatorResponse
+@protocol SearchResponse
 -(void) fetchFailed:(NSError *) error;
 -(void) noResultsFound;
 -(void) resultsReceived:(NSArray *) results;
+-(void) allResultsLoaded;
 @end
 
 @interface SearchService : NSObject
 -(void) searchApiWithString: (NSString *) search;
-@property (weak, nonatomic) id<ComunicatorResponse> delegate;
+-(void) fetchNextPage;
+@property (weak, nonatomic) id<SearchResponse> delegate;
 @end
