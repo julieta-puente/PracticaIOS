@@ -57,25 +57,21 @@
    
 }
 
+#pragma mark - table view
+
 -(UITableViewCell *) tableView:(UITableView *) tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString * cellIdentifier = @"CellIdentifier";
     
     SearchTableViewCell * cell=(SearchTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    [self completeCellContent:cell cellForRowAtIndexPath:indexPath];
+    SearchedObject * content = self.objects[indexPath.row];
+    [cell completeCellWithContent:content];
     return cell;
-}
-
--(void) completeCellContent: (SearchTableViewCell *) cell cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    SearchedObject * obj = self.objects[indexPath.row];
-    [cell.labelTitle setText:obj.title];
-    [cell.labelPrice setText:[NSString stringWithFormat:@"$ %@", obj.price ]];
-    NSURL *url = [NSURL URLWithString:obj.thumbnail];
-    [cell.imageService fetchImageWithURL:url];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self completeCellContent:self.cellPrototype cellForRowAtIndexPath:indexPath];
+    SearchedObject * content = self.objects[indexPath.row];
+    [self.cellPrototype  completeCellWithContent:content];
     return [self.cellPrototype.contentView systemLayoutSizeFittingSize:UILayoutFittingExpandedSize].height;
 }
 
@@ -104,7 +100,9 @@
         }
     }
 }
-
+-(void) tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    [(SearchTableViewCell *)cell cancelService];
+}
 
 #pragma mark - search service response
 -(void) fetchFailed:(NSError *) error{
@@ -135,8 +133,8 @@
     }
     NSLog(@"%d", [self.objects count]);
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.tableViewSearch reloadData];
         [self.HUD hide:YES];
+        [self.tableViewSearch reloadData];
         self.tableViewSearch.tableFooterView =nil;
     });
 }

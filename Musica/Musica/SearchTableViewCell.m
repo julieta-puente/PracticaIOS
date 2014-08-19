@@ -23,11 +23,15 @@
     [self.spinner startAnimating];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
+-(void) completeCellWithContent: (SearchedObject *) content {
+    [self.labelTitle setText:content.title];
+    [self.labelPrice setText:[NSString stringWithFormat:@"$ %@", content.price ]];
+    NSURL *url = [NSURL URLWithString:content.thumbnail];
+    [self.imageService fetchImageWithURL:url];
+}
 
-    // Configure the view for the selected state
+-(void) cancelService{
+    [self.imageService cancel];
 }
 
 -(void) loadImage:(NSData *) data {

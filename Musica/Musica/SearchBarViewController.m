@@ -14,6 +14,7 @@
 @interface SearchBarViewController ()<UISearchBarDelegate, UISearchDisplayDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) NSMutableArray * recentSearch;
+@property (strong, nonatomic) NSMutableArray * filteredArray;
 @property (strong,nonatomic) RecentSearchTableViewCell * cellPrototype;
 @end
 
@@ -116,5 +117,11 @@
     return 40.0f;
 }
 
+#pragma mark Content Filtering
+//-(void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
+//    [self.filteredArray removeAllObjects];
+//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name contains[c] %@",searchText];
+//    self.filteredArray = [NSMutableArray arrayWithArray:[self.recentSearch filteredArrayUsingPredicate:predicate]];
+//}
 
 @end

@@ -53,8 +53,8 @@
     
     NSArray *results = [parsedObject valueForKey:@"results"];
     NSDictionary * paging= [parsedObject valueForKey:@"paging"];
-    NSInteger total= [paging objectForKey:@"total"];
-    if(total>off){
+    NSNumber * total= [paging objectForKey:@"total"];
+    if(total.intValue >off){
         [self.delegate allResultsLoaded];
     }
     if( [results count] == 0){

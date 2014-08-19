@@ -16,5 +16,6 @@
 @interface FetchImageService : NSObject
 
 -(void) fetchImageWithURL: (NSURL *) url;
+-(void) cancel;
 @property (weak, nonatomic) id<FetchImageResponse> delegate;
 @end
