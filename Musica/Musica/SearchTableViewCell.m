@@ -26,8 +26,9 @@
 -(void) completeCellWithContent: (SearchedObject *) content {
     [self.labelTitle setText:content.title];
     [self.labelPrice setText:[NSString stringWithFormat:@"$ %@", content.price ]];
+    self.itemId=content.id;
     NSURL *url = [NSURL URLWithString:content.thumbnail];
-    [self.imageService fetchImageWithURL:url];
+    [self.imageService fetchImageWithURL:url forItem:self.itemId];
 }
 
 -(void) cancelService{
@@ -42,6 +43,10 @@
 -(void) noImageFound{
     self.imageViewSearch.image = [UIImage imageNamed:@"noimage.jpg"];
      [self.spinner stopAnimating];
+}
+
+-(void) dealloc{
+    [self cancelService];
 }
 
 @end

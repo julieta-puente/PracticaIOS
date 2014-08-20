@@ -13,5 +13,6 @@
 @property(copy, nonatomic) NSString * title;
 @property(copy, nonatomic) NSNumber * price;
 @property(copy, nonatomic) NSString * thumbnail;
+@property(copy,nonatomic) NSString * id;
 
 @end

@@ -25,6 +25,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.recentSearch = [NSMutableArray array];
+//        self.filteredArray = [NSMutableArray array];
     }
     return self;
 }
@@ -51,6 +52,7 @@
     
     //ASADO: horripilante, algo mejor??
     self.tableViewRecents.tableFooterView = [[UIView alloc] init] ;
+    
 }
 
 -(void) viewWillAppear:(BOOL)animated{
@@ -66,6 +68,7 @@
 }
 
 -(void) searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+//    [self filterContentForSearchText: searchBar.text];
     if(![self.recentSearch containsObject:searchBar.text]){
         
         [self.recentSearch addObject:searchBar.text];
@@ -118,10 +121,11 @@
 }
 
 #pragma mark Content Filtering
-//-(void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
+//-(void)filterContentForSearchText:(NSString*)searchText {
 //    [self.filteredArray removeAllObjects];
-//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name contains[c] %@",searchText];
+//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF contains[c] %@",searchText];
 //    self.filteredArray = [NSMutableArray arrayWithArray:[self.recentSearch filteredArrayUsingPredicate:predicate]];
+//    NSLog(@"filteredArray count %d", [self.filteredArray count]);
 //}
 
 @end
