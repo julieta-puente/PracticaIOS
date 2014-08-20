@@ -27,6 +27,7 @@
     [self.labelTitle setText:content.title];
     [self.labelPrice setText:[NSString stringWithFormat:@"$ %@", content.price ]];
     self.itemId=content.id;
+    self.permalink = content.permalink;
     NSURL *url = [NSURL URLWithString:content.thumbnail];
     [self.imageService fetchImageWithURL:url forItem:self.itemId];
 }

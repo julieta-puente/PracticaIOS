@@ -13,7 +13,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *labelTitle;
 @property (strong, nonatomic) IBOutlet UILabel *labelPrice;
 @property (strong, nonatomic) IBOutlet UIImageView *imageViewSearch;
-@property (strong,nonatomic) NSString * itemId;
+@property (copy,nonatomic) NSString * itemId;
+@property (copy,nonatomic) NSString * permalink;
 @property (strong,nonatomic) FetchImageService * imageService;
 
 -(void) completeCellWithContent: (SearchedObject *) content ;

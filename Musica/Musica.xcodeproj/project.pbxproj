@@ -44,6 +44,8 @@
 		4D9BC083199CFDE5000C328B /* RecentSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9BC081199CFDE5000C328B /* RecentSearchTableViewCell.m */; };
 		4D9BC084199CFDE5000C328B /* RecentSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D9BC082199CFDE5000C328B /* RecentSearchTableViewCell.xib */; };
 		4D9BC08719A4CC71000C328B /* StorageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9BC08619A4CC71000C328B /* StorageManager.m */; };
+		4DA1529F19A50788003DA1FC /* ProductDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DA1529D19A50788003DA1FC /* ProductDetailViewController.m */; };
+		4DA152A019A50788003DA1FC /* ProductDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA1529E19A50788003DA1FC /* ProductDetailViewController.xib */; };
 		4DAE0328199275310078DEB4 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DAE0327199275310078DEB4 /* MBProgressHUD.m */; };
 		4DC06AC3197EA787007376DD /* oasis.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4DC06AC0197EA787007376DD /* oasis.jpg */; };
 		4DC06AC4197EA787007376DD /* thebeatles.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4DC06AC1197EA787007376DD /* thebeatles.jpg */; };
@@ -133,6 +135,9 @@
 		4D9BC082199CFDE5000C328B /* RecentSearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecentSearchTableViewCell.xib; sourceTree = "<group>"; };
 		4D9BC08519A4CC71000C328B /* StorageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorageManager.h; sourceTree = "<group>"; };
 		4D9BC08619A4CC71000C328B /* StorageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorageManager.m; sourceTree = "<group>"; };
+		4DA1529C19A50788003DA1FC /* ProductDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailViewController.h; sourceTree = "<group>"; };
+		4DA1529D19A50788003DA1FC /* ProductDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailViewController.m; sourceTree = "<group>"; };
+		4DA1529E19A50788003DA1FC /* ProductDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailViewController.xib; sourceTree = "<group>"; };
 		4DAE0326199275310078DEB4 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		4DAE0327199275310078DEB4 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		4DC06AC0197EA787007376DD /* oasis.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = oasis.jpg; sourceTree = "<group>"; };
@@ -285,6 +290,9 @@
 				4DFEC9E719741BF7009B6499 /* Supporting Files */,
 				4D9BC08519A4CC71000C328B /* StorageManager.h */,
 				4D9BC08619A4CC71000C328B /* StorageManager.m */,
+				4DA1529C19A50788003DA1FC /* ProductDetailViewController.h */,
+				4DA1529D19A50788003DA1FC /* ProductDetailViewController.m */,
+				4DA1529E19A50788003DA1FC /* ProductDetailViewController.xib */,
 			);
 			path = Musica;
 			sourceTree = "<group>";
@@ -410,6 +418,7 @@
 				4D4C9F0B197421FB004541F8 /* SongViewController.xib in Resources */,
 				4DC06AC3197EA787007376DD /* oasis.jpg in Resources */,
 				4D860EC719991C15007B80E0 /* SearchBarViewController.xib in Resources */,
+				4DA152A019A50788003DA1FC /* ProductDetailViewController.xib in Resources */,
 				4DFEC9F319741BF7009B6499 /* Images.xcassets in Resources */,
 				4D4C9F0619742146004541F8 /* AlbumViewController.xib in Resources */,
 				4D8A18AC1986A97E0062D162 /* HeaderView.xib in Resources */,
@@ -434,6 +443,7 @@
 				4D588955197561C00042A3E9 /* Song.m in Sources */,
 				4D8A18AA1986A9640062D162 /* HeaderView.m in Sources */,
 				4D4C9F0019741F9A004541F8 /* GroupViewController.m in Sources */,
+				4DA1529F19A50788003DA1FC /* ProductDetailViewController.m in Sources */,
 				4D7BF438197D5D3F00274E66 /* LibraryViewController.m in Sources */,
 				4D4C9F0519742146004541F8 /* AlbumViewController.m in Sources */,
 				4D815BF719951F3B008577DF /* SearchTableViewCell.m in Sources */,

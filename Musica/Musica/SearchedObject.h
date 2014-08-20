@@ -11,8 +11,9 @@
 @interface SearchedObject : NSObject
 
 @property(copy, nonatomic) NSString * title;
-@property(copy, nonatomic) NSNumber * price;
+@property(strong, nonatomic) NSNumber * price;
 @property(copy, nonatomic) NSString * thumbnail;
 @property(copy,nonatomic) NSString * id;
+@property (copy,nonatomic) NSString * permalink;
 
 @end

@@ -12,6 +12,7 @@
 #import "SearchService.h"
 #import "MBProgressHUD.h"
 #import "NoResultViewController.h"
+#import "ProductDetailViewController.h"
 
 @interface SearchViewController ()<UITableViewDataSource, UITableViewDelegate,SearchResponse>
 
@@ -104,6 +105,12 @@
     [(SearchTableViewCell *)cell cancelService];
 }
 
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    SearchTableViewCell * cell = (SearchTableViewCell *)[self tableView:tableView cellForRowAtIndexPath:indexPath];
+    ProductDetailViewController * productView = [[ProductDetailViewController alloc]initWithNibName:nil bundle:nil withURL:cell.permalink];
+    [self.navigationController pushViewController:productView animated:YES];
+    [self.tableViewSearch deselectRowAtIndexPath:indexPath animated:YES];
+}
 #pragma mark - search service response
 -(void) fetchFailed:(NSError *) error{
     dispatch_async(dispatch_get_main_queue(), ^{

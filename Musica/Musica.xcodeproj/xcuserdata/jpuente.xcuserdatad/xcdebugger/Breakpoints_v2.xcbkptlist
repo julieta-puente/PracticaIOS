@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Musica/SearchTableViewCell.h"
-            timestampString = "430237601.784731"
+            timestampString = "430246624.028598"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
             landmarkName = "@interface SearchTableViewCell"
             landmarkType = "2">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Musica/SearchViewController.m"
-            timestampString = "430144683.852653"
+            timestampString = "430246052.820447"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Musica/SearchViewController.m"
-            timestampString = "430144683.852653"
+            timestampString = "430246052.820447"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
             landmarkName = "-initWithNibName:bundle:withSearchString:"
             landmarkType = "5">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Musica/SearchViewController.m"
-            timestampString = "430158025.546048"
+            timestampString = "430246052.820447"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "-tableView:didEndDisplayingCell:forRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
