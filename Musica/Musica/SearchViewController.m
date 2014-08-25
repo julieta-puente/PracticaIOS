@@ -107,29 +107,23 @@
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     SearchTableViewCell * cell = (SearchTableViewCell *)[self tableView:tableView cellForRowAtIndexPath:indexPath];
-    ProductDetailViewController * productView = [[ProductDetailViewController alloc]initWithNibName:nil bundle:nil withURL:cell.permalink];
+    ProductDetailViewController * productView = [[ProductDetailViewController alloc]initWithNibName:nil bundle:nil withId:cell.itemId];
     [self.navigationController pushViewController:productView animated:YES];
     [self.tableViewSearch deselectRowAtIndexPath:indexPath animated:YES];
 }
 #pragma mark - search service response
 -(void) fetchFailed:(NSError *) error{
-    dispatch_async(dispatch_get_main_queue(), ^{
     UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"Se produjo un error en la conexión" message:@"Por favor inténtelo nuevamente" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [alert show];
     [self.HUD hide:YES];
     self.tableViewSearch.tableFooterView =nil;
-         });
-
 }
 
 -(void) noResultsFound{
-    dispatch_async(dispatch_get_main_queue(), ^{
         NoResultViewController * noResultView = [[NoResultViewController alloc]initWithNibName:nil bundle:nil];
         [self.view addSubview:noResultView.view];
         [self.HUD hide:YES];
         self.tableViewSearch.tableFooterView =nil;
-    });
-
 }
 
 -(void) resultsReceived:(NSArray *)results{
@@ -138,12 +132,9 @@
     }else{
         [self.objects addObjectsFromArray:results];
     }
-    NSLog(@"%d", [self.objects count]);
-    dispatch_async(dispatch_get_main_queue(), ^{
         [self.HUD hide:YES];
         [self.tableViewSearch reloadData];
         self.tableViewSearch.tableFooterView =nil;
-    });
 }
 
 -(void) allResultsLoaded{

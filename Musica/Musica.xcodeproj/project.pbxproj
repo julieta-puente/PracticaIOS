@@ -35,6 +35,7 @@
 		4D860EC719991C15007B80E0 /* SearchBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D860EC519991C15007B80E0 /* SearchBarViewController.xib */; };
 		4D8A18AA1986A9640062D162 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8A18A91986A9640062D162 /* HeaderView.m */; };
 		4D8A18AC1986A97E0062D162 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8A18AB1986A97E0062D162 /* HeaderView.xib */; };
+		4D98B03519AB6BF2001DC328 /* SpinnerImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D98B03419AB6BF2001DC328 /* SpinnerImageView.m */; };
 		4D9BC06D199A4F5F000C328B /* NoResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9BC06B199A4F5F000C328B /* NoResultViewController.m */; };
 		4D9BC06E199A4F5F000C328B /* NoResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D9BC06C199A4F5F000C328B /* NoResultViewController.xib */; };
 		4D9BC073199A7DCC000C328B /* SearchService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9BC072199A7DCC000C328B /* SearchService.m */; };
@@ -51,6 +52,9 @@
 		4DC06AC4197EA787007376DD /* thebeatles.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4DC06AC1197EA787007376DD /* thebeatles.jpg */; };
 		4DC06AC5197EA787007376DD /* thedoors.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4DC06AC2197EA787007376DD /* thedoors.jpg */; };
 		4DC06ACE197EADF1007376DD /* AlbumImageViewPickerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC06ACD197EADF1007376DD /* AlbumImageViewPickerDelegate.m */; };
+		4DC7E71619A781B300331811 /* ProductDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC7E71519A781B300331811 /* ProductDetailCell.m */; };
+		4DC7E71819A781DE00331811 /* ProductDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DC7E71719A781DE00331811 /* ProductDetailCell.xib */; };
+		4DC7E71E19A7977000331811 /* ItemService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DC7E71D19A7977000331811 /* ItemService.m */; };
 		4DFEC9E119741BF7009B6499 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DFEC9E019741BF7009B6499 /* Foundation.framework */; };
 		4DFEC9E319741BF7009B6499 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DFEC9E219741BF7009B6499 /* CoreGraphics.framework */; };
 		4DFEC9E519741BF7009B6499 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DFEC9E419741BF7009B6499 /* UIKit.framework */; };
@@ -120,6 +124,8 @@
 		4D8A18A81986A9640062D162 /* HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
 		4D8A18A91986A9640062D162 /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
 		4D8A18AB1986A97E0062D162 /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HeaderView.xib; path = ../HeaderView.xib; sourceTree = "<group>"; };
+		4D98B03319AB6BF2001DC328 /* SpinnerImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinnerImageView.h; sourceTree = "<group>"; };
+		4D98B03419AB6BF2001DC328 /* SpinnerImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinnerImageView.m; sourceTree = "<group>"; };
 		4D9BC06A199A4F5F000C328B /* NoResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoResultViewController.h; sourceTree = "<group>"; };
 		4D9BC06B199A4F5F000C328B /* NoResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoResultViewController.m; sourceTree = "<group>"; };
 		4D9BC06C199A4F5F000C328B /* NoResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoResultViewController.xib; sourceTree = "<group>"; };
@@ -145,6 +151,11 @@
 		4DC06AC2197EA787007376DD /* thedoors.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thedoors.jpg; sourceTree = "<group>"; };
 		4DC06ACC197EADF1007376DD /* AlbumImageViewPickerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumImageViewPickerDelegate.h; sourceTree = "<group>"; };
 		4DC06ACD197EADF1007376DD /* AlbumImageViewPickerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumImageViewPickerDelegate.m; sourceTree = "<group>"; };
+		4DC7E71419A781B300331811 /* ProductDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductDetailCell.h; sourceTree = "<group>"; };
+		4DC7E71519A781B300331811 /* ProductDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductDetailCell.m; sourceTree = "<group>"; };
+		4DC7E71719A781DE00331811 /* ProductDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailCell.xib; sourceTree = "<group>"; };
+		4DC7E71C19A7977000331811 /* ItemService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemService.h; sourceTree = "<group>"; };
+		4DC7E71D19A7977000331811 /* ItemService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemService.m; sourceTree = "<group>"; };
 		4DFEC9DD19741BF7009B6499 /* Musica.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Musica.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DFEC9E019741BF7009B6499 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		4DFEC9E219741BF7009B6499 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -293,6 +304,13 @@
 				4DA1529C19A50788003DA1FC /* ProductDetailViewController.h */,
 				4DA1529D19A50788003DA1FC /* ProductDetailViewController.m */,
 				4DA1529E19A50788003DA1FC /* ProductDetailViewController.xib */,
+				4DC7E71419A781B300331811 /* ProductDetailCell.h */,
+				4DC7E71519A781B300331811 /* ProductDetailCell.m */,
+				4DC7E71719A781DE00331811 /* ProductDetailCell.xib */,
+				4DC7E71C19A7977000331811 /* ItemService.h */,
+				4DC7E71D19A7977000331811 /* ItemService.m */,
+				4D98B03319AB6BF2001DC328 /* SpinnerImageView.h */,
+				4D98B03419AB6BF2001DC328 /* SpinnerImageView.m */,
 			);
 			path = Musica;
 			sourceTree = "<group>";
@@ -421,6 +439,7 @@
 				4DA152A019A50788003DA1FC /* ProductDetailViewController.xib in Resources */,
 				4DFEC9F319741BF7009B6499 /* Images.xcassets in Resources */,
 				4D4C9F0619742146004541F8 /* AlbumViewController.xib in Resources */,
+				4DC7E71819A781DE00331811 /* ProductDetailCell.xib in Resources */,
 				4D8A18AC1986A97E0062D162 /* HeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -440,10 +459,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D98B03519AB6BF2001DC328 /* SpinnerImageView.m in Sources */,
 				4D588955197561C00042A3E9 /* Song.m in Sources */,
 				4D8A18AA1986A9640062D162 /* HeaderView.m in Sources */,
 				4D4C9F0019741F9A004541F8 /* GroupViewController.m in Sources */,
 				4DA1529F19A50788003DA1FC /* ProductDetailViewController.m in Sources */,
+				4DC7E71E19A7977000331811 /* ItemService.m in Sources */,
 				4D7BF438197D5D3F00274E66 /* LibraryViewController.m in Sources */,
 				4D4C9F0519742146004541F8 /* AlbumViewController.m in Sources */,
 				4D815BF719951F3B008577DF /* SearchTableViewCell.m in Sources */,
@@ -454,6 +475,7 @@
 				4D7BF43D197D7B1500274E66 /* AlbumTableViewCell.m in Sources */,
 				4D9BC06D199A4F5F000C328B /* NoResultViewController.m in Sources */,
 				4D9BC07B199BC1D1000C328B /* FetchImageService.m in Sources */,
+				4DC7E71619A781B300331811 /* ProductDetailCell.m in Sources */,
 				4D4C9EFB19741CDB004541F8 /* MainViewController.m in Sources */,
 				4DC06ACE197EADF1007376DD /* AlbumImageViewPickerDelegate.m in Sources */,
 				4D9BC08719A4CC71000C328B /* StorageManager.m in Sources */,

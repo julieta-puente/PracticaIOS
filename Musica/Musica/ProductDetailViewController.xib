@@ -6,8 +6,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProductDetailViewController">
             <connections>
+                <outlet property="buttonBuy" destination="ofz-54-YST" id="OMU-V9-mQD"/>
+                <outlet property="collectionViewDetail" destination="yTS-ii-wpn" id="UCc-W8-IhD"/>
+                <outlet property="labelPrice" destination="IrS-QH-mwr" id="WJr-Ax-O64"/>
+                <outlet property="labelTitle" destination="wS8-fW-NEo" id="Liy-RH-NI5"/>
+                <outlet property="pageControl" destination="I29-Py-HDm" id="7zh-ps-Fry"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
-                <outlet property="webViewDetail" destination="W5V-ZP-OS0" id="qbD-Oe-dfB"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -15,13 +19,58 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W5V-ZP-OS0">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="yTS-ii-wpn">
+                    <rect key="frame" x="0.0" y="111" width="320" height="319"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                </webView>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2L5-qC-t9O">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <cells/>
+                </collectionView>
+                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titulo" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="286" translatesAutoresizingMaskIntoConstraints="NO" id="wS8-fW-NEo">
+                    <rect key="frame" x="14" y="68" width="286" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IrS-QH-mwr">
+                    <rect key="frame" x="14" y="438" width="49" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ofz-54-YST">
+                    <rect key="frame" x="14" y="473" width="286" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.033107515681806129" green="0.053567306806113234" blue="0.64733355978260865" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Comprar">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="I29-Py-HDm">
+                    <rect key="frame" x="133" y="422" width="39" height="37"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </pageControl>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="yTS-ii-wpn" secondAttribute="trailing" id="1Hv-JG-ozQ"/>
+                <constraint firstAttribute="trailing" secondItem="wS8-fW-NEo" secondAttribute="trailing" constant="20" id="P2l-9L-5Qe"/>
+                <constraint firstItem="IrS-QH-mwr" firstAttribute="top" secondItem="yTS-ii-wpn" secondAttribute="bottom" constant="8" id="Uj5-Mk-Bfh"/>
+                <constraint firstItem="yTS-ii-wpn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="111" id="WHV-RI-oak"/>
+                <constraint firstItem="IrS-QH-mwr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="14" id="cAI-IY-FK1"/>
+                <constraint firstAttribute="trailing" secondItem="ofz-54-YST" secondAttribute="trailing" constant="20" id="etU-4o-Eog"/>
+                <constraint firstAttribute="bottom" secondItem="yTS-ii-wpn" secondAttribute="bottom" constant="138" id="i26-hd-tbe"/>
+                <constraint firstItem="wS8-fW-NEo" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="68" id="iLL-Nf-OTe"/>
+                <constraint firstItem="ofz-54-YST" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="14" id="luz-KN-qAw"/>
+                <constraint firstItem="yTS-ii-wpn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="o1S-UQ-rh1"/>
+                <constraint firstItem="wS8-fW-NEo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="14" id="rr8-gr-fOO"/>
+                <constraint firstItem="ofz-54-YST" firstAttribute="top" secondItem="yTS-ii-wpn" secondAttribute="bottom" constant="43" id="zin-gH-EjB"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>

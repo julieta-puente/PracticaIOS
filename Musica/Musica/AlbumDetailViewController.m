@@ -43,8 +43,7 @@
     self.imageAlbum.image = [UIImage imageNamed:[self.album getImageName]];
     self.scrollViewDetail.delegate=self;
     [self.scrollViewDetail setScrollEnabled:YES];
-    self.navigationItem.rightBarButtonItem =[[UIBarButtonItem alloc]
-                                             initWithTitle:@"Editar" style: UIBarButtonItemStyleDone target:self action:@selector(edit:)] ;
+    self.navigationItem.rightBarButtonItem =[[UIBarButtonItem alloc]initWithTitle:@"Editar" style: UIBarButtonItemStyleDone target:self action:@selector(edit:)] ;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]
                                              initWithTitle:@"Biblioteca" style:UIBarButtonItemStylePlain target:self action:@selector(back:)];
     [[NSNotificationCenter defaultCenter] addObserver:self

@@ -25,23 +25,32 @@
 }
 
 -(void) fetchImageWithURL: (NSURL *) url forItem:(NSString *)item{
-    NSData * imgData = [self.sManager getData:item];
+    dispatch_queue_t my_queue = dispatch_queue_create("my_queue", DISPATCH_QUEUE_SERIAL);
+    dispatch_async(my_queue,^{
+       NSData * imgData = [self.sManager getData:item];
     if(imgData!=nil){
-        [self.delegate loadImage:imgData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.delegate loadImage:imgData];
+        });
     } else{
         self.task=[self.delegateFreeSession dataTaskWithURL: url
                                           completionHandler:^(NSData *data, NSURLResponse *response,
                                                               NSError *error) {
                                               if(error!=nil){
-                                                  [self.delegate noImageFound];
+                                                  dispatch_async(dispatch_get_main_queue(), ^{
+                                                      [self.delegate noImageFound];
+                                                  });
                                               }else{
-                                                  [self.delegate loadImage:data];
-                                                  [self.sManager saveData:data forItem:item];
+                                                  dispatch_async(dispatch_get_main_queue(), ^{
+                                                      [self.delegate loadImage:data];
+                                                      [self.sManager saveData:data forItem:item];
+                                                  });
                                               }
-                                              
+                   
                                           }];
         [self.task resume];
     }
+    });
    
 }
 

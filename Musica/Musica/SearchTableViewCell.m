@@ -7,27 +7,28 @@
 //
 
 #import "SearchTableViewCell.h"
-@interface SearchTableViewCell ()
-@property (strong,nonatomic) UIActivityIndicatorView * spinner;
-@end
+
+//@interface SearchTableViewCell ()
+//@property (strong,nonatomic) UIActivityIndicatorView * spinner;
+//@end
 @implementation SearchTableViewCell
 
 - (void)awakeFromNib
 {
-    self.imageView.image=nil;
     self.imageService = [[FetchImageService alloc]init];
     self.imageService.delegate=self;
-    self.spinner= [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    self.spinner.center = CGPointMake(self.imageView.center.x +270,self.imageView.center.y+30);
-    [[self contentView] addSubview:self.spinner];
-    [self.spinner startAnimating];
+//    self.imageViewSearch = [[SpinnerImageView alloc]initWithFrame:self.imageViewSearch.frame];
+//    self.spinner= [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//    self.spinner.center = CGPointMake(self.imageView.center.x +270,self.imageView.center.y+30);
+//    [[self contentView] addSubview:self.spinner];
+//    [self.spinner startAnimating];
 }
 
 -(void) completeCellWithContent: (SearchedObject *) content {
     [self.labelTitle setText:content.title];
     [self.labelPrice setText:[NSString stringWithFormat:@"$ %@", content.price ]];
     self.itemId=content.id;
-    self.permalink = content.permalink;
+    [self.imageViewSearch loadSpinner];
     NSURL *url = [NSURL URLWithString:content.thumbnail];
     [self.imageService fetchImageWithURL:url forItem:self.itemId];
 }
@@ -37,13 +38,12 @@
 }
 
 -(void) loadImage:(NSData *) data {
-    self.imageViewSearch.image= [UIImage imageWithData:data];
-    [self.spinner stopAnimating];
+    [self.imageViewSearch loadImage:data];
+    
 }
 
 -(void) noImageFound{
-    self.imageViewSearch.image = [UIImage imageNamed:@"noimage.jpg"];
-     [self.spinner stopAnimating];
+    [self.imageViewSearch noImageFound];
 }
 
 -(void) dealloc{

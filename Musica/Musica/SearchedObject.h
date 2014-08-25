@@ -14,6 +14,6 @@
 @property(strong, nonatomic) NSNumber * price;
 @property(copy, nonatomic) NSString * thumbnail;
 @property(copy,nonatomic) NSString * id;
-@property (copy,nonatomic) NSString * permalink;
+@property (strong,nonatomic) NSArray * pictures;
 
 @end

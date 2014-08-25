@@ -10,6 +10,11 @@
 
 @interface ProductDetailViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UIWebView *webViewDetail;
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withURL:(NSString *) url;
+@property (strong, nonatomic) IBOutlet UICollectionView *collectionViewDetail;
+@property (strong, nonatomic) IBOutlet UILabel *labelTitle;
+@property (strong, nonatomic) IBOutlet UILabel *labelPrice;
+@property (strong, nonatomic) IBOutlet UIButton *buttonBuy;
+@property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withId:(NSString *) itemId;
 @end

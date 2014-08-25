@@ -32,7 +32,9 @@
     NSLog(@"%@",url);
     [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:url] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if (error) {
-            [self.delegate fetchFailed:error];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.delegate fetchFailed:error];
+            });
         } else {
             [self receivedJSON:data];
         }
@@ -55,10 +57,14 @@
     NSDictionary * paging= [parsedObject valueForKey:@"paging"];
     NSNumber * total= [paging objectForKey:@"total"];
     if(total.intValue >off){
-        [self.delegate allResultsLoaded];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.delegate allResultsLoaded];
+        });
     }
     if( [results count] == 0){
-        [self.delegate noResultsFound];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.delegate noResultsFound];
+        });
     }else{
         
         for (NSDictionary * objDic in results) {
@@ -72,7 +78,9 @@
             
             [objects addObject:obj];
         }
-        [self.delegate resultsReceived:objects];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.delegate resultsReceived:objects];
+        });
     }
     
     

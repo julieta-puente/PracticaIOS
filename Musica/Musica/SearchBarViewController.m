@@ -52,7 +52,7 @@
     
     //ASADO: horripilante, algo mejor??
     self.tableViewRecents.tableFooterView = [[UIView alloc] init] ;
-    
+    self.recentSearch = [[NSUserDefaults standardUserDefaults]objectForKey:@"recent"];
 }
 
 -(void) viewWillAppear:(BOOL)animated{
@@ -74,6 +74,8 @@
         [self.recentSearch addObject:searchBar.text];
     }
     [self loadSearchWithString: searchBar.text];
+    [[NSUserDefaults standardUserDefaults]setObject:[NSArray arrayWithArray:self.recentSearch ] forKey:@"recent"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
 }
 
 -(void) loadSearchWithString: (NSString *) search{
@@ -120,6 +122,9 @@
     return 40.0f;
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    return @"Últimas búsquedas";
+}
 #pragma mark Content Filtering
 //-(void)filterContentForSearchText:(NSString*)searchText {
 //    [self.filteredArray removeAllObjects];
