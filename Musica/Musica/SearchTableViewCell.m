@@ -15,13 +15,10 @@
 
 - (void)awakeFromNib
 {
+    self.imageViewSearch.image=nil;
     self.imageService = [[FetchImageService alloc]init];
     self.imageService.delegate=self;
-//    self.imageViewSearch = [[SpinnerImageView alloc]initWithFrame:self.imageViewSearch.frame];
-//    self.spinner= [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-//    self.spinner.center = CGPointMake(self.imageView.center.x +270,self.imageView.center.y+30);
-//    [[self contentView] addSubview:self.spinner];
-//    [self.spinner startAnimating];
+
 }
 
 -(void) completeCellWithContent: (SearchedObject *) content {

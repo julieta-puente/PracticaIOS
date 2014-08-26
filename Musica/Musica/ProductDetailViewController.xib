@@ -37,13 +37,13 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IrS-QH-mwr">
-                    <rect key="frame" x="14" y="438" width="49" height="21"/>
+                    <rect key="frame" x="14" y="452" width="49" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ofz-54-YST">
-                    <rect key="frame" x="14" y="473" width="286" height="30"/>
+                    <rect key="frame" x="14" y="489" width="286" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.033107515681806129" green="0.053567306806113234" blue="0.64733355978260865" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="Comprar">
@@ -51,25 +51,29 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="I29-Py-HDm">
-                    <rect key="frame" x="133" y="422" width="39" height="37"/>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" defersCurrentPageDisplay="YES" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="I29-Py-HDm">
+                    <rect key="frame" x="131" y="422" width="39" height="37"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="currentPageIndicatorTintColor" cocoaTouchSystemColor="darkTextColor"/>
                 </pageControl>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="yTS-ii-wpn" secondAttribute="trailing" id="1Hv-JG-ozQ"/>
                 <constraint firstAttribute="trailing" secondItem="wS8-fW-NEo" secondAttribute="trailing" constant="20" id="P2l-9L-5Qe"/>
-                <constraint firstItem="IrS-QH-mwr" firstAttribute="top" secondItem="yTS-ii-wpn" secondAttribute="bottom" constant="8" id="Uj5-Mk-Bfh"/>
+                <constraint firstItem="ofz-54-YST" firstAttribute="top" secondItem="yTS-ii-wpn" secondAttribute="bottom" constant="59" id="VRs-yH-hQz"/>
                 <constraint firstItem="yTS-ii-wpn" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="111" id="WHV-RI-oak"/>
                 <constraint firstItem="IrS-QH-mwr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="14" id="cAI-IY-FK1"/>
                 <constraint firstAttribute="trailing" secondItem="ofz-54-YST" secondAttribute="trailing" constant="20" id="etU-4o-Eog"/>
+                <constraint firstItem="I29-Py-HDm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="131" id="hY6-in-nX2"/>
                 <constraint firstAttribute="bottom" secondItem="yTS-ii-wpn" secondAttribute="bottom" constant="138" id="i26-hd-tbe"/>
                 <constraint firstItem="wS8-fW-NEo" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="68" id="iLL-Nf-OTe"/>
+                <constraint firstItem="I29-Py-HDm" firstAttribute="top" secondItem="yTS-ii-wpn" secondAttribute="bottom" constant="-8" id="lKF-Gh-kbI"/>
                 <constraint firstItem="ofz-54-YST" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="14" id="luz-KN-qAw"/>
                 <constraint firstItem="yTS-ii-wpn" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="o1S-UQ-rh1"/>
                 <constraint firstItem="wS8-fW-NEo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="14" id="rr8-gr-fOO"/>
-                <constraint firstItem="ofz-54-YST" firstAttribute="top" secondItem="yTS-ii-wpn" secondAttribute="bottom" constant="43" id="zin-gH-EjB"/>
+                <constraint firstItem="IrS-QH-mwr" firstAttribute="top" secondItem="yTS-ii-wpn" secondAttribute="bottom" constant="22" id="vEx-57-C03"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

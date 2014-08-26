@@ -20,6 +20,7 @@
 @property (strong,nonatomic) FetchImageService * imageService;
 @property (strong,nonatomic) SearchedObject * response;
 @property (strong,nonatomic) MBProgressHUD * HUD;
+@property (strong,nonatomic)UIActivityIndicatorView * spinner;
 @end
 
 @implementation ProductDetailViewController
@@ -37,7 +38,7 @@
 {
     [super viewDidLoad];
     self.arrayImage = [NSMutableArray array];
-//    self.collectionViewDetail.backgroundColor = [UIColor whiteColor];
+    self.collectionViewDetail.backgroundColor = [UIColor whiteColor];
     self.collectionViewDetail.delegate=self;
     self.collectionViewDetail.dataSource=self;
     [self setupCollectionView];
@@ -46,6 +47,7 @@
     [self.itemService fetchItem];
     self.imageService= [[FetchImageService alloc]init];
     self.imageService.delegate=self;
+     self.pageControl.hidden = YES;
     if(self.HUD == nil){
         self.HUD = [[MBProgressHUD alloc] initWithView:self.view];
     }
@@ -83,12 +85,16 @@
     
     ProductDetailCell * cell=(ProductDetailCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     cell.imageViewProduct.image= self.arrayImage[indexPath.row];
+    self.pageControl.currentPage = indexPath.row;
+    self.pageControl.hidden = NO;
     return cell;
 }
 
 
 -(void) fetchFailed:(NSError *)error{
-    
+    UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"Se produjo un error en la conexión" message:@"Por favor inténtelo nuevamente" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
+    [self.HUD hide:YES];
 }
 
 -(void) resultsReceived:(SearchedObject *)data{
@@ -99,9 +105,14 @@
     self.buttonBuy.hidden = NO;
     self.labelPrice.hidden = NO;
     self.labelTitle.hidden = NO;
+    
 }
 
 -(void) fetchImages:(SearchedObject *)data{
+    self.spinner= [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.spinner.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/2);
+    [self.view addSubview:self.spinner];
+    [self.spinner startAnimating];
     NSArray * images = data.pictures;
     for (NSDictionary * imgDic in images) {
         NSURL * url = [NSURL URLWithString:[imgDic objectForKey:@"url"]];
@@ -117,7 +128,9 @@
     [self.arrayImage addObject:[imageView getImage]];
     self.pageControl.currentPage = 0;
     self.pageControl.numberOfPages = [self.arrayImage count];
-//    [self.collectionViewDetail reloadData];
+    [self.collectionViewDetail reloadData];
+    [self.spinner stopAnimating];
+    
 }
 -(void) noImageFound{
     SpinnerImageView * imageView = [[SpinnerImageView alloc]init];
