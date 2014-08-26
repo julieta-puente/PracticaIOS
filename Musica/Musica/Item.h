@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SearchedObject : NSObject
+@interface Item : NSObject
 
 @property(copy, nonatomic) NSString * title;
 @property(strong, nonatomic) NSNumber * price;
 @property(copy, nonatomic) NSString * thumbnail;
-@property(copy,nonatomic) NSString * id;
+@property(copy,nonatomic) NSString * itemId;
 @property (strong,nonatomic) NSArray * pictures;
 
 @end

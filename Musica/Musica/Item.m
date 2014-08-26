@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Julieta Puente. All rights reserved.
 //
 
-#import "SearchedObject.h"
+#import "Item.h"
 
-@implementation SearchedObject
+@implementation Item
 
 @end

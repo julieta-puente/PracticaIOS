@@ -18,7 +18,7 @@
 @property (strong,nonatomic) NSString * itemId;
 @property (strong,nonatomic) ItemService * itemService;
 @property (strong,nonatomic) FetchImageService * imageService;
-@property (strong,nonatomic) SearchedObject * response;
+@property (strong,nonatomic) Item * response;
 @property (strong,nonatomic) MBProgressHUD * HUD;
 @property (strong,nonatomic)UIActivityIndicatorView * spinner;
 @end
@@ -38,10 +38,9 @@
 {
     [super viewDidLoad];
     self.arrayImage = [NSMutableArray array];
-    self.collectionViewDetail.backgroundColor = [UIColor whiteColor];
     self.collectionViewDetail.delegate=self;
     self.collectionViewDetail.dataSource=self;
-    [self setupCollectionView];
+    [self.collectionViewDetail setupCollectionViewWithImages:self.arrayImage];
     self.itemService = [[ItemService alloc]initWithItemId:self.itemId];
     self.itemService.delegate=self;
     [self.itemService fetchItem];
@@ -58,36 +57,23 @@
     [self.view addSubview:self.HUD];
 }
 
--(void)setupCollectionView {
-    [self.collectionViewDetail registerNib:[UINib nibWithNibName:@"ProductDetailCell" bundle:nil] forCellWithReuseIdentifier:@"CellIdentifier"];
-    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-    [flowLayout setMinimumInteritemSpacing:0.0f];
-    [flowLayout setMinimumLineSpacing:0.0f];
-    [self.collectionViewDetail setPagingEnabled:YES];
-    [self.collectionViewDetail setCollectionViewLayout:flowLayout];
-}
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return self.collectionViewDetail.frame.size;
+    return [self.collectionViewDetail sizeForItem];
 }
 
 -(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 1;
+    return [self.collectionViewDetail numberOfSections];
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [self.arrayImage count];
+    return [self.collectionViewDetail numberOfItemsInSection:section];
 }
 
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString * cellIdentifier = @"CellIdentifier";
-    
-    ProductDetailCell * cell=(ProductDetailCell *)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    cell.imageViewProduct.image= self.arrayImage[indexPath.row];
     self.pageControl.currentPage = indexPath.row;
     self.pageControl.hidden = NO;
-    return cell;
+    return [self.collectionViewDetail collectionView:collectionView cellForItemAtIndexPath:indexPath];
 }
 
 
@@ -97,7 +83,7 @@
     [self.HUD hide:YES];
 }
 
--(void) resultsReceived:(SearchedObject *)data{
+-(void) resultsReceived:(Item *)data{
     self.labelTitle. text = data.title;
     self.labelPrice.text = [NSString stringWithFormat:@"$ %@", data.price ];
     [self fetchImages:data];
@@ -108,12 +94,13 @@
     
 }
 
--(void) fetchImages:(SearchedObject *)data{
+-(void) fetchImages:(Item *)data{
     self.spinner= [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     self.spinner.center = CGPointMake(self.view.frame.size.width/2,self.view.frame.size.height/2);
     [self.view addSubview:self.spinner];
     [self.spinner startAnimating];
     NSArray * images = data.pictures;
+    self.pageControl.numberOfPages = [images count];
     for (NSDictionary * imgDic in images) {
         NSURL * url = [NSURL URLWithString:[imgDic objectForKey:@"url"]];
         NSString * imageId = [imgDic objectForKey:@"id"];
@@ -123,21 +110,19 @@
 
 -(void) loadImage:(NSData *) data{
     SpinnerImageView * imageView = [[SpinnerImageView alloc]init];
-    [imageView loadSpinner];
     [imageView loadImage:data];
     [self.arrayImage addObject:[imageView getImage]];
     self.pageControl.currentPage = 0;
-    self.pageControl.numberOfPages = [self.arrayImage count];
-    [self.collectionViewDetail reloadData];
+    [self.collectionViewDetail reloadDataWithImages:self.arrayImage];
     [self.spinner stopAnimating];
     
 }
 -(void) noImageFound{
     SpinnerImageView * imageView = [[SpinnerImageView alloc]init];
-    [imageView loadSpinner];
     [imageView noImageFound];
     [self.arrayImage addObject:[imageView getImage]];
-    [self.collectionViewDetail reloadData];
+    [self.collectionViewDetail reloadDataWithImages:self.arrayImage];
+    [self.spinner stopAnimating];
 }
 
 @end

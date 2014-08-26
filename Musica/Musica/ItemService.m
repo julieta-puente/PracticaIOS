@@ -42,15 +42,13 @@
         return;
     }
     
-    SearchedObject * obj = [[SearchedObject alloc] init];
+    Item * item = [[Item alloc] init];
+    item.title=[parsedObject valueForKey:@"title"];
+    item.price=[parsedObject valueForKey:@"price"];
+    item.pictures=[parsedObject valueForKey:@"pictures"];
     
-    for (NSString *key in parsedObject) {
-        if ([obj respondsToSelector:NSSelectorFromString(key)]) {
-            [obj setValue:[parsedObject valueForKey:key] forKey:key];
-        }
-    }
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self.delegate resultsReceived:obj];
+        [self.delegate resultsReceived:item];
     });
 }
 @end

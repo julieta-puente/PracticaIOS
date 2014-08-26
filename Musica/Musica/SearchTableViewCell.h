@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FetchImageService.h"
-#import "SearchedObject.h"
+#import "Item.h"
 #import "SpinnerImageView.h"
 
 @interface SearchTableViewCell : UITableViewCell <FetchImageResponse>
@@ -19,7 +19,7 @@
 @property (copy,nonatomic) NSString * permalink;
 @property (strong,nonatomic) FetchImageService * imageService;
 
--(void) completeCellWithContent: (SearchedObject *) content ;
+-(void) completeCellWithContent: (Item *) content ;
 -(void) cancelService;
 
 

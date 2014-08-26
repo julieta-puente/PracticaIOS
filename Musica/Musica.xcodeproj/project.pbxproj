@@ -18,6 +18,7 @@
 		4D4C9F0E19744376004541F8 /* MusicLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4C9F0D19744376004541F8 /* MusicLibrary.m */; };
 		4D4C9F11197452E3004541F8 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4C9F10197452E3004541F8 /* Group.m */; };
 		4D4C9F1419745E88004541F8 /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4C9F1319745E88004541F8 /* Album.m */; };
+		4D4F385D19ACD3000071799A /* ProductImageGallery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4F385C19ACD3000071799A /* ProductImageGallery.m */; };
 		4D588955197561C00042A3E9 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D588954197561C00042A3E9 /* Song.m */; };
 		4D58BCED197FE89600CC31E6 /* queen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D58BCEC197FE89600CC31E6 /* queen.jpg */; };
 		4D58BCF1197FFE2B00CC31E6 /* AlbumDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D58BCEF197FFE2B00CC31E6 /* AlbumDetailViewController.m */; };
@@ -30,7 +31,7 @@
 		4D815BF319951DA6008577DF /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D815BF119951DA6008577DF /* SearchViewController.xib */; };
 		4D815BF719951F3B008577DF /* SearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D815BF519951F3A008577DF /* SearchTableViewCell.m */; };
 		4D815BF819951F3B008577DF /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D815BF619951F3A008577DF /* SearchTableViewCell.xib */; };
-		4D860EC21998EF53007B80E0 /* SearchedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D860EC11998EF53007B80E0 /* SearchedObject.m */; };
+		4D860EC21998EF53007B80E0 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D860EC11998EF53007B80E0 /* Item.m */; };
 		4D860EC619991C15007B80E0 /* SearchBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D860EC419991C15007B80E0 /* SearchBarViewController.m */; };
 		4D860EC719991C15007B80E0 /* SearchBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D860EC519991C15007B80E0 /* SearchBarViewController.xib */; };
 		4D8A18AA1986A9640062D162 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D8A18A91986A9640062D162 /* HeaderView.m */; };
@@ -98,6 +99,8 @@
 		4D4C9F10197452E3004541F8 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
 		4D4C9F1219745E88004541F8 /* Album.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Album.h; sourceTree = "<group>"; };
 		4D4C9F1319745E88004541F8 /* Album.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Album.m; sourceTree = "<group>"; };
+		4D4F385B19ACD3000071799A /* ProductImageGallery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductImageGallery.h; sourceTree = "<group>"; };
+		4D4F385C19ACD3000071799A /* ProductImageGallery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductImageGallery.m; sourceTree = "<group>"; };
 		4D588953197561C00042A3E9 /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
 		4D588954197561C00042A3E9 /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
 		4D58BCEC197FE89600CC31E6 /* queen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = queen.jpg; sourceTree = "<group>"; };
@@ -116,8 +119,8 @@
 		4D815BF419951F3A008577DF /* SearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTableViewCell.h; sourceTree = "<group>"; };
 		4D815BF519951F3A008577DF /* SearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewCell.m; sourceTree = "<group>"; };
 		4D815BF619951F3A008577DF /* SearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
-		4D860EC01998EF53007B80E0 /* SearchedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchedObject.h; sourceTree = "<group>"; };
-		4D860EC11998EF53007B80E0 /* SearchedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchedObject.m; sourceTree = "<group>"; };
+		4D860EC01998EF53007B80E0 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		4D860EC11998EF53007B80E0 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 		4D860EC319991C15007B80E0 /* SearchBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchBarViewController.h; sourceTree = "<group>"; };
 		4D860EC419991C15007B80E0 /* SearchBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchBarViewController.m; sourceTree = "<group>"; };
 		4D860EC519991C15007B80E0 /* SearchBarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchBarViewController.xib; sourceTree = "<group>"; };
@@ -280,8 +283,8 @@
 				4D815BF419951F3A008577DF /* SearchTableViewCell.h */,
 				4D815BF519951F3A008577DF /* SearchTableViewCell.m */,
 				4D815BF619951F3A008577DF /* SearchTableViewCell.xib */,
-				4D860EC01998EF53007B80E0 /* SearchedObject.h */,
-				4D860EC11998EF53007B80E0 /* SearchedObject.m */,
+				4D860EC01998EF53007B80E0 /* Item.h */,
+				4D860EC11998EF53007B80E0 /* Item.m */,
 				4D860EC319991C15007B80E0 /* SearchBarViewController.h */,
 				4D860EC419991C15007B80E0 /* SearchBarViewController.m */,
 				4D860EC519991C15007B80E0 /* SearchBarViewController.xib */,
@@ -311,6 +314,8 @@
 				4DC7E71D19A7977000331811 /* ItemService.m */,
 				4D98B03319AB6BF2001DC328 /* SpinnerImageView.h */,
 				4D98B03419AB6BF2001DC328 /* SpinnerImageView.m */,
+				4D4F385B19ACD3000071799A /* ProductImageGallery.h */,
+				4D4F385C19ACD3000071799A /* ProductImageGallery.m */,
 			);
 			path = Musica;
 			sourceTree = "<group>";
@@ -484,8 +489,9 @@
 				4D9BC078199BA7AD000C328B /* KeyboardToolbar.m in Sources */,
 				4DFEC9ED19741BF7009B6499 /* main.m in Sources */,
 				4D4C9F11197452E3004541F8 /* Group.m in Sources */,
-				4D860EC21998EF53007B80E0 /* SearchedObject.m in Sources */,
+				4D860EC21998EF53007B80E0 /* Item.m in Sources */,
 				4D58BCF1197FFE2B00CC31E6 /* AlbumDetailViewController.m in Sources */,
+				4D4F385D19ACD3000071799A /* ProductImageGallery.m in Sources */,
 				4D9BC083199CFDE5000C328B /* RecentSearchTableViewCell.m in Sources */,
 				4DAE0328199275310078DEB4 /* MBProgressHUD.m in Sources */,
 				4D9BC073199A7DCC000C328B /* SearchService.m in Sources */,

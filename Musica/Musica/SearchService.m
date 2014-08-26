@@ -7,7 +7,7 @@
 //
 
 #import "SearchService.h"
-#import "SearchedObject.h"
+#import "Item.h"
 
 @interface SearchService(){
     NSInteger off;
@@ -29,8 +29,9 @@
 }
 -(void) fetchDataWithString: (NSString *) search withOffset: (NSInteger) offset{
     NSURL *url = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"https://api.mercadolibre.com/sites/MLA/search?q=%@&limit=15&offset=%d",search,offset ]];
-    NSLog(@"%@",url);
-    [NSURLConnection sendAsynchronousRequest:[[NSURLRequest alloc] initWithURL:url] queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+    NSMutableURLRequest * request = [[NSMutableURLRequest alloc]initWithURL:url];
+    [request setHTTPMethod:@"GET"];
+    [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
         if (error) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.delegate fetchFailed:error];
@@ -51,7 +52,7 @@
         return;
     }
     
-    NSMutableArray * objects = [[NSMutableArray alloc] init];
+    NSMutableArray * itemArray = [[NSMutableArray alloc] init];
     
     NSArray *results = [parsedObject valueForKey:@"results"];
     NSDictionary * paging= [parsedObject valueForKey:@"paging"];
@@ -68,18 +69,15 @@
     }else{
         
         for (NSDictionary * objDic in results) {
-            SearchedObject * obj = [[SearchedObject alloc] init];
-            
-            for (NSString *key in objDic) {
-                if ([obj respondsToSelector:NSSelectorFromString(key)]) {
-                    [obj setValue:[objDic valueForKey:key] forKey:key];
-                }
-            }
-            
-            [objects addObject:obj];
+            Item * item = [[Item alloc] init];
+            item.title = [objDic valueForKey:@"title"];
+            item.price = [objDic valueForKey:@"price"];
+            item.itemId= [objDic valueForKey:@"id"];
+            item.thumbnail = [objDic valueForKey:@"thumbnail"];
+            [itemArray addObject:item];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.delegate resultsReceived:objects];
+            [self.delegate resultsReceived:itemArray];
         });
     }
     

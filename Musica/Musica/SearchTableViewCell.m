@@ -21,10 +21,10 @@
 
 }
 
--(void) completeCellWithContent: (SearchedObject *) content {
+-(void) completeCellWithContent: (Item *) content {
     [self.labelTitle setText:content.title];
     [self.labelPrice setText:[NSString stringWithFormat:@"$ %@", content.price ]];
-    self.itemId=content.id;
+    self.itemId=content.itemId;
     [self.imageViewSearch loadSpinner];
     NSURL *url = [NSURL URLWithString:content.thumbnail];
     [self.imageService fetchImageWithURL:url forItem:self.itemId];

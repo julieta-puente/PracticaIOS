@@ -8,7 +8,7 @@
 
 #import "SearchViewController.h"
 #import "SearchTableViewCell.h"
-#import "SearchedObject.h"
+#import "Item.h"
 #import "SearchService.h"
 #import "MBProgressHUD.h"
 #import "NoResultViewController.h"
@@ -64,14 +64,14 @@
     static NSString * cellIdentifier = @"CellIdentifier";
     
     SearchTableViewCell * cell=(SearchTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    SearchedObject * content = self.objects[indexPath.row];
+    Item * content = self.objects[indexPath.row];
     [cell completeCellWithContent:content];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SearchedObject * content = self.objects[indexPath.row];
+    Item * content = self.objects[indexPath.row];
     [self.cellPrototype  completeCellWithContent:content];
     return [self.cellPrototype.contentView systemLayoutSizeFittingSize:UILayoutFittingExpandedSize].height;
 }

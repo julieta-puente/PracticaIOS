@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProductImageGallery.h"
 
 @interface ProductDetailViewController : UIViewController
 
-@property (strong, nonatomic) IBOutlet UICollectionView *collectionViewDetail;
+
+@property (strong, nonatomic) IBOutlet ProductImageGallery *collectionViewDetail;
 @property (strong, nonatomic) IBOutlet UILabel *labelTitle;
 @property (strong, nonatomic) IBOutlet UILabel *labelPrice;
 @property (strong, nonatomic) IBOutlet UIButton *buttonBuy;

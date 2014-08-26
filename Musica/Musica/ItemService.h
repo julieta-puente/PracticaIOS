@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SearchedObject.h"
+#import "Item.h"
 @protocol ItemResponse
 -(void) fetchFailed:(NSError *) error;
--(void) resultsReceived: (SearchedObject *) data;
+-(void) resultsReceived: (Item *) data;
 @end
 
 @interface ItemService : NSObject
