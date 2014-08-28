@@ -37,10 +37,8 @@
                                           completionHandler:^(NSData *data, NSURLResponse *response,
                                                               NSError *error) {
                                               if(error!=nil){
-//                                                  NSLog(@"%@",error);
                                                   dispatch_async(dispatch_get_main_queue(), ^{
-//                                                      [self.delegate serviceFinishedWithNoImageData:self];
-                                                      [self.delegate sacameLaFoto];
+                                                      [self.delegate serviceFinishedWithNoImageData:self];
                                                   });
                                               }else{
                                                   dispatch_async(dispatch_get_main_queue(), ^{

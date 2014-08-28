@@ -26,8 +26,12 @@
     [self.labelPrice setText:[NSString stringWithFormat:@"$ %@", content.price ]];
     self.itemId=content.itemId;
     [self.imageViewSearch loadSpinner];
-    NSURL *url = [NSURL URLWithString:content.thumbnail];
-    [self.imageService fetchImageWithURL:url forItem:self.itemId];
+    if([content.thumbnail isEqual:@""]){
+        [self.imageViewSearch serviceFinishedWithNoImageData:self.imageService];
+    }else{        
+        NSURL *url = [NSURL URLWithString:content.thumbnail];
+        [self.imageService fetchImageWithURL:url forItem:self.itemId];
+    }
 }
 
 -(void) cancelService{

@@ -85,14 +85,7 @@
     self.pageControl.numberOfPages = [images count];
     int page=0;
     for (NSDictionary * imgDic in images) {
-        CGRect frame = self.scrollViewImages.bounds;
-        frame.origin.x = frame.size.width * page;
-        frame.origin.y = 0.0f;
-        SpinnerImageView * imageView = [[SpinnerImageView alloc]initWithFrame:frame];
-        [imageView loadSpinner];
-        imageView.contentMode = UIViewContentModeScaleAspectFit;
-        [self.scrollViewImages addSubview:imageView];
-        [self.imageViewArray addObject:imageView];
+        [self loadImageToScrollViewForPage:page];
         page++;
         NSURL * url = [NSURL URLWithString:[imgDic objectForKey:@"url"]];
         NSString * imageId = [imgDic objectForKey:@"id"];
@@ -100,6 +93,16 @@
     }
 }
 
+-(void) loadImageToScrollViewForPage:(NSInteger)page{
+    CGRect frame = self.scrollViewImages.bounds;
+    frame.origin.x = frame.size.width * page;
+    frame.origin.y = 0.0f;
+    SpinnerImageView * imageView = [[SpinnerImageView alloc]initWithFrame:frame];
+    [imageView loadSpinner];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    [self.scrollViewImages addSubview:imageView];
+    [self.imageViewArray addObject:imageView];
+}
 -(void) serviceFinishedWithImageData:(NSData *)data forService:(ImageService *)service{
     SpinnerImageView * imageView = self.imageViewArray[[self.arrayImage count]];
     [imageView serviceFinishedWithImageData:data forService:service];
@@ -107,7 +110,8 @@
     
 }
 -(void) serviceFinishedWithNoImageData: (ImageService *) service{
-    SpinnerImageView * imageView = [[SpinnerImageView alloc]init];
+    [self loadImageToScrollViewForPage:0];
+    SpinnerImageView * imageView = self.imageViewArray[[self.arrayImage count]];
     [imageView serviceFinishedWithNoImageData:service];
     [self.arrayImage addObject:[imageView getImage]];
 }

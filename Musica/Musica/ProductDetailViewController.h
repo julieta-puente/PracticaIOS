@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ProductImageGallery.h"
+
 
 @interface ProductDetailViewController : UIViewController
 
