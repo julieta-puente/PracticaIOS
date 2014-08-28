@@ -6,15 +6,15 @@
 //  Copyright (c) 2014 Julieta Puente. All rights reserved.
 //
 
-#import "FetchImageService.h"
+#import "ImageService.h"
 #import "StorageManager.h"
-@interface FetchImageService ()
+@interface ImageService ()
 
 @property (strong, nonatomic) NSURLSession *delegateFreeSession;
 @property (strong, nonatomic) NSURLSessionTask * task;
 @property (strong,nonatomic)  StorageManager * sManager;
 @end
-@implementation FetchImageService
+@implementation ImageService
 
 -(id) init{
     if ([super init]){
@@ -30,19 +30,21 @@
        NSData * imgData = [self.sManager getData:item];
     if(imgData!=nil){
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.delegate loadImage:imgData];
+            [self.delegate serviceFinishedWithImageData:imgData forService:self];
         });
     } else{
         self.task=[self.delegateFreeSession dataTaskWithURL: url
                                           completionHandler:^(NSData *data, NSURLResponse *response,
                                                               NSError *error) {
                                               if(error!=nil){
+//                                                  NSLog(@"%@",error);
                                                   dispatch_async(dispatch_get_main_queue(), ^{
-                                                      [self.delegate noImageFound];
+//                                                      [self.delegate serviceFinishedWithNoImageData:self];
+                                                      [self.delegate sacameLaFoto];
                                                   });
                                               }else{
                                                   dispatch_async(dispatch_get_main_queue(), ^{
-                                                      [self.delegate loadImage:data];
+                                                      [self.delegate serviceFinishedWithImageData:data forService:self];
                                                       [self.sManager saveData:data forItem:item];
                                                   });
                                               }

@@ -112,21 +112,21 @@
     [self.tableViewSearch deselectRowAtIndexPath:indexPath animated:YES];
 }
 #pragma mark - search service response
--(void) fetchFailed:(NSError *) error{
+-(void) serviceFailedWithError:(NSError *) error forService:(SearchService *) service{
     UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"Se produjo un error en la conexión" message:@"Por favor inténtelo nuevamente" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
     [alert show];
     [self.HUD hide:YES];
     self.tableViewSearch.tableFooterView =nil;
 }
 
--(void) noResultsFound{
+-(void) serviceFinishedWithNoData: (SearchService *) service{
         NoResultViewController * noResultView = [[NoResultViewController alloc]initWithNibName:nil bundle:nil];
         [self.view addSubview:noResultView.view];
         [self.HUD hide:YES];
         self.tableViewSearch.tableFooterView =nil;
 }
 
--(void) resultsReceived:(NSArray *)results{
+-(void) serviceFinishedWithData:(NSArray *) results forService: (SearchService *) service{
     if (self.objects == nil){
         self.objects= [NSMutableArray arrayWithArray:results] ;
     }else{
@@ -137,7 +137,7 @@
         self.tableViewSearch.tableFooterView =nil;
 }
 
--(void) allResultsLoaded{
+-(void) serviceFinishedFetchingData: (SearchService *) service{
     self.tableViewSearch.tableFooterView =nil;
 }
 

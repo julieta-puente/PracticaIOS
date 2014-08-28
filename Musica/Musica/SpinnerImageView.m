@@ -7,7 +7,7 @@
 //
 
 #import "SpinnerImageView.h"
-#import "FetchImageService.h"
+#import "ImageService.h"
 @interface SpinnerImageView ()
 @property (strong,nonatomic) UIActivityIndicatorView * spinner;
 @end
@@ -22,17 +22,18 @@
     return self;
 }
 
--(void) loadImage:(NSData *) data {
+-(void) serviceFinishedWithImageData:(NSData *)data forService:(ImageService *)service {
     self.image= [UIImage imageWithData:data];
     [self.spinner stopAnimating];
 }
 
--(void) noImageFound{
+-(void) serviceFinishedWithNoImageData:(ImageService *)service{
     self.image = [UIImage imageNamed:@"noimage.jpg"];
     [self.spinner stopAnimating];
 }
 
 -(void) loadSpinner{
+    
     self.spinner= [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     self.spinner.center = CGPointMake(self.frame.size.width/2,self.frame.size.height/2);
     [self addSubview:self.spinner];

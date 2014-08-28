@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "Item.h"
+@class ItemService;
+
 @protocol ItemResponse
--(void) fetchFailed:(NSError *) error;
--(void) resultsReceived: (Item *) data;
+-(void) serviceFailedWithError:(NSError *) error forService:(ItemService *) service;
+-(void) serviceFinishedWithData:(Item *) data forService: (ItemService *) service;
 @end
 
 @interface ItemService : NSObject

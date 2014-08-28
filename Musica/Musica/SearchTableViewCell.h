@@ -7,17 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FetchImageService.h"
+#import "ImageService.h"
 #import "Item.h"
 #import "SpinnerImageView.h"
 
-@interface SearchTableViewCell : UITableViewCell <FetchImageResponse>
+@interface SearchTableViewCell : UITableViewCell <ImageResponse>
 @property (strong, nonatomic) IBOutlet UILabel *labelTitle;
 @property (strong, nonatomic) IBOutlet UILabel *labelPrice;
 @property (strong, nonatomic) IBOutlet SpinnerImageView *imageViewSearch;
 @property (copy,nonatomic) NSString * itemId;
 @property (copy,nonatomic) NSString * permalink;
-@property (strong,nonatomic) FetchImageService * imageService;
+@property (strong,nonatomic) ImageService * imageService;
 
 -(void) completeCellWithContent: (Item *) content ;
 -(void) cancelService;

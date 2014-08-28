@@ -18,7 +18,7 @@
 		4D4C9F0E19744376004541F8 /* MusicLibrary.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4C9F0D19744376004541F8 /* MusicLibrary.m */; };
 		4D4C9F11197452E3004541F8 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4C9F10197452E3004541F8 /* Group.m */; };
 		4D4C9F1419745E88004541F8 /* Album.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4C9F1319745E88004541F8 /* Album.m */; };
-		4D4F385D19ACD3000071799A /* ProductImageGallery.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4F385C19ACD3000071799A /* ProductImageGallery.m */; };
+		4D4F386019AE0EE50071799A /* ConnectionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D4F385F19AE0EE50071799A /* ConnectionManager.m */; };
 		4D588955197561C00042A3E9 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D588954197561C00042A3E9 /* Song.m */; };
 		4D58BCED197FE89600CC31E6 /* queen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D58BCEC197FE89600CC31E6 /* queen.jpg */; };
 		4D58BCF1197FFE2B00CC31E6 /* AlbumDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D58BCEF197FFE2B00CC31E6 /* AlbumDetailViewController.m */; };
@@ -41,7 +41,7 @@
 		4D9BC06E199A4F5F000C328B /* NoResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D9BC06C199A4F5F000C328B /* NoResultViewController.xib */; };
 		4D9BC073199A7DCC000C328B /* SearchService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9BC072199A7DCC000C328B /* SearchService.m */; };
 		4D9BC078199BA7AD000C328B /* KeyboardToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9BC077199BA7AD000C328B /* KeyboardToolbar.m */; };
-		4D9BC07B199BC1D1000C328B /* FetchImageService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9BC07A199BC1D1000C328B /* FetchImageService.m */; };
+		4D9BC07B199BC1D1000C328B /* ImageService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9BC07A199BC1D1000C328B /* ImageService.m */; };
 		4D9BC07F199CF556000C328B /* noimage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 4D9BC07E199CF556000C328B /* noimage.jpg */; };
 		4D9BC083199CFDE5000C328B /* RecentSearchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D9BC081199CFDE5000C328B /* RecentSearchTableViewCell.m */; };
 		4D9BC084199CFDE5000C328B /* RecentSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D9BC082199CFDE5000C328B /* RecentSearchTableViewCell.xib */; };
@@ -99,8 +99,8 @@
 		4D4C9F10197452E3004541F8 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
 		4D4C9F1219745E88004541F8 /* Album.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Album.h; sourceTree = "<group>"; };
 		4D4C9F1319745E88004541F8 /* Album.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Album.m; sourceTree = "<group>"; };
-		4D4F385B19ACD3000071799A /* ProductImageGallery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductImageGallery.h; sourceTree = "<group>"; };
-		4D4F385C19ACD3000071799A /* ProductImageGallery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductImageGallery.m; sourceTree = "<group>"; };
+		4D4F385E19AE0EE50071799A /* ConnectionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionManager.h; sourceTree = "<group>"; };
+		4D4F385F19AE0EE50071799A /* ConnectionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionManager.m; sourceTree = "<group>"; };
 		4D588953197561C00042A3E9 /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
 		4D588954197561C00042A3E9 /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
 		4D58BCEC197FE89600CC31E6 /* queen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = queen.jpg; sourceTree = "<group>"; };
@@ -136,8 +136,8 @@
 		4D9BC072199A7DCC000C328B /* SearchService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchService.m; sourceTree = "<group>"; };
 		4D9BC076199BA7AD000C328B /* KeyboardToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardToolbar.h; sourceTree = "<group>"; };
 		4D9BC077199BA7AD000C328B /* KeyboardToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyboardToolbar.m; sourceTree = "<group>"; };
-		4D9BC079199BC1D1000C328B /* FetchImageService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchImageService.h; sourceTree = "<group>"; };
-		4D9BC07A199BC1D1000C328B /* FetchImageService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchImageService.m; sourceTree = "<group>"; };
+		4D9BC079199BC1D1000C328B /* ImageService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageService.h; sourceTree = "<group>"; };
+		4D9BC07A199BC1D1000C328B /* ImageService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageService.m; sourceTree = "<group>"; };
 		4D9BC07E199CF556000C328B /* noimage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = noimage.jpg; sourceTree = "<group>"; };
 		4D9BC080199CFDE5000C328B /* RecentSearchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentSearchTableViewCell.h; sourceTree = "<group>"; };
 		4D9BC081199CFDE5000C328B /* RecentSearchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentSearchTableViewCell.m; sourceTree = "<group>"; };
@@ -294,14 +294,16 @@
 				4D9BC080199CFDE5000C328B /* RecentSearchTableViewCell.h */,
 				4D9BC081199CFDE5000C328B /* RecentSearchTableViewCell.m */,
 				4D9BC082199CFDE5000C328B /* RecentSearchTableViewCell.xib */,
-				4D9BC071199A7DCC000C328B /* SearchService.h */,
-				4D9BC072199A7DCC000C328B /* SearchService.m */,
 				4D9BC076199BA7AD000C328B /* KeyboardToolbar.h */,
 				4D9BC077199BA7AD000C328B /* KeyboardToolbar.m */,
-				4D9BC079199BC1D1000C328B /* FetchImageService.h */,
-				4D9BC07A199BC1D1000C328B /* FetchImageService.m */,
-				4DFEC9F219741BF7009B6499 /* Images.xcassets */,
-				4DFEC9E719741BF7009B6499 /* Supporting Files */,
+				4D4F385E19AE0EE50071799A /* ConnectionManager.h */,
+				4D4F385F19AE0EE50071799A /* ConnectionManager.m */,
+				4D9BC071199A7DCC000C328B /* SearchService.h */,
+				4D9BC072199A7DCC000C328B /* SearchService.m */,
+				4DC7E71C19A7977000331811 /* ItemService.h */,
+				4DC7E71D19A7977000331811 /* ItemService.m */,
+				4D9BC079199BC1D1000C328B /* ImageService.h */,
+				4D9BC07A199BC1D1000C328B /* ImageService.m */,
 				4D9BC08519A4CC71000C328B /* StorageManager.h */,
 				4D9BC08619A4CC71000C328B /* StorageManager.m */,
 				4DA1529C19A50788003DA1FC /* ProductDetailViewController.h */,
@@ -310,12 +312,10 @@
 				4DC7E71419A781B300331811 /* ProductDetailCell.h */,
 				4DC7E71519A781B300331811 /* ProductDetailCell.m */,
 				4DC7E71719A781DE00331811 /* ProductDetailCell.xib */,
-				4DC7E71C19A7977000331811 /* ItemService.h */,
-				4DC7E71D19A7977000331811 /* ItemService.m */,
 				4D98B03319AB6BF2001DC328 /* SpinnerImageView.h */,
 				4D98B03419AB6BF2001DC328 /* SpinnerImageView.m */,
-				4D4F385B19ACD3000071799A /* ProductImageGallery.h */,
-				4D4F385C19ACD3000071799A /* ProductImageGallery.m */,
+				4DFEC9F219741BF7009B6499 /* Images.xcassets */,
+				4DFEC9E719741BF7009B6499 /* Supporting Files */,
 			);
 			path = Musica;
 			sourceTree = "<group>";
@@ -479,7 +479,7 @@
 				4D4C9F0E19744376004541F8 /* MusicLibrary.m in Sources */,
 				4D7BF43D197D7B1500274E66 /* AlbumTableViewCell.m in Sources */,
 				4D9BC06D199A4F5F000C328B /* NoResultViewController.m in Sources */,
-				4D9BC07B199BC1D1000C328B /* FetchImageService.m in Sources */,
+				4D9BC07B199BC1D1000C328B /* ImageService.m in Sources */,
 				4DC7E71619A781B300331811 /* ProductDetailCell.m in Sources */,
 				4D4C9EFB19741CDB004541F8 /* MainViewController.m in Sources */,
 				4DC06ACE197EADF1007376DD /* AlbumImageViewPickerDelegate.m in Sources */,
@@ -489,9 +489,9 @@
 				4D9BC078199BA7AD000C328B /* KeyboardToolbar.m in Sources */,
 				4DFEC9ED19741BF7009B6499 /* main.m in Sources */,
 				4D4C9F11197452E3004541F8 /* Group.m in Sources */,
+				4D4F386019AE0EE50071799A /* ConnectionManager.m in Sources */,
 				4D860EC21998EF53007B80E0 /* Item.m in Sources */,
 				4D58BCF1197FFE2B00CC31E6 /* AlbumDetailViewController.m in Sources */,
-				4D4F385D19ACD3000071799A /* ProductImageGallery.m in Sources */,
 				4D9BC083199CFDE5000C328B /* RecentSearchTableViewCell.m in Sources */,
 				4DAE0328199275310078DEB4 /* MBProgressHUD.m in Sources */,
 				4D9BC073199A7DCC000C328B /* SearchService.m in Sources */,

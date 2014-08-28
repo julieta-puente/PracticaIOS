@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+@class SearchService;
 
 @protocol SearchResponse
--(void) fetchFailed:(NSError *) error;
--(void) noResultsFound;
--(void) resultsReceived:(NSArray *) results;
--(void) allResultsLoaded;
+-(void) serviceFailedWithError:(NSError *) error forService:(SearchService *) service;
+-(void) serviceFinishedWithNoData: (SearchService *) service;
+-(void) serviceFinishedWithData:(NSArray *) results forService: (SearchService *) service;
+-(void) serviceFinishedFetchingData: (SearchService *) service;
 @end
 
 @interface SearchService : NSObject

@@ -16,7 +16,7 @@
 - (void)awakeFromNib
 {
     self.imageViewSearch.image=nil;
-    self.imageService = [[FetchImageService alloc]init];
+    self.imageService = [[ImageService alloc]init];
     self.imageService.delegate=self;
 
 }
@@ -34,17 +34,19 @@
     [self.imageService cancel];
 }
 
--(void) loadImage:(NSData *) data {
-    [self.imageViewSearch loadImage:data];
+-(void) serviceFinishedWithImageData:(NSData *) data forService:(ImageService *)service {
+    [self.imageViewSearch serviceFinishedWithImageData:data forService:service];
     
 }
 
--(void) noImageFound{
-    [self.imageViewSearch noImageFound];
+-(void) serviceFinishedWithNoImageData: (ImageService *) service{
+    [self.imageViewSearch serviceFinishedWithNoImageData:service];
 }
 
 -(void) dealloc{
     [self cancelService];
 }
-
+-(void) sacameLaFoto{
+    self.imageViewSearch.image=nil;
+}
 @end

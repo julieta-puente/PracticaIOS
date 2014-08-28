@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "FetchImageService.h"
-@interface SpinnerImageView : UIImageView <FetchImageResponse>
+#import "ImageService.h"
+@interface SpinnerImageView : UIImageView <ImageResponse>
 
 -(void) loadSpinner;
 -(UIImage *) getImage;

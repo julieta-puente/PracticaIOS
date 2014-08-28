@@ -8,15 +8,24 @@
 
 #import "SearchService.h"
 #import "Item.h"
+#import "ConnectionManager.h"
 
-@interface SearchService(){
+@interface SearchService()<ConnectionResponse>{
     NSInteger off;
 }
 @property (copy,nonatomic) NSString * searchString;
-
+@property (strong,nonatomic) ConnectionManager * connection;
 @end
 
 @implementation SearchService
+-(id) init{
+    if([super init]){
+        self.connection = [[ConnectionManager alloc]init];
+        self.connection.delegate=self;
+    }
+    return self;
+}
+
 -(void) searchApiWithString: (NSString *) search{
     self.searchString=search;
     [self fetchDataWithString:search withOffset:0];
@@ -29,21 +38,24 @@
 }
 -(void) fetchDataWithString: (NSString *) search withOffset: (NSInteger) offset{
     NSURL *url = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"https://api.mercadolibre.com/sites/MLA/search?q=%@&limit=15&offset=%d",search,offset ]];
-    NSMutableURLRequest * request = [[NSMutableURLRequest alloc]initWithURL:url];
-    [request setHTTPMethod:@"GET"];
-    [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-        if (error) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.delegate fetchFailed:error];
-            });
-        } else {
-            [self receivedJSON:data];
-        }
-    }];
+//    NSMutableURLRequest * request = [[NSMutableURLRequest alloc]initWithURL:url];
+//    [request setHTTPMethod:@"GET"];
+//    [NSURLConnection sendAsynchronousRequest:request queue:[[NSOperationQueue alloc] init] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+//        if (error) {
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [self.delegate fetchFailed:error];
+//            });
+//        } else {
+//            [self receivedJSON:data];
+//        }
+//    }];
+    [self.connection establishConnectionWithURL:url];
     
 }
-
--(void) receivedJSON:(NSData *) data{
+-(void)connectionFailedWithError:(NSError *)error forConnection:(ConnectionManager *)connection{
+    [self.delegate serviceFailedWithError:error forService:self];
+}
+-(void)connectionFinishedWithData:(NSData *)data forConnection: (ConnectionManager *)connection{
     NSError *localError = nil;
     NSDictionary *parsedObject = [NSJSONSerialization JSONObjectWithData:data options:0 error:&localError];
     
@@ -59,12 +71,12 @@
     NSNumber * total= [paging objectForKey:@"total"];
     if(total.intValue >off){
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.delegate allResultsLoaded];
+            [self.delegate serviceFinishedFetchingData:self];
         });
     }
     if( [results count] == 0){
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.delegate noResultsFound];
+            [self.delegate serviceFinishedWithNoData:self];
         });
     }else{
         
@@ -77,10 +89,11 @@
             [itemArray addObject:item];
         }
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.delegate resultsReceived:itemArray];
+            [self.delegate serviceFinishedWithData:itemArray forService: self];
         });
     }
-    
-    
 }
+
+    
+
 @end
